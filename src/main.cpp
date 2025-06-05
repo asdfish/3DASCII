@@ -22,5 +22,5 @@ int main() {
     std::cout << "Sum of values: " << result << std::endl;
 
     return 0;
-}
+} 
 
