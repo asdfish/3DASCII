@@ -1,21 +1,26 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
 
-using namespace std;
-
-int main()
-{
-    int t; cin>>t;
-    while (t--)
-    {
-        int n; cin>>n;
-        if (n>5)
-        {
-            cout<<"Greater than 5";
-        }
-        else
-        {
-            cout<<"Less than 5";
-        }
+int sum(const std::vector<int>& numbers) {
+    int total = 0;
+    for (int num : numbers) {
+        total += num; // Set a breakpoint here
     }
+    return total;
+}
+
+int main() {
+    std::cout << "Enter 5 integers:\n";
+    std::vector<int> values(5);
+    
+    for (int i = 0; i < 5; ++i) {
+        std::cout << "Value " << i + 1 << ": ";
+        std::cin >> values[i];
+    }
+
+    int result = sum(values);
+    std::cout << "Sum of values: " << result << std::endl;
+
+    return 0;
 }
 
