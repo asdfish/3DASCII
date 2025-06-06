@@ -5,7 +5,9 @@ include(CTest)
 enable_testing()
 
 add_executable(3DASCII
-main.cpp
+src/main.cpp
+src/image.cpp
 )
 
 set_property(TARGET 3DASCII PROPERTY CXX_STANDARD 17)
+target_include_directories(3DASCII PRIVATE include)

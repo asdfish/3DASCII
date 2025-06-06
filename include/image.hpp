@@ -10,6 +10,12 @@ struct float3
         struct {float x; float y; float z;};
         struct {float r; float g; float b;};
     };
+
+    float3();
+    float3(float x, float y, float z);
+    ~float3();
+
+
 };
 
 class Image
@@ -21,7 +27,7 @@ class Image
         float3 GetColor(int x, int y) const;
         void SetColor(const float3& color, int x, int y);
 
-        void Export(const char* path);
+        void Export(const char* path) const;
 
     private:
         int m_width;

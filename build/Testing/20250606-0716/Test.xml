@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Win32-ninja"
+	BuildStamp="20250606-0716-Experimental"
+	Name="LAPTOP-JCP9T91M"
+	Generator="ctest-4.0.2"
+	CompilerName="C:/msys64/ucrt64/bin/g++.exe"
+	CompilerVersion="14.2.0"
+	OSName="Windows"
+	Hostname="LAPTOP-JCP9T91M"
+	OSRelease=" Personal"
+	OSVersion=" (Build 26100)"
+	OSPlatform="AMD64"
+	Is64Bits="1"
+	VendorString="AuthenticAMD"
+	VendorID="Advanced Micro Devices"
+	FamilyID="15"
+	ModelID="5"
+	ModelName="AMD Ryzen 7 8845HS w/ Radeon 780M Graphics     "
+	ProcessorCacheSize="64"
+	NumberOfLogicalCPU="16"
+	NumberOfPhysicalCPU="8"
+	TotalVirtualMemory="19756"
+	TotalPhysicalMemory="15661"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="3792"
+	>
+	<Testing>
+		<StartDateTime>Jun 06 12:53 India Standard Time</StartDateTime>
+		<StartTestTime>1749194592</StartTestTime>
+		<TestList/>
+		<EndDateTime>Jun 06 12:53 India Standard Time</EndDateTime>
+		<EndTestTime>1749194592</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

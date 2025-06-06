@@ -1,8 +1,14 @@
 [
 {
   "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++17 -o CMakeFiles\\3DASCII.dir\\main.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\main.cpp",
-  "file": "C:/Users/Joseph/Documents/Projects/3DASCII/main.cpp",
-  "output": "CMakeFiles/3DASCII.dir/main.cpp.obj"
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/include -g -std=gnu++17 -o CMakeFiles\\3DASCII.dir\\src\\main.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\main.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\main.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\main.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/include -g -std=gnu++17 -o CMakeFiles\\3DASCII.dir\\src\\image.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\image.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\image.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\image.cpp.obj"
 }
 ]

@@ -1,0 +1,4 @@
+# ninja log v6
+1	358	7708977917233589	CMakeFiles/3DASCII.dir/src/main.cpp.obj	b4d2531c2a0ac773
+6	445	7708977917283615	CMakeFiles/3DASCII.dir/src/image.cpp.obj	473dd6353c4e7c47
+446	600	7708977921682334	3DASCII.exe	9892dce30f356ff4
