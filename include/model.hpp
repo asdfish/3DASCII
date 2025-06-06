@@ -3,10 +3,21 @@
 
 #pragma once
 
+class Scene
+{
+    public:
+        Scene();
+        ~Scene();
+
+        void AddObject(const SceneObject& object);
+    private:
+        std::vector<SceneObject> objects;
+};
 
 class SceneObject
 {
     public:
+        SceneObject();
         SceneObject(float3 position, float3 rotation, const Transform* parent = nullptr, Model model);
         ~SceneObject();
         const Transform& GetTransform();
@@ -44,11 +55,18 @@ class Transform
 class Model
 {
     public:
+        Model();
         Model(const std::vector<float3>& verts, const std::vector<int>& faceIndices);
         ~Model();
 
         const std::vector<float3>& GetVerts();
         const std::vector<int>& GetFaceIndices();
+
+        float3 GetPivotFromVerts();
+        
+        void AddVert(float3 vert);
+        void AddFace(int index1, int index2, int index3);
+        void AddFaceIndex(int index);
     private:
         std::vector<float3> m_verts;
         std::vector<int> m_faceIndices;
