@@ -3,11 +3,27 @@
 
 #pragma once
 
+
+class SceneObject
+{
+    public:
+        SceneObject(float3 position, float3 rotation, const Transform* parent = nullptr, Model model);
+        ~SceneObject();
+        const Transform& GetTransform();
+        const Model& GetModel();
+
+        void SetTransform(Transform transform);
+        void SetTransform(float3 position, float3 rotation, const Transform* parent = nullptr);
+        void SetModel(Model model);
+    private:
+        Transform transform;
+        Model model;
+};
 //contains position, rotation details of a sceneobject
 class Transform
 {
     public:
-        Transform(Transform* parent = nullptr, float3 rot = float3(), float3 pos = float3());
+        Transform(float3 pos = float3(), float3 rot = float3(), Transform* parent = nullptr);
         ~Transform();
 
         const float3& GetPos();
