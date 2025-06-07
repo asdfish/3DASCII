@@ -10,26 +10,33 @@ class Scene
         ~Scene();
 
         void AddObject(const SceneObject& object);
+        void GetObjectList();
     private:
-        std::vector<SceneObject> objects;
+        std::vector<SceneObject> m_objects;
 };
 
 class SceneObject
 {
     public:
         SceneObject();
-        SceneObject(float3 position, float3 rotation, const Transform* parent = nullptr, Model model);
+        SceneObject(float3 position, float3 rotation, Model model, std::string name, const Transform* parent = nullptr);
         ~SceneObject();
         const Transform& GetTransform();
         const Model& GetModel();
+        std::string GetName();
 
         void SetTransform(Transform transform);
         void SetTransform(float3 position, float3 rotation, const Transform* parent = nullptr);
         void SetModel(Model model);
+        void SetName(std::string name);
     private:
         Transform m_transform;
         Model m_model;
+
+        std::string m_name;
+        int m_id;
 };
+
 //contains position, rotation details of a sceneobject
 class Transform
 {

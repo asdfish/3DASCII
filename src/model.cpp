@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <string.h>
 #include <sstream>
 #include <fstream>
 #include <iostream>
@@ -7,12 +5,37 @@
 #include <vector>
 #include "model.hpp"
 
+//-------------------------------------------------
+
+Scene::Scene()
+{
+}
+
+Scene::~Scene()
+{
+}
+
+void Scene::AddObject(const SceneObject &object)
+{
+    m_objects.push_back(object);
+}
+
+void Scene::GetObjectList()
+{
+    for (std::vector<SceneObject>::iterator itr = m_objects.begin(); itr != m_objects.end(); ++itr)
+    {
+        std::cout<<(*itr).GetName();
+    }
+}
+
+//------------------------------------------------
+
 SceneObject::SceneObject()
 {
 }
 
-SceneObject::SceneObject(float3 position, float3 rotation, const Transform *parent, Model model)
-    : m_transform(Transform(position, rotation, parent)), m_model(model)
+SceneObject::SceneObject(float3 position, float3 rotation, Model model, std::string name, const Transform* parent = nullptr)
+: m_transform(Transform(position, rotation, parent)), m_model(model), m_name(name)
 {
 
 }
@@ -24,13 +47,16 @@ SceneObject::~SceneObject()
 const Transform& SceneObject::GetTransform()
 {
     return m_transform;
-    // TODO: insert return statement here
 }
 
 const Model& SceneObject::GetModel()
 {
     return m_model;
-    // TODO: insert return statement here
+}
+
+std::string SceneObject::GetName()
+{
+    return m_name;
 }
 
 void SceneObject::SetTransform(Transform transform)
@@ -49,6 +75,13 @@ void SceneObject::SetModel(Model model)
 {
     m_model = model;
 }
+
+void SceneObject::SetName(std::string name)
+{
+    m_name = name;
+}
+
+//----------------------------------------------------------------
 
 Transform::Transform(float3 pos, float3 rot, const Transform* parent)
 : m_pos(pos), m_rot(rot), m_parent(parent)
@@ -89,6 +122,8 @@ void Transform::SetParent(const Transform *parent)
     m_parent = parent;
 }
 
+//---------------------------------------------------------
+
 Model::Model()
 {
 }
@@ -119,19 +154,31 @@ float3 Model::GetPivotFromVerts()
 
 void Model::AddVert(float3 vert)
 {
+    m_verts.push_back(vert);
 }
 
 void Model::AddFace(int index1, int index2, int index3)
 {
+    m_faceIndices.push_back(index1);
+    m_faceIndices.push_back(index2);
+    m_faceIndices.push_back(index3);
 }
 
-void objImporter(const char *path, Scene& scene)
+void Model::AddFaceIndex(int index)
 {
-    std::ifstream file("model.obj");
+    m_faceIndices.push_back(index);
+}
+
+//----------------------------------------------------------------
+
+void objImporter(const char* path, Scene& scene)
+{
+    std::ifstream file(path);
     std::string line;
 
     std::vector<float3> globalVerts;
     std::vector<std::vector<int>> modelFaceIndices;
+    std::vector<std::string> names;
 
     //Step 1: Parse the file into both the vectors
     while (std::getline(file,line))
@@ -139,21 +186,19 @@ void objImporter(const char *path, Scene& scene)
         if (line.empty()) continue;
 
         std::stringstream s(line);
-        const char* kw; //keyword
-        std::string temp;
+        std::string temp; //keyword
         s>>temp;
-        kw = temp.c_str();
 
         //Object header (o)
-        if (*kw == 'o')
+        if (temp == "o")
         {
             modelFaceIndices.push_back(std::vector<int>());
-            continue;
+            names.push_back(line.substr(2));
         }
 
         //Vertices
         //Vertex positions (v)
-        if (*kw == 'v')
+        else if (temp == "v")
         {
             float3 newVert = float3();
             s>>temp;
@@ -167,8 +212,9 @@ void objImporter(const char *path, Scene& scene)
         }
 
         //Faces
+        //TODO: Make it compatible with quads and n-gons
         //Face Indices (f)
-        if (*kw == 'f')
+        else if (temp == "f")
         {
             //For now, we are only looking at vertex data, not materials
             while(s>>temp) 
@@ -180,7 +226,6 @@ void objImporter(const char *path, Scene& scene)
     }
 
     //Step 2: Turn the parsed data into SceneObjects
-
     
     for (std::vector<std::vector<int>>::iterator itrm = modelFaceIndices.begin(); itrm != modelFaceIndices.end(); ++itrm) //iterator for model
     {
@@ -197,19 +242,8 @@ void objImporter(const char *path, Scene& scene)
             tempModel.AddFaceIndex(indexMap[*itrf]);
         }
 
-        SceneObject object(tempModel.GetPivotFromVerts(), float3(), nullptr, tempModel);
+        SceneObject object(tempModel.GetPivotFromVerts(), float3(), tempModel, names[0]);
         scene.AddObject(object);
+        names.erase(names.begin());
     }
-}
-
-Scene::Scene()
-{
-}
-
-Scene::~Scene()
-{
-}
-
-void Scene::AddObject(const SceneObject &object)
-{
 }
