@@ -7,6 +7,7 @@ enable_testing()
 add_executable(3DASCII
 src/main.cpp
 src/image.cpp
+src/model.cpp
 )
 
 set_property(TARGET 3DASCII PROPERTY CXX_STANDARD 17)

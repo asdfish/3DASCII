@@ -3,7 +3,8 @@
 #include <iostream>
 #include <unordered_map>
 #include <vector>
-#include "model.hpp"
+#include "modelHandling.hpp"
+#include "Scene.hpp"
 
 //-------------------------------------------------
 
@@ -20,21 +21,49 @@ void Scene::AddObject(const SceneObject &object)
     m_objects.push_back(object);
 }
 
-void Scene::GetObjectList()
+void Scene::GetObjectList() const
 {
-    for (std::vector<SceneObject>::iterator itr = m_objects.begin(); itr != m_objects.end(); ++itr)
+    for (std::vector<SceneObject>::const_iterator itr = m_objects.begin(); itr != m_objects.end(); ++itr)
     {
-        std::cout<<(*itr).GetName();
+        std::cout<<(*itr).GetName()<<"\n";
     }
 }
 
+void Scene::GetObjectData() const
+{
+    for (std::vector<SceneObject>::const_iterator itr = m_objects.begin(); itr != m_objects.end(); ++itr)
+    {
+        std::cout<<(*itr).GetName()<<"\n";
+        std::cout<<" - Transform Data"<<"\n";
+        std::cout<<"Position: "<<(*itr).GetTransform().GetPos().x<<" "<<(*itr).GetTransform().GetPos().y<<" "<<(*itr).GetTransform().GetPos().z<<"\n";
+        std::cout<<"Rotation: "<<(*itr).GetTransform().GetRot().x<<" "<<(*itr).GetTransform().GetRot().y<<" "<<(*itr).GetTransform().GetRot().z<<"\n";
+
+        std::cout<<"\n - Model Data - Vertices"<<"\n";
+        for (const auto& vert :  (*itr).GetModel().GetVerts())
+        {
+            std::cout<<(vert).x<<" "<<vert.y<<" "<<vert.z<<"\n";
+        }
+
+        std::cout<<"\n - Model Data - Face Indices"<<"\n";
+        int count = 0;
+        for (const auto& fi :  (*itr).GetModel().GetFaceIndices())
+        {
+            std::cout<<fi<<" ";
+            count = (count+1)%3;
+            if (count==0)
+            {
+                std::cout<< "\n";
+            }
+        }
+    }
+}
 //------------------------------------------------
 
 SceneObject::SceneObject()
 {
 }
 
-SceneObject::SceneObject(float3 position, float3 rotation, Model model, std::string name, const Transform* parent = nullptr)
+SceneObject::SceneObject(float3 position, float3 rotation, Model model, std::string name, const Transform* parent)
 : m_transform(Transform(position, rotation, parent)), m_model(model), m_name(name)
 {
 
@@ -44,17 +73,17 @@ SceneObject::~SceneObject()
 {
 }
 
-const Transform& SceneObject::GetTransform()
+const Transform& SceneObject::GetTransform() const
 {
     return m_transform;
 }
 
-const Model& SceneObject::GetModel()
+const Model& SceneObject::GetModel() const
 {
     return m_model;
 }
 
-std::string SceneObject::GetName()
+std::string SceneObject::GetName() const
 {
     return m_name;
 }
@@ -92,17 +121,17 @@ Transform::~Transform()
 {
 }
 
-const float3& Transform::GetPos()
+const float3& Transform::GetPos() const
 {
     return m_pos;
 }
 
-const float3& Transform::GetRot()
+const float3& Transform::GetRot() const
 {
     return m_rot;
 }
 
-const Transform* Transform::GetParent()
+const Transform* Transform::GetParent() const
 {
     return m_parent;
 }
@@ -137,19 +166,36 @@ Model::~Model()
 {
 }
 
-const std::vector<float3> &Model::GetVerts()
+const std::vector<float3> &Model::GetVerts() const
 {
     return m_verts;
 }
 
-const std::vector<int> &Model::GetFaceIndices()
+const std::vector<int> &Model::GetFaceIndices() const
 {
     return m_faceIndices;
 }
 
 float3 Model::GetPivotFromVerts()
 {
-    return float3();
+    if (static_cast<int>(m_verts.size())== 0)
+    {
+        return float3();
+    }
+
+    float3 output;
+    int count = 0;
+    for (const auto& vert : m_verts)
+    {
+        count += 1;
+        output.x += vert.x;
+        output.y += vert.y;
+        output.z += vert.z;
+    }
+    output.x /= count;
+    output.y /= count;
+    output.z /= count;
+    return output;
 }
 
 void Model::AddVert(float3 vert)

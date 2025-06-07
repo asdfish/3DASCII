@@ -10,5 +10,11 @@
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/include -g -std=gnu++17 -o CMakeFiles\\3DASCII.dir\\src\\image.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\image.cpp",
   "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\image.cpp",
   "output": "CMakeFiles\\3DASCII.dir\\src\\image.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/include -g -std=gnu++17 -o CMakeFiles\\3DASCII.dir\\src\\model.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\model.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\model.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\model.cpp.obj"
 }
 ]

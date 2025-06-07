@@ -233,6 +233,14 @@ build CMakeFiles/3DASCII.dir/src/image.cpp.obj: CXX_COMPILER__3DASCII_unscanned_
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
+build CMakeFiles/3DASCII.dir/src/model.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/model.cpp || cmake_object_order_depends_target_3DASCII
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\3DASCII.dir\src\model.cpp.obj.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/include
+  OBJECT_DIR = CMakeFiles\3DASCII.dir
+  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target 3DASCII
@@ -241,7 +249,7 @@ build CMakeFiles/3DASCII.dir/src/image.cpp.obj: CXX_COMPILER__3DASCII_unscanned_
 #############################################
 # Link the executable 3DASCII.exe
 
-build 3DASCII.exe: CXX_EXECUTABLE_LINKER__3DASCII_Debug CMakeFiles/3DASCII.dir/src/main.cpp.obj CMakeFiles/3DASCII.dir/src/image.cpp.obj
+build 3DASCII.exe: CXX_EXECUTABLE_LINKER__3DASCII_Debug CMakeFiles/3DASCII.dir/src/main.cpp.obj CMakeFiles/3DASCII.dir/src/image.cpp.obj CMakeFiles/3DASCII.dir/src/model.cpp.obj
   CONFIG = Debug
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
