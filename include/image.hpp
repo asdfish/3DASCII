@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <vector>
-#include "float3.hpp"
+#include "multifloat.hpp"
 
 class Image
 {

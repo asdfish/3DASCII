@@ -1,6 +1,6 @@
 #pragma once
 
-#include "float3.hpp"
+#include "multifloat.hpp"
 
 //contains position, rotation details of a sceneobject
 class Transform

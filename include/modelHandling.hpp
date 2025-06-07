@@ -4,6 +4,6 @@
 #include "Scene.hpp"
 #include "Model.hpp"
 #include "Transform.hpp"
-#include "float3.hpp"
+#include "multifloat.hpp"
 
 void objImporter(const char* path, Scene& scene);

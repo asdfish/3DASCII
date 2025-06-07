@@ -1,6 +1,7 @@
 #pragma once
 
-#include "float3.hpp"
+#include "multifloat.hpp"
+#include <vector>
 
 //Contains mesh details of individual meshes
 class Model
