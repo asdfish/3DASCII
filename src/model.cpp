@@ -16,6 +16,11 @@ Scene::~Scene()
 {
 }
 
+const std::vector<SceneObject>& Scene::GetObjects() const
+{
+    return m_objects;
+}
+
 void Scene::AddObject(const SceneObject &object)
 {
     m_objects.push_back(object);

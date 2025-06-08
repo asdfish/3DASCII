@@ -38,9 +38,15 @@ FetchContent_MakeAvailable(ImGui-SFML)
 # Your executable
 add_executable(3DASCII
   src/main.cpp
+  src/model.cpp 
+  src/multifloat.cpp 
+  src/image.cpp 
+  src/renderHandling.cpp 
+  src/camera.cpp
 )
 
 target_include_directories(3DASCII PRIVATE ${imgui_SOURCE_DIR})
+target_include_directories(3DASCII PRIVATE ${PROJECT_SOURCE_DIR}/include)
 target_link_libraries(3DASCII PRIVATE
   ImGui-SFML::ImGui-SFML
   sfml-graphics

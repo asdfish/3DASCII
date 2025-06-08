@@ -12,9 +12,6 @@ struct float3
     float3(float x, float y, float z);
     ~float3();
 
-
-
-
 };
 
 struct float2

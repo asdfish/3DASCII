@@ -1,9 +1,39 @@
 [
 {
   "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DIMGUI_USER_CONFIG=\\\"imconfig-SFML.h\\\" -DSFML_STATIC -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-sfml-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sfml-src/include -g -o CMakeFiles\\3DASCII.dir\\src\\main.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\main.cpp",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DIMGUI_USER_CONFIG=\\\"imconfig-SFML.h\\\" -DSFML_STATIC -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-sfml-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sfml-src/include -g -o CMakeFiles\\3DASCII.dir\\src\\main.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\main.cpp",
   "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\main.cpp",
   "output": "CMakeFiles\\3DASCII.dir\\src\\main.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DIMGUI_USER_CONFIG=\\\"imconfig-SFML.h\\\" -DSFML_STATIC -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-sfml-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sfml-src/include -g -o CMakeFiles\\3DASCII.dir\\src\\model.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\model.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\model.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\model.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DIMGUI_USER_CONFIG=\\\"imconfig-SFML.h\\\" -DSFML_STATIC -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-sfml-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sfml-src/include -g -o CMakeFiles\\3DASCII.dir\\src\\multifloat.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\multifloat.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\multifloat.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\multifloat.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DIMGUI_USER_CONFIG=\\\"imconfig-SFML.h\\\" -DSFML_STATIC -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-sfml-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sfml-src/include -g -o CMakeFiles\\3DASCII.dir\\src\\image.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\image.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\image.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\image.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DIMGUI_USER_CONFIG=\\\"imconfig-SFML.h\\\" -DSFML_STATIC -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-sfml-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sfml-src/include -g -o CMakeFiles\\3DASCII.dir\\src\\renderHandling.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\renderHandling.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\renderHandling.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\renderHandling.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DIMGUI_USER_CONFIG=\\\"imconfig-SFML.h\\\" -DSFML_STATIC -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-sfml-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sfml-src/include -g -o CMakeFiles\\3DASCII.dir\\src\\camera.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\camera.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\camera.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\camera.cpp.obj"
 },
 {
   "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",

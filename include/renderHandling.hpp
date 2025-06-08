@@ -1,10 +1,26 @@
 #pragma once
 
+#include <cmath>
+#include <random>
+#include <optional>
 #include "Model.hpp"
 #include "Transform.hpp"
-#include "image.hpp"
 #include "multifloat.hpp"
+#include "camera.hpp"
+#include "Scene.hpp"
+#include "modelHandling.hpp"
 
-void Render(Model model, Transform camera, Image image);
 
-float2 WorldToScreen(float3 point, Transform camera);
+void RenderScene(const Scene& scene, const Camera& camera, std::uint8_t* pixelBuffer, float* zbuffer);
+
+void RenderModel(const Model& model, const Camera& camera, std::uint8_t* pixelBuffer, float* zbuffer);
+
+float3 WorldToScreen(float3 a, const Camera& camera);
+
+float2 PixelToScreenSpace(float2 pixelCoords, const Camera& camera);
+
+float PerspBarycentricInterp(float3 baryCoords, float w1, float w2, float w3);
+
+std::optional<float3> GetBarycentricCoords(float2 point, float2 v1, float2 v2, float2 v3);
+
+float EdgeFunction(float2 point, float2 v1, float2 v2);

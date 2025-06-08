@@ -54,7 +54,52 @@ build CMakeFiles/3DASCII.dir/src/main.cpp.obj: CXX_COMPILER__3DASCII_unscanned_D
   DEFINES = -DIMGUI_USER_CONFIG=\"imconfig-SFML.h\" -DSFML_STATIC
   DEP_FILE = CMakeFiles\3DASCII.dir\src\main.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-sfml-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sfml-src/include
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-sfml-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sfml-src/include
+  OBJECT_DIR = CMakeFiles\3DASCII.dir
+  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
+
+build CMakeFiles/3DASCII.dir/src/model.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/model.cpp || cmake_object_order_depends_target_3DASCII
+  CONFIG = Debug
+  DEFINES = -DIMGUI_USER_CONFIG=\"imconfig-SFML.h\" -DSFML_STATIC
+  DEP_FILE = CMakeFiles\3DASCII.dir\src\model.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-sfml-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sfml-src/include
+  OBJECT_DIR = CMakeFiles\3DASCII.dir
+  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
+
+build CMakeFiles/3DASCII.dir/src/multifloat.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/multifloat.cpp || cmake_object_order_depends_target_3DASCII
+  CONFIG = Debug
+  DEFINES = -DIMGUI_USER_CONFIG=\"imconfig-SFML.h\" -DSFML_STATIC
+  DEP_FILE = CMakeFiles\3DASCII.dir\src\multifloat.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-sfml-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sfml-src/include
+  OBJECT_DIR = CMakeFiles\3DASCII.dir
+  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
+
+build CMakeFiles/3DASCII.dir/src/image.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/image.cpp || cmake_object_order_depends_target_3DASCII
+  CONFIG = Debug
+  DEFINES = -DIMGUI_USER_CONFIG=\"imconfig-SFML.h\" -DSFML_STATIC
+  DEP_FILE = CMakeFiles\3DASCII.dir\src\image.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-sfml-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sfml-src/include
+  OBJECT_DIR = CMakeFiles\3DASCII.dir
+  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
+
+build CMakeFiles/3DASCII.dir/src/renderHandling.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/renderHandling.cpp || cmake_object_order_depends_target_3DASCII
+  CONFIG = Debug
+  DEFINES = -DIMGUI_USER_CONFIG=\"imconfig-SFML.h\" -DSFML_STATIC
+  DEP_FILE = CMakeFiles\3DASCII.dir\src\renderHandling.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-sfml-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sfml-src/include
+  OBJECT_DIR = CMakeFiles\3DASCII.dir
+  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
+
+build CMakeFiles/3DASCII.dir/src/camera.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/camera.cpp || cmake_object_order_depends_target_3DASCII
+  CONFIG = Debug
+  DEFINES = -DIMGUI_USER_CONFIG=\"imconfig-SFML.h\" -DSFML_STATIC
+  DEP_FILE = CMakeFiles\3DASCII.dir\src\camera.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-sfml-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sfml-src/include
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
@@ -66,7 +111,7 @@ build CMakeFiles/3DASCII.dir/src/main.cpp.obj: CXX_COMPILER__3DASCII_unscanned_D
 #############################################
 # Link the executable bin\3DASCII.exe
 
-build bin/3DASCII.exe: CXX_EXECUTABLE_LINKER__3DASCII_Debug CMakeFiles/3DASCII.dir/src/main.cpp.obj | _deps/imgui-sfml-build/libImGui-SFML.a _deps/sfml-build/lib/libsfml-graphics-s-d.a _deps/sfml-build/lib/libsfml-window-s-d.a _deps/sfml-build/lib/libsfml-system-s-d.a _deps/sfml-build/lib/libfreetyped.a || _deps/imgui-sfml-build/libImGui-SFML.a _deps/sfml-build/lib/libfreetyped.a _deps/sfml-build/lib/libsfml-graphics-s-d.a _deps/sfml-build/lib/libsfml-system-s-d.a _deps/sfml-build/lib/libsfml-window-s-d.a
+build bin/3DASCII.exe: CXX_EXECUTABLE_LINKER__3DASCII_Debug CMakeFiles/3DASCII.dir/src/main.cpp.obj CMakeFiles/3DASCII.dir/src/model.cpp.obj CMakeFiles/3DASCII.dir/src/multifloat.cpp.obj CMakeFiles/3DASCII.dir/src/image.cpp.obj CMakeFiles/3DASCII.dir/src/renderHandling.cpp.obj CMakeFiles/3DASCII.dir/src/camera.cpp.obj | _deps/imgui-sfml-build/libImGui-SFML.a _deps/sfml-build/lib/libsfml-graphics-s-d.a _deps/sfml-build/lib/libsfml-window-s-d.a _deps/sfml-build/lib/libsfml-system-s-d.a _deps/sfml-build/lib/libfreetyped.a || _deps/imgui-sfml-build/libImGui-SFML.a _deps/sfml-build/lib/libfreetyped.a _deps/sfml-build/lib/libsfml-graphics-s-d.a _deps/sfml-build/lib/libsfml-system-s-d.a _deps/sfml-build/lib/libsfml-window-s-d.a
   CONFIG = Debug
   FLAGS = -g
   LINK_LIBRARIES = _deps/imgui-sfml-build/libImGui-SFML.a  _deps/sfml-build/lib/libsfml-graphics-s-d.a  _deps/sfml-build/lib/libsfml-window-s-d.a  _deps/sfml-build/lib/libsfml-system-s-d.a  -lopengl32  -lwinmm  -lgdi32  _deps/sfml-build/lib/libfreetyped.a  -lopengl32  -limm32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
