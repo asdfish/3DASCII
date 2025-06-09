@@ -15,6 +15,11 @@ const Transform& Camera::GetTransform() const
     return m_transform;
 }
 
+Transform &Camera::GetModifiableTransform()
+{
+    return m_transform;
+}
+
 float Camera::GetFOV() const
 {
     return m_FOV;
@@ -27,7 +32,7 @@ float Camera::GetFocalLength() const
 
 float2 Camera::GetPixelDimensions() const
 {
-    return float2();
+    return m_dimensions;
 }
 
 void Camera::SetFOV(float newFOV)

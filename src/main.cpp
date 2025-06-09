@@ -15,28 +15,26 @@
 #include "renderHandling.hpp"
 #include "camera.hpp"
 
-#define wHeight 20
-#define wWidth 20
+#define wHeight 500
+#define wWidth 500
 
 int main() {
 
     //Setup
 
-    Camera camera = Camera(float3(), float3(), 60, 1, wHeight, wWidth);
+    Camera camera = Camera(float3(), float3(), 30, 1, wHeight, wWidth);
     Scene scene;
     objImporter("test.obj", scene);
 
     float zbuffer[wHeight*wWidth];
     std::uint8_t pixelBuffer[wHeight*wWidth*4];
-    std::fill(pixelBuffer, pixelBuffer + (wWidth * wHeight * 4), 0);
-    std::fill(zbuffer, zbuffer + (wWidth * wHeight), FLT_MAX);
 
     sf::Texture texture({wWidth, wHeight});
     sf::Image image;
     image.resize({wWidth, wHeight});
 
     sf::RenderWindow window(sf::VideoMode({wHeight, wWidth}), "ImGui + SFML = <3");
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(5);
     ImGui::SFML::Init(window);
 
     //Loop
@@ -51,7 +49,8 @@ int main() {
             }
         }
         //Update
-
+        std::fill(pixelBuffer, pixelBuffer + (wWidth * wHeight * 4), 0);
+        std::fill(zbuffer, zbuffer + (wWidth * wHeight), FLT_MAX);
         ImGui::SFML::Update(window, deltaClock.restart());
 
         RenderScene(scene, camera, pixelBuffer, zbuffer);
@@ -77,6 +76,9 @@ int main() {
         window.draw(sprite);
         ImGui::SFML::Render(window);
         window.display();
+        
+        float3 prevRot = camera.GetTransform().GetRot();
+        camera.GetModifiableTransform().SetRot(float3(prevRot.x, prevRot.y + 0.1f, prevRot.z)); //Rotate camera around z-axis for testing purposes
     }
 
     ImGui::SFML::Shutdown();

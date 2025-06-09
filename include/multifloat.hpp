@@ -20,5 +20,5 @@ struct float2
         float2();
         float2(float x, float y);
         ~float2();
-        int x,y;
+        float x,y;
 };

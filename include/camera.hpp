@@ -9,6 +9,7 @@ class Camera
         ~Camera();
 
         const Transform& GetTransform() const;
+        Transform& GetModifiableTransform();
         float GetFOV() const;
         float GetFocalLength() const;
         float2 GetPixelDimensions() const;
