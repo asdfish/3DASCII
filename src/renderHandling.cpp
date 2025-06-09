@@ -151,8 +151,7 @@ std::optional<float3> GetBarycentricCoords(float2 point, float2 v1, float2 v2, f
     w.z = EdgeFunction(point, v3, v1);
 
     const float epsilon = 1e-5f;
-    if ((w.x >= -epsilon && w.y >= -epsilon && w.z >= -epsilon) ||
-        (w.x <= epsilon && w.y <= epsilon && w.z <= epsilon))
+    if (w.x >= -epsilon && w.y >= -epsilon && w.z >= -epsilon)
     {
         //std::cout<<"w pre-scale: "<<w.x<<" "<<w.y<<" "<<w.z<<"\n";
         //std::cout<<"Area: "<<area<<"\n";
@@ -166,5 +165,5 @@ std::optional<float3> GetBarycentricCoords(float2 point, float2 v1, float2 v2, f
 
 float EdgeFunction(float2 point, float2 v1, float2 v2)
 {
-    return (point.x - v1.x) * (v2.y-v1.y) - (point.y - v1.y) * (v2.x - v1.x);
+    return ((point.x - v1.x) * (v2.y-v1.y) - (point.y - v1.y) * (v2.x - v1.x));
 }

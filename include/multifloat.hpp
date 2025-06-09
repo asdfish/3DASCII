@@ -1,6 +1,6 @@
 #pragma once
 
-struct float3
+class float3
 {
     union
     {
@@ -12,13 +12,17 @@ struct float3
     float3(float x, float y, float z);
     ~float3();
 
+    static float dot(float3 a, float3 b);
+
 };
 
-struct float2
+class float2
 {
     public:
         float2();
         float2(float x, float y);
         ~float2();
+        static float dot(float2 a, float2 b);
+
         float x,y;
 };

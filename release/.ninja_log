@@ -124,3 +124,7 @@
 11584	21780	7711800969365967	_deps/imgui-sfml-build/CMakeFiles/ImGui-SFML.dir/__/imgui-src/imgui.cpp.obj	d542f1d037b32aa8
 21780	21887	7711801071329113	_deps/imgui-sfml-build/libImGui-SFML.a	9937486f347b23be
 21888	22110	7711801072405949	bin/3DASCII.exe	81fdda16d152fbfa
+52	2434	7711910181669060	CMakeFiles/3DASCII.dir/src/renderHandling.cpp.obj	89d24823cefa048a
+2435	2907	7711910205499413	bin/3DASCII.exe	81fdda16d152fbfa
+51	735	7711914104837314	CMakeFiles/3DASCII.dir/src/renderHandling.cpp.obj	89d24823cefa048a
+735	934	7711914111672952	bin/3DASCII.exe	81fdda16d152fbfa
