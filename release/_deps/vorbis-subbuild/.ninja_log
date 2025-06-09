@@ -1,0 +1,21 @@
+# ninja log v6
+1	51	7711797093032077	vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-mkdir	4b8b580f4455da45
+1	51	7711797093032077	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/vorbis-subbuild/vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-mkdir	4b8b580f4455da45
+60	9506	7711797187585548	vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-download	4fdce3912bce50b2
+60	9506	7711797187585548	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/vorbis-subbuild/vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-download	4fdce3912bce50b2
+9506	9658	7711797187635466	vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-update	30d795a8ed90a4d6
+9506	9658	7711797187635466	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/vorbis-subbuild/vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-update	30d795a8ed90a4d6
+9658	9729	7711797189814647	vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-patch	9aaf66d2ade82954
+9658	9729	7711797189814647	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/vorbis-subbuild/vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-patch	9aaf66d2ade82954
+9729	9778	7711797190308130	vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-configure	993bcf35ee48869e
+9729	9778	7711797190308130	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/vorbis-subbuild/vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-configure	993bcf35ee48869e
+9778	9829	7711797190816955	vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-build	4faf89946e7469b3
+9778	9829	7711797190816955	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/vorbis-subbuild/vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-build	4faf89946e7469b3
+9829	9879	7711797191308957	vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-install	5322f9b0b69918
+9829	9879	7711797191308957	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/vorbis-subbuild/vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-install	5322f9b0b69918
+9879	9927	7711797191802322	vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-test	7b91a078eb6cbbc2
+9879	9927	7711797191802322	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/vorbis-subbuild/vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-test	7b91a078eb6cbbc2
+9928	9998	7711797192514059	CMakeFiles/vorbis-populate-complete	cf053bbb4e0150b9
+9928	9998	7711797192514059	vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-done	cf053bbb4e0150b9
+9928	9998	7711797192514059	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/vorbis-subbuild/CMakeFiles/vorbis-populate-complete	cf053bbb4e0150b9
+9928	9998	7711797192514059	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/vorbis-subbuild/vorbis-populate-prefix/src/vorbis-populate-stamp/vorbis-populate-done	cf053bbb4e0150b9

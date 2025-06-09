@@ -1,0 +1,21 @@
+# ninja log v6
+2	52	7711796604262767	freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-mkdir	e0cb763d6396460f
+2	52	7711796604262767	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/freetype-subbuild/freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-mkdir	e0cb763d6396460f
+66	19022	7711796793957989	freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-download	2d0b6355dec1275c
+66	19022	7711796793957989	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/freetype-subbuild/freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-download	2d0b6355dec1275c
+19022	19149	7711796794008049	freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-update	35bf385184021b0f
+19022	19149	7711796794008049	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/freetype-subbuild/freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-update	35bf385184021b0f
+19149	19211	7711796795834205	freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-patch	a36ea8a9d158e386
+19149	19211	7711796795834205	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/freetype-subbuild/freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-patch	a36ea8a9d158e386
+19211	19260	7711796796335139	freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-configure	33e681afb6ec9ba7
+19211	19260	7711796796335139	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/freetype-subbuild/freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-configure	33e681afb6ec9ba7
+19260	19309	7711796796833452	freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-build	c2785037f8d7ec50
+19260	19309	7711796796833452	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/freetype-subbuild/freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-build	c2785037f8d7ec50
+19309	19359	7711796797314580	freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-install	ae6d8ddb1a2ea601
+19309	19359	7711796797314580	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/freetype-subbuild/freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-install	ae6d8ddb1a2ea601
+19359	19406	7711796797797108	freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-test	3c11aa3e2f281280
+19359	19406	7711796797797108	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/freetype-subbuild/freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-test	3c11aa3e2f281280
+19406	19475	7711796798491969	CMakeFiles/freetype-populate-complete	8422ace6c21f1e37
+19406	19475	7711796798491969	freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-done	8422ace6c21f1e37
+19406	19475	7711796798491969	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/freetype-subbuild/CMakeFiles/freetype-populate-complete	8422ace6c21f1e37
+19406	19475	7711796798491969	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/freetype-subbuild/freetype-populate-prefix/src/freetype-populate-stamp/freetype-populate-done	8422ace6c21f1e37

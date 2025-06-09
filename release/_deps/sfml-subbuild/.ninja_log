@@ -1,0 +1,21 @@
+# ninja log v6
+2	54	7711796178747497	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-mkdir	c1acb34f694ef44d
+2	54	7711796178747497	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-mkdir	c1acb34f694ef44d
+55	35582	7711796534046342	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-download	6547ce64db9656bd
+55	35582	7711796534046342	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-download	6547ce64db9656bd
+35582	35716	7711796534091497	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-update	b888142656d541ac
+35582	35716	7711796534091497	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-update	b888142656d541ac
+35716	35765	7711796535857900	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-patch	bb37447ad0441cb6
+35716	35765	7711796535857900	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-patch	bb37447ad0441cb6
+35766	35812	7711796536336854	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-configure	4496adf54cc9b4e6
+35766	35812	7711796536336854	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-configure	4496adf54cc9b4e6
+35812	35861	7711796536830740	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-build	c214f8c4866429a5
+35812	35861	7711796536830740	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-build	c214f8c4866429a5
+35861	35909	7711796537308410	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-install	58cdff38419b616e
+35861	35909	7711796537308410	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-install	58cdff38419b616e
+35909	35959	7711796537795315	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-test	21e3da500d99c07f
+35909	35959	7711796537795315	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-test	21e3da500d99c07f
+35959	36029	7711796538497013	CMakeFiles/sfml-populate-complete	fa937d20f4c21fc9
+35959	36029	7711796538497013	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-done	fa937d20f4c21fc9
+35959	36029	7711796538497013	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/sfml-subbuild/CMakeFiles/sfml-populate-complete	fa937d20f4c21fc9
+35959	36029	7711796538497013	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-done	fa937d20f4c21fc9

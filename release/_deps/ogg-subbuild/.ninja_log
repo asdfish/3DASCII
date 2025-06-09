@@ -1,0 +1,21 @@
+# ninja log v6
+2	52	7711796802848585	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-mkdir	eb5da0fefe8e921b
+2	52	7711796802848585	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-mkdir	eb5da0fefe8e921b
+53	4283	7711796845166204	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-download	51f23121219698a7
+53	4283	7711796845166204	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-download	51f23121219698a7
+4283	4416	7711796845221508	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-update	dc2f5ab4850d4d56
+4283	4416	7711796845221508	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-update	dc2f5ab4850d4d56
+4417	4479	7711796847129365	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-patch	39b17ff022a7631f
+4417	4479	7711796847129365	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-patch	39b17ff022a7631f
+4479	4530	7711796847636827	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-configure	cfd396d9b7b0f78c
+4479	4530	7711796847636827	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-configure	cfd396d9b7b0f78c
+4530	4582	7711796848148695	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-build	61e7ac0753e5d701
+4530	4582	7711796848148695	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-build	61e7ac0753e5d701
+4582	4631	7711796848635676	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-install	c46c36d071243050
+4582	4631	7711796848635676	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-install	c46c36d071243050
+4631	4679	7711796849123874	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-test	4109d1c105c1a9e3
+4631	4679	7711796849123874	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-test	4109d1c105c1a9e3
+4679	4746	7711796849795341	CMakeFiles/ogg-populate-complete	4a37e30c66db4788
+4679	4746	7711796849795341	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-done	4a37e30c66db4788
+4679	4746	7711796849795341	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/ogg-subbuild/CMakeFiles/ogg-populate-complete	4a37e30c66db4788
+4679	4746	7711796849795341	C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-done	4a37e30c66db4788
