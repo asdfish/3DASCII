@@ -6,19 +6,19 @@
 class Transform
 {
     public:
-        Transform(float3 pos = float3(), float3 rot = float3(), const Transform* parent = nullptr);
+        Transform(float3 pos = float3(), float3 rot = float3(), Transform* parent = nullptr);
         ~Transform();
 
         float3 GetPos() const;
         float3 GetRot() const;
-        const Transform* GetParent() const;
+        Transform* GetParent();
 
         void SetPos(const float3& newPos);
         void SetRot(const float3& newRot);
-        void SetParent(const Transform* parent);
+        void SetParent(Transform* parent);
 
     private:
         float3 m_pos;
         float3 m_rot;
-        const Transform* m_parent;
+        Transform* m_parent;
 };

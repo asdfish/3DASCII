@@ -8,14 +8,14 @@ class SceneObject
 {
     public:
         SceneObject();
-        SceneObject(float3 position, float3 rotation, Model model, std::string name, const Transform* parent = nullptr);
+        SceneObject(float3 position, float3 rotation, Model model, std::string name, Transform* parent = nullptr);
         ~SceneObject();
-        const Transform& GetTransform() const;
-        const Model& GetModel() const;
+        Transform& GetTransform();
+        Model& GetModel();
         std::string GetName() const;
 
         void SetTransform(Transform transform);
-        void SetTransform(float3 position, float3 rotation, const Transform* parent = nullptr);
+        void SetTransform(float3 position, float3 rotation, Transform* parent = nullptr);
         void SetModel(Model model);
         void SetName(std::string name);
     private:

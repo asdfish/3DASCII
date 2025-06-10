@@ -11,9 +11,9 @@
 #include "modelHandling.hpp"
 
 
-void RenderScene(const Scene& scene, const Camera& camera, std::uint8_t* pixelBuffer, float* zbuffer);
+void RenderScene(Scene& scene, const Camera& camera, std::uint8_t* pixelBuffer, float* zbuffer);
 
-void RenderModel(const Model& model, const Camera& camera, std::uint8_t* pixelBuffer, float* zbuffer);
+void RenderModel(Model& model, float3 position, float3 rotation, const Camera& camera, std::uint8_t* pixelBuffer, float* zbuffer);
 
 float3 WorldToScreen(float3 a, const Camera& camera);
 

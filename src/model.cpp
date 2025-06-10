@@ -5,6 +5,7 @@
 #include <vector>
 #include "modelHandling.hpp"
 #include "Scene.hpp"
+#include "Model.hpp"
 
 //-------------------------------------------------
 
@@ -16,7 +17,7 @@ Scene::~Scene()
 {
 }
 
-const std::vector<SceneObject>& Scene::GetObjects() const
+std::vector<SceneObject>& Scene::GetObjects()
 {
     return m_objects;
 }
@@ -34,9 +35,9 @@ void Scene::GetObjectList() const
     }
 }
 
-void Scene::GetObjectData() const
+void Scene::GetObjectData()
 {
-    for (std::vector<SceneObject>::const_iterator itr = m_objects.begin(); itr != m_objects.end(); ++itr)
+    for (std::vector<SceneObject>::iterator itr = m_objects.begin(); itr != m_objects.end(); ++itr)
     {
         std::cout<<(*itr).GetName()<<"\n";
         std::cout<<" - Transform Data"<<"\n";
@@ -44,7 +45,7 @@ void Scene::GetObjectData() const
         std::cout<<"Rotation: "<<(*itr).GetTransform().GetRot().x<<" "<<(*itr).GetTransform().GetRot().y<<" "<<(*itr).GetTransform().GetRot().z<<"\n";
 
         std::cout<<"\n - Model Data - Vertices"<<"\n";
-        for (const auto& vert :  (*itr).GetModel().GetVerts())
+        for (const auto& vert :  (*itr).GetModel().GetLocalVerts())
         {
             std::cout<<(vert).x<<" "<<vert.y<<" "<<vert.z<<"\n";
         }
@@ -68,7 +69,7 @@ SceneObject::SceneObject()
 {
 }
 
-SceneObject::SceneObject(float3 position, float3 rotation, Model model, std::string name, const Transform* parent)
+SceneObject::SceneObject(float3 position, float3 rotation, Model model, std::string name, Transform* parent)
 : m_transform(Transform(position, rotation, parent)), m_model(model), m_name(name)
 {
 
@@ -78,12 +79,12 @@ SceneObject::~SceneObject()
 {
 }
 
-const Transform& SceneObject::GetTransform() const
+Transform& SceneObject::GetTransform()
 {
     return m_transform;
 }
 
-const Model& SceneObject::GetModel() const
+Model& SceneObject::GetModel()
 {
     return m_model;
 }
@@ -98,7 +99,7 @@ void SceneObject::SetTransform(Transform transform)
     m_transform = transform;
 }
 
-void SceneObject::SetTransform(float3 position, float3 rotation, const Transform *parent)
+void SceneObject::SetTransform(float3 position, float3 rotation, Transform *parent)
 {
     m_transform.SetPos(position);
     m_transform.SetRot(rotation);
@@ -117,7 +118,7 @@ void SceneObject::SetName(std::string name)
 
 //----------------------------------------------------------------
 
-Transform::Transform(float3 pos, float3 rot, const Transform* parent)
+Transform::Transform(float3 pos, float3 rot, Transform* parent)
 : m_pos(pos), m_rot(rot), m_parent(parent)
 {
 }
@@ -136,7 +137,7 @@ float3 Transform::GetRot() const
     return m_rot;
 }
 
-const Transform* Transform::GetParent() const
+Transform* Transform::GetParent()
 {
     return m_parent;
 }
@@ -151,7 +152,7 @@ void Transform::SetRot(const float3 &newRot)
     m_rot = newRot;
 }
 
-void Transform::SetParent(const Transform *parent)
+void Transform::SetParent(Transform* parent)
 {
     m_parent = parent;
 }
@@ -159,48 +160,89 @@ void Transform::SetParent(const Transform *parent)
 //---------------------------------------------------------
 
 Model::Model()
+    : m_verts(), m_faceIndices()
 {
 }
 
 Model::Model(const std::vector<float3> &verts, const std::vector<int> &faceIndices)
-    : m_verts(verts), m_faceIndices(faceIndices)
-{
+    : m_verts(verts), m_faceIndices(faceIndices) 
+    {
 }
 
 Model::~Model()
 {
 }
 
-const std::vector<float3> &Model::GetVerts() const
+float3 Rotate(float3 v, float pitch, float yaw, float roll) {
+    // Convert to radians
+    float cx = std::cos(pitch), sx = std::sin(pitch);
+    float cy = std::cos(yaw),   sy = std::sin(yaw);
+    float cz = std::cos(roll),  sz = std::sin(roll);
+
+    // Combined rotation matrix (Roll * Pitch * Yaw)
+    float3 result;
+    result.x = v.x * (cy * cz + sy * sx * sz) + v.y * (sz * cx) + v.z * (-sy * cz + cy * sx * sz);
+    result.y = v.x * (-cy * sz + sy * sx * cz) + v.y * (cz * cx) + v.z * (sz * sy + cy * sx * cz);
+    result.z = v.x * (sy * cx) + v.y * (-sx) + v.z * (cy * cx);
+
+    return result;
+}
+
+//Returns the vertices of the model in global space
+std::vector<float3> Model::GetVerts(const float3& position, const float3& rotation) const
+{
+    std::vector<float3> globalVerts;
+    float3 tempVert;
+    globalVerts.reserve(m_verts.size());
+    for (const auto& vert : m_verts)
+    {
+        tempVert = Rotate(vert, rotation.x, rotation.y, rotation.z); // Apply rotation
+        globalVerts.push_back(float3(tempVert.x + position.x, tempVert.y + position.y, tempVert.z + position.z));
+    }
+
+    return globalVerts;
+}
+
+
+const std::vector<float3> &Model::GetLocalVerts() const
 {
     return m_verts;
 }
-
 const std::vector<int> &Model::GetFaceIndices() const
 {
     return m_faceIndices;
 }
 
-float3 Model::GetPivotFromVerts()
+//Recalculate coordinates of all points from the average of all vertices. Also returns said average.
+float3 Model::InitializePositionsFromPivot()
 {
-    if (static_cast<int>(m_verts.size())== 0)
+    if (m_verts.empty())
     {
         return float3();
     }
 
-    float3 output;
-    int count = 0;
+    float3 pivot;
+
     for (const auto& vert : m_verts)
     {
-        count += 1;
-        output.x += vert.x;
-        output.y += vert.y;
-        output.z += vert.z;
+        pivot.x += vert.x;
+        pivot.y += vert.y;
+        pivot.z += vert.z;
     }
-    output.x /= count;
-    output.y /= count;
-    output.z /= count;
-    return output;
+
+    const float invCount = 1/(static_cast<float>(m_verts.size()));
+    pivot.x *= invCount;
+    pivot.y *= invCount;
+    pivot.z *= invCount;
+
+    for (auto& vert : m_verts)
+    {
+        vert.x -= pivot.x;
+        vert.y -= pivot.y;
+        vert.z -= pivot.z;
+    }
+
+    return pivot;
 }
 
 void Model::AddVert(float3 vert)
@@ -293,7 +335,9 @@ void objImporter(const char* path, Scene& scene)
             tempModel.AddFaceIndex(indexMap[*itrf]);
         }
 
-        SceneObject object(tempModel.GetPivotFromVerts(), float3(), tempModel, names[0]);
+        float3 pivot = tempModel.InitializePositionsFromPivot(); 
+
+        SceneObject object(pivot, float3(), tempModel, names[0]);
         scene.AddObject(object);
         names.erase(names.begin());
     }

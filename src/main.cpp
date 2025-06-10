@@ -78,13 +78,25 @@ int main() {
         float3 cameraPos = camera.GetTransform().GetPos();
 
         ImGui::Begin("Camera Controls");
-        ImGui::SliderFloat("Camera Rotation - X", &(cameraRot.x) , 0.f, 2.f*M_PI);
-        ImGui::SliderFloat("Camera Rotation - Y", &(cameraRot.y) , 0.f, 2.f*M_PI);
-        ImGui::SliderFloat("Camera Rotation - Z", &(cameraRot.z) , 0.f, 2.f*M_PI);
-        ImGui::SliderFloat("Camera Position - X", &(cameraPos.x) , -5.f, 5.f);
-        ImGui::SliderFloat("Camera Position - Y", &(cameraPos.y) , -5.f, 5.f);
-        ImGui::SliderFloat("Camera Position - Z", &(cameraPos.z) , -5.f, 5.f);
+        ImGui::SliderFloat3("Camera Rotation", &cameraRot.x , 0.f, 2.f*M_PI);
+        ImGui::SliderFloat3("Camera Position", &cameraPos.x , -5.f, 5.f);
         ImGui::End();
+
+        ImGui::Begin("Models");
+        for (auto& obj : scene.GetObjects())
+        {
+            ImGui::Text("%s", obj.GetName().c_str());
+            float3 pos = obj.GetTransform().GetPos();
+            float3 rot = obj.GetTransform().GetRot();
+            ImGui::SliderFloat3(("Position##" + obj.GetName()).c_str(), &pos.x, -5.f, 5.f);
+            ImGui::SliderFloat3(("Rotation##" + obj.GetName()).c_str(), &rot.x, 0.f, 2.f*M_PI);
+            ImGui::Separator();
+            obj.GetTransform().SetPos(pos);
+            obj.GetTransform().SetRot(rot);
+        }
+        ImGui::End();
+
+
 
         window.clear();
         window.draw(sprite);

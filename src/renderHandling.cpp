@@ -2,23 +2,23 @@
 #include <iostream>
 #include <ranges>
 
-void RenderScene(const Scene& scene, const Camera& camera, std::uint8_t* pixelBuffer, float* zbuffer)
+void RenderScene(Scene& scene, const Camera& camera, std::uint8_t* pixelBuffer, float* zbuffer)
 {
-    for(const auto& model : scene.GetObjects())
+    for(auto& model : scene.GetObjects())
     {
-        RenderModel(model.GetModel(), camera, pixelBuffer, zbuffer);
+        RenderModel(model.GetModel(), model.GetTransform().GetPos(), model.GetTransform().GetRot(), camera, pixelBuffer, zbuffer);
     }
 }
 
 
-void RenderModel(const Model& model, const Camera& camera, std::uint8_t* pixelBuffer, float* zbuffer)
+void RenderModel(Model& model, float3 position, float3 rotation, const Camera& camera, std::uint8_t* pixelBuffer, float* zbuffer)
 {
 
     static std::random_device rd;
     static std::mt19937 gen(rd());
     static std::uniform_real_distribution<float> dist(0.0f, 1.0f);
 
-    std::vector<float3> vertices = model.GetVerts();
+    std::vector<float3> vertices = model.GetVerts(position, rotation);
     std::vector<int> faceIndices = model.GetFaceIndices();
 
     for(auto itf = faceIndices.begin(); itf != faceIndices.end(); itf += 3)
