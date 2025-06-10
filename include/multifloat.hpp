@@ -2,18 +2,18 @@
 
 class float3
 {
-    union
-    {
-        struct {float x; float y; float z;};
-        struct {float r; float g; float b;};
-    };
+    public:
+        union
+        {
+            struct {float x; float y; float z;};
+            struct {float r; float g; float b;};
+        };
 
-    float3();
-    float3(float x, float y, float z);
-    ~float3();
+        float3();
+        float3(float x, float y, float z);
+        ~float3();
 
-    static float dot(float3 a, float3 b);
-
+        static float dot(const float3& a, const float3& b);
 };
 
 class float2

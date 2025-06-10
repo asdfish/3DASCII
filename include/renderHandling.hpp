@@ -19,6 +19,8 @@ float3 WorldToScreen(float3 a, const Camera& camera);
 
 float2 PixelToScreenSpace(float2 pixelCoords, const Camera& camera);
 
+float3 ScreenToPixelSpace(float3 screenCoords, const Camera& camera);
+
 float PerspBarycentricInterp(float3 baryCoords, float w1, float w2, float w3);
 
 std::optional<float3> GetBarycentricCoords(float2 point, float2 v1, float2 v2, float2 v3);

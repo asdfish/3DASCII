@@ -1,5 +1,6 @@
 #include "renderHandling.hpp"
 #include <iostream>
+#include <ranges>
 
 void RenderScene(const Scene& scene, const Camera& camera, std::uint8_t* pixelBuffer, float* zbuffer)
 {
@@ -12,6 +13,7 @@ void RenderScene(const Scene& scene, const Camera& camera, std::uint8_t* pixelBu
 
 void RenderModel(const Model& model, const Camera& camera, std::uint8_t* pixelBuffer, float* zbuffer)
 {
+
     static std::random_device rd;
     static std::mt19937 gen(rd());
     static std::uniform_real_distribution<float> dist(0.0f, 1.0f);
@@ -27,22 +29,27 @@ void RenderModel(const Model& model, const Camera& camera, std::uint8_t* pixelBu
         float3 v2 = WorldToScreen(vertices[*(itf+1)], camera);
         float3 v3 = WorldToScreen(vertices[*(itf+2)], camera);
 
+        v1 = ScreenToPixelSpace(v1, camera);
+        v2 = ScreenToPixelSpace(v2, camera);
+        v3 = ScreenToPixelSpace(v3, camera);
+        /*
         
+        TODO: Turn to pixel coordinates
+
+        */
+
         //std::cout<<"Compare with camera world dimensions: "<<camera.GetScreenWorldDimensions().x<<" "<<camera.GetScreenWorldDimensions().y<<"\n";
         if (v1.z <= 0 || v2.z <= 0 || v3.z <= 0)
         {
             continue; // Skip triangles that are behind the camera
         }
-
-        float2 wd = camera.GetScreenWorldDimensions();
-
-        float halfW = wd.x/2.0f;
-        float halfH = wd.y/2.0f;
         
-        if ((v1.x < -halfW && v2.x < -halfW && v3.x < -halfW) || // left
-            (v1.x >  halfW && v2.x >  halfW && v3.x >  halfW) || // right
-            (v1.y < -halfH && v2.y < -halfH && v3.y < -halfH) || // bottom
-            (v1.y >  halfH && v2.y >  halfH && v3.y >  halfH))   // top
+        float2 pixelDimensions = camera.GetPixelDimensions();
+
+        if ((v1.x < 0 && v2.x < 0 && v3.x < 0) || // left
+            (v1.x >  pixelDimensions.x && v2.x >  pixelDimensions.x && v3.x >  pixelDimensions.x) || // right
+            (v1.y < 0 && v2.y < 0 && v3.y < 0) || // bottom
+            (v1.y >  pixelDimensions.y && v2.y >  pixelDimensions.y && v3.y >  pixelDimensions.y))   // top
         {
             continue; // Entire triangle is outside view
         }
@@ -53,17 +60,23 @@ void RenderModel(const Model& model, const Camera& camera, std::uint8_t* pixelBu
 
         //std::cout<<"color: "<<randColor.r<<" "<<randColor.g<<" "<<randColor.b<<"\n";
 
-        float2 pixelDimensions = camera.GetPixelDimensions();
+        int Xmin = static_cast<int>(std::floor(std::min(std::min(v1.x, v2.x), v3.x)));
+        int Xmax = static_cast<int>(std::ceil(std::max(std::max(v1.x, v2.x), v3.x)));
+        int Ymin = static_cast<int>(std::floor(std::min(std::min(v1.y, v2.y), v3.y)));
+        int Ymax = static_cast<int>(std::ceil(std::max(std::max(v1.y, v2.y), v3.y)));
 
-        //TODO: Use Bounding Box of Tri for faster rasterization
+        Xmin = std::max(0, Xmin);
+        Ymin = std::max(0, Ymin);
+        Xmax = std::min(static_cast<int>(pixelDimensions.x), Xmax);
+        Ymax = std::min(static_cast<int>(pixelDimensions.y), Ymax);
 
-        for (int x = 0; x<pixelDimensions.x; ++x)
+
+        for (int x = Xmin; x<Xmax; ++x)
         {
-            for (int y = 0; y<pixelDimensions.y; ++y)
+            for (int y = Ymin; y<Ymax; ++y)
             {
-                PixelToScreenSpace(float2(x+0.5f,y+0.5f), camera);
 
-                auto bary = GetBarycentricCoords(PixelToScreenSpace(float2(x+0.5f,y+0.5f), camera), float2(v1.x, v1.y), float2(v2.x, v2.y), float2(v3.x, v3.y));
+                auto bary = GetBarycentricCoords(float2(x+0.5f,y+0.5f), float2(v1.x, v1.y), float2(v2.x, v2.y), float2(v3.x, v3.y));
                 if (bary)
                 {
                     int screenWidth = static_cast<int>(pixelDimensions.x);
@@ -121,7 +134,17 @@ float3 WorldToScreen
 
 }
 
+float3 ScreenToPixelSpace(float3 screenCoords, const Camera& camera)
+{
+    float2 pixelDimensions = camera.GetPixelDimensions();
+    float2 worldDimensions = camera.GetScreenWorldDimensions();
 
+    float3 newCoords;
+    newCoords.x = (screenCoords.x + worldDimensions.x/2) * (pixelDimensions.x/worldDimensions.x);
+    newCoords.y = (screenCoords.y + worldDimensions.y/2) * (pixelDimensions.y/worldDimensions.y);
+    newCoords.z = screenCoords.z; //Z-coordinate remains unchanged
+    return newCoords;
+}
 
 float2 PixelToScreenSpace(float2 pixelCoords, const Camera& camera)
 {
@@ -137,7 +160,7 @@ float2 PixelToScreenSpace(float2 pixelCoords, const Camera& camera)
 //Perspective-corrected Barycentric Interpolation
 float PerspBarycentricInterp(float3 baryCoords, float w1, float w2, float w3)
 {
-    return ((baryCoords.x*w1 + baryCoords.y*w2 + baryCoords.z*w3) / (baryCoords.x/w1 + baryCoords.y/w2 + baryCoords.z/w3));
+    return baryCoords.x*w1 + baryCoords.y*w2 + baryCoords.z*w3;
 }
 
 std::optional<float3> GetBarycentricCoords(float2 point, float2 v1, float2 v2, float2 v3)

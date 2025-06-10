@@ -9,8 +9,8 @@ class Transform
         Transform(float3 pos = float3(), float3 rot = float3(), const Transform* parent = nullptr);
         ~Transform();
 
-        const float3& GetPos() const;
-        const float3& GetRot() const;
+        float3 GetPos() const;
+        float3 GetRot() const;
         const Transform* GetParent() const;
 
         void SetPos(const float3& newPos);

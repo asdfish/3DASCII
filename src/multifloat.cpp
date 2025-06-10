@@ -15,7 +15,7 @@ float3::~float3()
 {
 }
 
-float float3::dot(float3 a, float3 b)
+float float3::dot(const float3& a, const float3& b)
 {
     return a.x * b.x + a.y * b.y + a.z * b.z;
 }

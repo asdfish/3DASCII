@@ -126,12 +126,12 @@ Transform::~Transform()
 {
 }
 
-const float3& Transform::GetPos() const
+float3 Transform::GetPos() const
 {
     return m_pos;
 }
 
-const float3& Transform::GetRot() const
+float3 Transform::GetRot() const
 {
     return m_rot;
 }

@@ -25,6 +25,8 @@ int main() {
     Camera camera = Camera(float3(), float3(), 30, 1, wHeight, wWidth);
     Scene scene;
     objImporter("test.obj", scene);
+    scene.GetObjectList();
+    scene.GetObjectData();
 
     float zbuffer[wHeight*wWidth];
     std::uint8_t pixelBuffer[wHeight*wWidth*4];
@@ -34,7 +36,7 @@ int main() {
     image.resize({wWidth, wHeight});
 
     sf::RenderWindow window(sf::VideoMode({wHeight, wWidth}), "ImGui + SFML = <3");
-    window.setFramerateLimit(5);
+    window.setFramerateLimit(60);
     ImGui::SFML::Init(window);
 
     //Loop
@@ -68,9 +70,21 @@ int main() {
             }
             
         }
-        bool loadedToTexture = texture.loadFromImage(image);
+        texture.update(image);
 
         sf::Sprite sprite(texture);
+
+        float3 cameraRot = camera.GetTransform().GetRot();
+        float3 cameraPos = camera.GetTransform().GetPos();
+
+        ImGui::Begin("Camera Controls");
+        ImGui::SliderFloat("Camera Rotation - X", &(cameraRot.x) , 0.f, 2.f*M_PI);
+        ImGui::SliderFloat("Camera Rotation - Y", &(cameraRot.y) , 0.f, 2.f*M_PI);
+        ImGui::SliderFloat("Camera Rotation - Z", &(cameraRot.z) , 0.f, 2.f*M_PI);
+        ImGui::SliderFloat("Camera Position - X", &(cameraPos.x) , -5.f, 5.f);
+        ImGui::SliderFloat("Camera Position - Y", &(cameraPos.y) , -5.f, 5.f);
+        ImGui::SliderFloat("Camera Position - Z", &(cameraPos.z) , -5.f, 5.f);
+        ImGui::End();
 
         window.clear();
         window.draw(sprite);
@@ -78,7 +92,8 @@ int main() {
         window.display();
         
         float3 prevRot = camera.GetTransform().GetRot();
-        camera.GetModifiableTransform().SetRot(float3(prevRot.x, prevRot.y + 0.1f, prevRot.z)); //Rotate camera around z-axis for testing purposes
+        camera.GetModifiableTransform().SetRot(cameraRot);
+        camera.GetModifiableTransform().SetPos(cameraPos);
     }
 
     ImGui::SFML::Shutdown();
