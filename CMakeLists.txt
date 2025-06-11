@@ -6,34 +6,21 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 include(FetchContent)
 
-# SFML
-FetchContent_Declare(SFML
-  GIT_REPOSITORY https://github.com/SFML/SFML.git
-  GIT_TAG 3.0.1
+# SDL3
+FetchContent_Declare(SDL3
+  GIT_REPOSITORY https://github.com/libsdl-org/SDL.git
+  GIT_TAG main  # SDL3 is on the main branch
   GIT_SHALLOW ON
 )
-set(SFML_STATIC_LIBRARIES TRUE)
-FetchContent_MakeAvailable(SFML)
+FetchContent_MakeAvailable(SDL3)
 
-# ImGui
+# ImGui (docking optional)
 FetchContent_Declare(ImGui
   GIT_REPOSITORY https://github.com/ocornut/imgui.git
-  GIT_TAG v1.91.1
+  GIT_TAG docking  # or use v1.91.1 if you don't want docking
   GIT_SHALLOW ON
 )
 FetchContent_MakeAvailable(ImGui)
-
-# 👉 Set these BEFORE ImGui-SFML is declared
-set(IMGUI_SFML_FIND_SFML OFF)
-set(IMGUI_DIR ${imgui_SOURCE_DIR})  # ✅ THIS is what fixes your error
-
-# ImGui-SFML
-FetchContent_Declare(ImGui-SFML
-  GIT_REPOSITORY https://github.com/eliasdaler/imgui-sfml.git
-  GIT_TAG v3.0
-  GIT_SHALLOW ON
-)
-FetchContent_MakeAvailable(ImGui-SFML)
 
 # Your executable
 add_executable(3DASCII
@@ -45,9 +32,32 @@ add_executable(3DASCII
   src/camera.cpp
 )
 
-target_include_directories(3DASCII PRIVATE ${imgui_SOURCE_DIR})
-target_include_directories(3DASCII PRIVATE ${PROJECT_SOURCE_DIR}/include)
+list(APPEND IMGUI_SRC
+    ${imgui_SOURCE_DIR}/imgui.cpp
+    ${imgui_SOURCE_DIR}/imgui_draw.cpp
+    ${imgui_SOURCE_DIR}/imgui_widgets.cpp
+    ${imgui_SOURCE_DIR}/imgui_tables.cpp
+    ${imgui_SOURCE_DIR}/imgui_demo.cpp  # optional
+
+    ${imgui_SOURCE_DIR}/backends/imgui_impl_sdl3.cpp
+    ${imgui_SOURCE_DIR}/backends/imgui_impl_sdlrenderer3.cpp
+)
+
+target_sources(3DASCII PRIVATE
+    ${IMGUI_SRC}
+)
+
+# Includes
+target_include_directories(3DASCII PRIVATE
+  ${imgui_SOURCE_DIR}
+  ${imgui_SOURCE_DIR}/backends
+  ${sdl3_SOURCE_DIR}/include
+  ${PROJECT_SOURCE_DIR}/include
+)
+
+# Link libraries
+find_package(OpenGL REQUIRED)
 target_link_libraries(3DASCII PRIVATE
-  ImGui-SFML::ImGui-SFML
-  sfml-graphics
+  OpenGL::GL
+  SDL3::SDL3  # or SDL3-shared if you prefer dynamic linking
 )
