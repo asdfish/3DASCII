@@ -32,11 +32,6 @@ void RenderModel(Model& model, float3 position, float3 rotation, const Camera& c
         v1 = ScreenToPixelSpace(v1, camera);
         v2 = ScreenToPixelSpace(v2, camera);
         v3 = ScreenToPixelSpace(v3, camera);
-        /*
-        
-        TODO: Turn to pixel coordinates
-
-        */
 
         //std::cout<<"Compare with camera world dimensions: "<<camera.GetScreenWorldDimensions().x<<" "<<camera.GetScreenWorldDimensions().y<<"\n";
         if (v1.z <= 0 || v2.z <= 0 || v3.z <= 0)
@@ -76,11 +71,10 @@ void RenderModel(Model& model, float3 position, float3 rotation, const Camera& c
             for (int y = Ymin; y<Ymax; ++y)
             {
 
-                auto bary = GetBarycentricCoords(float2(x+0.5f,y+0.5f), float2(v1.x, v1.y), float2(v2.x, v2.y), float2(v3.x, v3.y));
+                auto bary = GetBarycentricCoords(float2(x+0.5,y+0.5), float2(v1.x, v1.y), float2(v2.x, v2.y), float2(v3.x, v3.y));
                 if (bary)
                 {
                     int screenWidth = static_cast<int>(pixelDimensions.x);
-                    
                     float temp = 1/ PerspBarycentricInterp(*bary, 1/v1.z, 1/v2.z, 1/v3.z);
                     //std::cout<<"Interp z-value of pixel: "<<temp<<", zbuffer value: "<<zbuffer[y*screenWidth + x]<<", rewrite?: "<<(temp < zbuffer[y*screenWidth + x])<<"\n";
                     if (temp < zbuffer[y*screenWidth + x])
