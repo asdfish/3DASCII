@@ -3,9 +3,12 @@
 #include <iostream>
 #include <unordered_map>
 #include <vector>
+#include "json.hpp"
 #include "modelHandling.hpp"
 #include "Scene.hpp"
 #include "Model.hpp"
+#include "uuid.hpp"
+#include "SceneObject.hpp"
 
 //-------------------------------------------------
 
@@ -17,19 +20,38 @@ Scene::~Scene()
 {
 }
 
-std::vector<SceneObject>& Scene::GetObjects()
+std::vector<SceneObject>& Scene::GetSceneObjects()
 {
-    return m_objects;
+    return m_sceneObjects;
 }
 
-void Scene::AddObject(const SceneObject &object)
+std::vector<SceneObject> &Scene::GetAssetObjects()
 {
-    m_objects.push_back(object);
+    return m_assetObjects;
+}
+
+void Scene::AddObjectToScene(std::string id)
+{
+    for (auto &object : m_assetObjects)
+    {
+        if (object.GetID() == id)
+        {
+            object.ChangeID();
+            SceneObject newObject = object; // Create a copy of the asset object
+            m_sceneObjects.push_back(newObject);
+            return;
+        }
+    }
+}
+
+void Scene::AddObjectToAssets(SceneObject object)
+{
+    m_assetObjects.push_back(object);
 }
 
 void Scene::GetObjectList() const
 {
-    for (std::vector<SceneObject>::const_iterator itr = m_objects.begin(); itr != m_objects.end(); ++itr)
+    for (std::vector<SceneObject>::const_iterator itr = m_assetObjects.begin(); itr != m_assetObjects.end(); ++itr)
     {
         std::cout<<(*itr).GetName()<<"\n";
     }
@@ -37,7 +59,7 @@ void Scene::GetObjectList() const
 
 void Scene::GetObjectData()
 {
-    for (std::vector<SceneObject>::iterator itr = m_objects.begin(); itr != m_objects.end(); ++itr)
+    for (std::vector<SceneObject>::iterator itr = m_assetObjects.begin(); itr != m_assetObjects.end(); ++itr)
     {
         std::cout<<(*itr).GetName()<<"\n";
         std::cout<<" - Transform Data"<<"\n";
@@ -63,6 +85,148 @@ void Scene::GetObjectData()
         }
     }
 }
+bool Scene::SaveData()
+{
+    nlohmann::json data;
+
+    //Scene Objects
+    for (auto& itr : m_sceneObjects)
+    {
+        std::string id = itr.GetID();
+        data["Scene"]["Objects"][id]["Name"] = itr.GetName();
+
+        //Transform
+        float3 pos = itr.GetTransform().GetPos();
+        float3 rot = itr.GetTransform().GetRot();
+
+        // - Position
+        data["Scene"]["Objects"][id]["Transform"]["Position"] = {pos.x, pos.y, pos.z};
+
+        // - Rotation
+        data["Scene"]["Objects"][id]["Transform"]["Rotation"] = {rot.x, rot.y, rot.z};
+
+        //Model
+        std::vector<float3> verts = itr.GetModel().GetLocalVerts();
+        std::vector<std::vector<float>> storedVerts;
+        for (const auto& v : verts)
+        {
+            storedVerts.push_back({ v.x, v.y, v.z });
+        }
+
+        std::vector<int> faceIndices = itr.GetModel().GetFaceIndices();
+
+        //Vertices
+        data["Scene"]["Objects"][id]["Model"]["Vertices"] = storedVerts;
+
+        //Face Indices
+        data["Scene"]["Objects"][id]["Model"]["Face Indices"] = faceIndices;
+    }
+
+    //Asset Objects
+    for (auto& itr : m_assetObjects)
+    {
+        std::string id = itr.GetID();
+        data["Asset"]["Objects"][id]["Name"] = itr.GetName();
+
+        //Transform
+        float3 pos = itr.GetTransform().GetPos();
+        float3 rot = itr.GetTransform().GetRot();
+
+        // - Position
+        data["Asset"]["Objects"][id]["Transform"]["Position"] = {pos.x, pos.y, pos.z};
+
+        // - Rotation
+        data["Asset"]["Objects"][id]["Transform"]["Rotation"] = {rot.x, rot.y, rot.z};
+
+        //Model
+        std::vector<float3> verts = itr.GetModel().GetLocalVerts();
+        std::vector<std::vector<float>> storedVerts;
+        for (const auto& v : verts)
+        {
+            storedVerts.push_back({ v.x, v.y, v.z });
+        }
+
+        std::vector<int> faceIndices = itr.GetModel().GetFaceIndices();
+
+        //Vertices
+        data["Asset"]["Objects"][id]["Model"]["Vertices"] = storedVerts;
+
+        //Face Indices
+        data["Asset"]["Objects"][id]["Model"]["Face Indices"] = faceIndices;
+    }
+
+    std::ofstream outFile("saveData.json");
+
+    if (!outFile.is_open())
+        return false;
+
+    outFile << data.dump(4);
+    return true;
+}
+bool Scene::GetData()
+{
+    nlohmann::json data;
+    std::ifstream file("saveData.json");
+
+    if(!file.good())
+    {
+        return false;
+    }
+
+    file >> data;
+
+    for (auto& [id, objectData] : data["Scene"]["Objects"].items())
+    {
+        
+        std::string name = objectData["Name"];
+
+        //Model
+        std::vector<std::vector<float>> storedVerts = objectData["Model"]["Vertices"];
+        std::vector<float3> verts;
+        
+        for (const auto& v : storedVerts)
+        {
+            verts.push_back(float3(v[0], v[1], v[2]));
+        }
+
+        std::vector<int> faceIndices = objectData["Model"]["Face Indices"];
+
+        Model model(verts, faceIndices);
+
+        //Transform
+        float3 pos = float3(objectData["Transform"]["Position"][0], objectData["Transform"]["Position"][1], objectData["Transform"]["Position"][2]);
+        float3 rot = float3(objectData["Transform"]["Rotation"][0], objectData["Transform"]["Rotation"][1], objectData["Transform"]["Rotation"][2]);
+
+        m_sceneObjects.push_back(SceneObject(pos, rot, model, name, id));
+    }
+
+    for (auto& [id, objectData] : data["Asset"]["Objects"].items())
+    {
+        
+        std::string name = objectData["Name"];
+
+        //Model
+        std::vector<std::vector<float>> storedVerts = objectData["Model"]["Vertices"];
+        std::vector<float3> verts;
+        
+        for (const auto& v : storedVerts)
+        {
+            verts.push_back(float3(v[0], v[1], v[2]));
+        }
+
+        std::vector<int> faceIndices = objectData["Model"]["Face Indices"];
+
+        Model model(verts, faceIndices);
+
+        //Transform
+        float3 pos = float3(objectData["Transform"]["Position"][0], objectData["Transform"]["Position"][1], objectData["Transform"]["Position"][2]);
+        float3 rot = float3(objectData["Transform"]["Rotation"][0], objectData["Transform"]["Rotation"][1], objectData["Transform"]["Rotation"][2]);
+
+        m_assetObjects.push_back(SceneObject(pos, rot, model, name, id));
+    }
+    return true;
+}
+
 //------------------------------------------------
 
 SceneObject::SceneObject()
@@ -72,7 +236,12 @@ SceneObject::SceneObject()
 SceneObject::SceneObject(float3 position, float3 rotation, Model model, std::string name, Transform* parent)
 : m_transform(Transform(position, rotation, parent)), m_model(model), m_name(name)
 {
+    m_id = uuid::generate_uuid_v4();
+}
 
+SceneObject::SceneObject(float3 position, float3 rotation, Model model, std::string name, std::string id, Transform *parent)
+: m_transform(Transform(position, rotation, parent)), m_model(model), m_name(name), m_id(id)
+{
 }
 
 SceneObject::~SceneObject()
@@ -92,6 +261,11 @@ Model& SceneObject::GetModel()
 std::string SceneObject::GetName() const
 {
     return m_name;
+}
+
+std::string SceneObject::GetID() const
+{
+    return m_id;
 }
 
 void SceneObject::SetTransform(Transform transform)
@@ -114,6 +288,11 @@ void SceneObject::SetModel(Model model)
 void SceneObject::SetName(std::string name)
 {
     m_name = name;
+}
+
+void SceneObject::ChangeID()
+{
+    m_id = uuid::generate_uuid_v4();
 }
 
 //----------------------------------------------------------------
@@ -166,7 +345,7 @@ Model::Model()
 
 Model::Model(const std::vector<float3> &verts, const std::vector<int> &faceIndices)
     : m_verts(verts), m_faceIndices(faceIndices) 
-    {
+{
 }
 
 Model::~Model()
@@ -338,7 +517,7 @@ void objImporter(const char* path, Scene& scene)
         float3 pivot = tempModel.InitializePositionsFromPivot(); 
 
         SceneObject object(pivot, float3(), tempModel, names[0]);
-        scene.AddObject(object);
+        scene.AddObjectToAssets(object);
         names.erase(names.begin());
     }
 }

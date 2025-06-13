@@ -1,14 +1,24 @@
 #include "ui.hpp"
+#include <memory>
 
-void DisplayUI()
+void DisplayUI(Scene& scene)
 {
-}
+    static SceneObject* selectedObject = nullptr; 
 
-void ModelUI(const Model& model)
-{
-    ImGui::Begin("Model UI");
-    ImGui::Text("Model Name: %s", model.GetName().c_str());
-    ImGui::Text("Number of Vertices: %zu", model.GetVerts().size());
-    ImGui::Text("Number of Faces: %zu", model.GetFaceIndices().size() / 3);
-    ImGui::End();
+    Toolbar toolbar;
+    AssetBrowser assetBrowser;
+    InspectorMenu inspectorMenu;
+    SceneViewer sceneViewer;
+
+    // Draw the Toolbar (or main menu bar)
+    toolbar.Draw(scene);
+
+    // Draw the Asset Browser
+    assetBrowser.Draw(scene, selectedObject);
+
+    // Draw the Scene Viewer
+    sceneViewer.Draw(scene, selectedObject);
+
+    // Draw the Inspector Menu
+    inspectorMenu.Draw(selectedObject);
 }

@@ -2,6 +2,8 @@
 #include <imgui_impl_SDL3.h>
 #include <imgui_impl_sdlrenderer3.h>
 
+#include "ImGuiFileDialog.h"
+
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_render.h>
 
@@ -9,12 +11,14 @@
 #include "renderHandling.hpp"
 #include "camera.hpp"
 
+#include "ui.hpp"
+
 #define SDL_MAIN_USE_CALLBACKS 1  /* use the callbacks instead of main() */
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 
-constexpr int wWidth = 125;
-constexpr int wHeight = 250;
+constexpr int wWidth = 300;
+constexpr int wHeight = 220;
 constexpr int scaleFactor = 4;
 
 SDL_FRect dstRect = {
@@ -54,9 +58,8 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
     }
 
     camera = Camera(float3(), float3(), FOV, focalLength, wWidth, wHeight);
-    objImporter("test.obj", scene);
-    scene.GetObjectList();
-    scene.GetObjectData();
+    
+    scene.GetData();
 
     texture = SDL_CreateTexture(renderer,
     SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, wWidth, wHeight);
@@ -91,58 +94,44 @@ SDL_AppResult SDL_AppIterate(void *appstate)
 {
     const double now = ((double)SDL_GetTicks()) / 1000.0;  /* convert from milliseconds to seconds. */
 
+
     SDL_SetRenderDrawColorFloat(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE_FLOAT);
     SDL_RenderClear(renderer);
 
     std::fill(pixelBuffer, pixelBuffer + (wWidth * wHeight * 4), 0);
     std::fill(zbuffer, zbuffer + (wWidth * wHeight), FLT_MAX);
 
-    RenderScene(scene, camera, pixelBuffer, zbuffer);
-
-    SDL_UpdateTexture(texture, nullptr, pixelBuffer, wWidth * 4);
-
-    float3 cameraRot = camera.GetTransform().GetRot();
-    float3 cameraPos = camera.GetTransform().GetPos();
-
+    
     ImGui_ImplSDLRenderer3_NewFrame();
     ImGui_ImplSDL3_NewFrame();
     ImGui::NewFrame();
 
-    ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode);
+        RenderScene(scene, camera, pixelBuffer, zbuffer);
 
-    ImGui::SetNextWindowPos(ImVec2(10, 10), ImGuiCond_FirstUseEver);
-    ImGui::SetNextWindowSize(ImVec2(300, 200), ImGuiCond_FirstUseEver);
-    ImGui::ShowDemoWindow();
+        SDL_UpdateTexture(texture, nullptr, pixelBuffer, wWidth * 4);
 
-    ImGui::SetNextWindowPos(ImVec2(10, 10), ImGuiCond_FirstUseEver);
-    ImGui::SetNextWindowSize(ImVec2(300, 200), ImGuiCond_FirstUseEver);
-    ImGui::Begin("Camera Controls");
-    ImGui::DragFloat3("Camera Rotation", &cameraRot.x, 0.1f, 0.f, 2.f*M_PI, "%.2f rad", ImGuiSliderFlags_WrapAround);
-    ImGui::DragFloat3("Camera Position", &cameraPos.x);
-    ImGui::End();
+        if (ImGuiFileDialog::Instance()->Display("ChooseFileDlgKey"))
+        {
+            if (ImGuiFileDialog::Instance()->IsOk())
+            {
+                std::string filePath = ImGuiFileDialog::Instance()->GetFilePathName();
+                std::string fileName = ImGuiFileDialog::Instance()->GetCurrentFileName();
 
-    camera.GetModifiableTransform().SetRot(cameraRot);
-    camera.GetModifiableTransform().SetPos(cameraPos);
+                objImporter(filePath.c_str(), scene); 
+            }
 
-    ImGui::SetNextWindowPos(ImVec2(10, 10), ImGuiCond_FirstUseEver);
-    ImGui::SetNextWindowSize(ImVec2(300, 200), ImGuiCond_FirstUseEver);
-    ImGui::Begin("Models");
-    for (auto& obj : scene.GetObjects())
-    {
-        ImGui::Text("%s", obj.GetName().c_str());
-        float3 pos = obj.GetTransform().GetPos();
-        float3 rot = obj.GetTransform().GetRot();
-        ImGui::DragFloat3(("Position##" + obj.GetName()).c_str(), &pos.x, 0.05f);
-        ImGui::DragFloat3(("Rotation##" + obj.GetName()).c_str(), &rot.x, 0.1f, 0.0f, 2.f*M_PI, "%.2f rad", ImGuiSliderFlags_WrapAround);
-        ImGui::Separator();
-        obj.GetTransform().SetPos(pos);
-        obj.GetTransform().SetRot(rot);
-    }
-    ImGui::End();
-    
+            ImGuiFileDialog::Instance()->Close();
+        }
 
+        ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode);
 
-    SDL_RenderTexture(renderer, texture, nullptr, &dstRect);
+        ImGui::SetNextWindowPos(ImVec2(10, 10), ImGuiCond_FirstUseEver);
+        ImGui::SetNextWindowSize(ImVec2(300, 200), ImGuiCond_FirstUseEver);
+        ImGui::ShowDemoWindow();
+
+        DisplayUI(scene);
+
+        SDL_RenderTexture(renderer, texture, nullptr, &dstRect);
 
     ImGui::Render();
     ImGui_ImplSDLRenderer3_RenderDrawData(ImGui::GetDrawData(), renderer);
@@ -159,5 +148,7 @@ void SDL_AppQuit(void *appstate, SDL_AppResult result)
     ImGui_ImplSDLRenderer3_Shutdown();
     ImGui_ImplSDL3_Shutdown();
     ImGui::DestroyContext();
+
+    scene.SaveData();
 }
 

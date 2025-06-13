@@ -37,6 +37,42 @@
 },
 {
   "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision -g -o CMakeFiles\\3DASCII.dir\\src\\ui.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\ui.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\ui.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\ui.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision -g -o CMakeFiles\\3DASCII.dir\\src\\inspectorMenu.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\inspectorMenu.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\inspectorMenu.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\inspectorMenu.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision -g -o CMakeFiles\\3DASCII.dir\\src\\assetBrowser.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\assetBrowser.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\assetBrowser.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\assetBrowser.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision -g -o CMakeFiles\\3DASCII.dir\\src\\sceneViewer.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\sceneViewer.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\sceneViewer.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\sceneViewer.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision -g -o CMakeFiles\\3DASCII.dir\\src\\toolbar.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\toolbar.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\toolbar.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\toolbar.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision -g -o CMakeFiles\\3DASCII.dir\\src\\ImGuiFileDialog.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\ImGuiFileDialog.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\ImGuiFileDialog.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\ImGuiFileDialog.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision -g -o CMakeFiles\\3DASCII.dir\\_deps\\imgui-src\\imgui.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\build\\_deps\\imgui-src\\imgui.cpp",
   "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\build\\_deps\\imgui-src\\imgui.cpp",
   "output": "CMakeFiles\\3DASCII.dir\\_deps\\imgui-src\\imgui.cpp.obj"

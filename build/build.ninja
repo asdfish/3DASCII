@@ -97,6 +97,54 @@ build CMakeFiles/3DASCII.dir/src/camera.cpp.obj: CXX_COMPILER__3DASCII_unscanned
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
+build CMakeFiles/3DASCII.dir/src/ui.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/ui.cpp || cmake_object_order_depends_target_3DASCII
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\3DASCII.dir\src\ui.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  OBJECT_DIR = CMakeFiles\3DASCII.dir
+  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
+
+build CMakeFiles/3DASCII.dir/src/inspectorMenu.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/inspectorMenu.cpp || cmake_object_order_depends_target_3DASCII
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\3DASCII.dir\src\inspectorMenu.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  OBJECT_DIR = CMakeFiles\3DASCII.dir
+  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
+
+build CMakeFiles/3DASCII.dir/src/assetBrowser.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/assetBrowser.cpp || cmake_object_order_depends_target_3DASCII
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\3DASCII.dir\src\assetBrowser.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  OBJECT_DIR = CMakeFiles\3DASCII.dir
+  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
+
+build CMakeFiles/3DASCII.dir/src/sceneViewer.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/sceneViewer.cpp || cmake_object_order_depends_target_3DASCII
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\3DASCII.dir\src\sceneViewer.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  OBJECT_DIR = CMakeFiles\3DASCII.dir
+  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
+
+build CMakeFiles/3DASCII.dir/src/toolbar.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/toolbar.cpp || cmake_object_order_depends_target_3DASCII
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\3DASCII.dir\src\toolbar.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  OBJECT_DIR = CMakeFiles\3DASCII.dir
+  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
+
+build CMakeFiles/3DASCII.dir/src/ImGuiFileDialog.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/ImGuiFileDialog.cpp || cmake_object_order_depends_target_3DASCII
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\3DASCII.dir\src\ImGuiFileDialog.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  OBJECT_DIR = CMakeFiles\3DASCII.dir
+  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
+
 build CMakeFiles/3DASCII.dir/_deps/imgui-src/imgui.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/imgui.cpp || cmake_object_order_depends_target_3DASCII
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\_deps\imgui-src\imgui.cpp.obj.d
@@ -161,7 +209,7 @@ build CMakeFiles/3DASCII.dir/_deps/imgui-src/backends/imgui_impl_sdlrenderer3.cp
 #############################################
 # Link the executable bin\3DASCII.exe
 
-build bin/3DASCII.exe: CXX_EXECUTABLE_LINKER__3DASCII_Debug CMakeFiles/3DASCII.dir/src/main.cpp.obj CMakeFiles/3DASCII.dir/src/model.cpp.obj CMakeFiles/3DASCII.dir/src/multifloat.cpp.obj CMakeFiles/3DASCII.dir/src/image.cpp.obj CMakeFiles/3DASCII.dir/src/renderHandling.cpp.obj CMakeFiles/3DASCII.dir/src/camera.cpp.obj CMakeFiles/3DASCII.dir/_deps/imgui-src/imgui.cpp.obj CMakeFiles/3DASCII.dir/_deps/imgui-src/imgui_draw.cpp.obj CMakeFiles/3DASCII.dir/_deps/imgui-src/imgui_widgets.cpp.obj CMakeFiles/3DASCII.dir/_deps/imgui-src/imgui_tables.cpp.obj CMakeFiles/3DASCII.dir/_deps/imgui-src/imgui_demo.cpp.obj CMakeFiles/3DASCII.dir/_deps/imgui-src/backends/imgui_impl_sdl3.cpp.obj CMakeFiles/3DASCII.dir/_deps/imgui-src/backends/imgui_impl_sdlrenderer3.cpp.obj | _deps/sdl3-build/libSDL3.dll.a _deps/sdl3-src/src/dynapi/SDL_dynapi.sym || bin/SDL3.dll
+build bin/3DASCII.exe: CXX_EXECUTABLE_LINKER__3DASCII_Debug CMakeFiles/3DASCII.dir/src/main.cpp.obj CMakeFiles/3DASCII.dir/src/model.cpp.obj CMakeFiles/3DASCII.dir/src/multifloat.cpp.obj CMakeFiles/3DASCII.dir/src/image.cpp.obj CMakeFiles/3DASCII.dir/src/renderHandling.cpp.obj CMakeFiles/3DASCII.dir/src/camera.cpp.obj CMakeFiles/3DASCII.dir/src/ui.cpp.obj CMakeFiles/3DASCII.dir/src/inspectorMenu.cpp.obj CMakeFiles/3DASCII.dir/src/assetBrowser.cpp.obj CMakeFiles/3DASCII.dir/src/sceneViewer.cpp.obj CMakeFiles/3DASCII.dir/src/toolbar.cpp.obj CMakeFiles/3DASCII.dir/src/ImGuiFileDialog.cpp.obj CMakeFiles/3DASCII.dir/_deps/imgui-src/imgui.cpp.obj CMakeFiles/3DASCII.dir/_deps/imgui-src/imgui_draw.cpp.obj CMakeFiles/3DASCII.dir/_deps/imgui-src/imgui_widgets.cpp.obj CMakeFiles/3DASCII.dir/_deps/imgui-src/imgui_tables.cpp.obj CMakeFiles/3DASCII.dir/_deps/imgui-src/imgui_demo.cpp.obj CMakeFiles/3DASCII.dir/_deps/imgui-src/backends/imgui_impl_sdl3.cpp.obj CMakeFiles/3DASCII.dir/_deps/imgui-src/backends/imgui_impl_sdlrenderer3.cpp.obj | _deps/sdl3-build/libSDL3.dll.a _deps/sdl3-src/src/dynapi/SDL_dynapi.sym || bin/SDL3.dll
   CONFIG = Debug
   FLAGS = -g
   LINK_LIBRARIES = -lopengl32  _deps/sdl3-build/libSDL3.dll.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

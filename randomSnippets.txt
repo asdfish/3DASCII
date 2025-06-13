@@ -1,0 +1,25 @@
+ImGui::SetNextWindowPos(ImVec2(10, 10), ImGuiCond_FirstUseEver);
+    ImGui::SetNextWindowSize(ImVec2(300, 200), ImGuiCond_FirstUseEver);
+    ImGui::Begin("Camera Controls");
+    ImGui::DragFloat3("Camera Rotation", &cameraRot.x, 0.1f, 0.f, 2.f*M_PI, "%.2f rad", ImGuiSliderFlags_WrapAround);
+    ImGui::DragFloat3("Camera Position", &cameraPos.x);
+    ImGui::End();
+
+    camera.GetModifiableTransform().SetRot(cameraRot);
+    camera.GetModifiableTransform().SetPos(cameraPos);
+
+    ImGui::SetNextWindowPos(ImVec2(10, 10), ImGuiCond_FirstUseEver);
+    ImGui::SetNextWindowSize(ImVec2(300, 200), ImGuiCond_FirstUseEver);
+    ImGui::Begin("Models");
+    for (auto& obj : scene.GetSceneObjects())
+    {
+        ImGui::Text("%s", obj.GetName().c_str());
+        float3 pos = obj.GetTransform().GetPos();
+        float3 rot = obj.GetTransform().GetRot();
+        ImGui::DragFloat3(("Position##" + obj.GetName()).c_str(), &pos.x, 0.05f);
+        ImGui::DragFloat3(("Rotation##" + obj.GetName()).c_str(), &rot.x, 0.1f, 0.0f, 2.f*M_PI, "%.2f rad", ImGuiSliderFlags_WrapAround);
+        ImGui::Separator();
+        obj.GetTransform().SetPos(pos);
+        obj.GetTransform().SetRot(rot);
+    }
+    ImGui::End();

@@ -4,7 +4,7 @@
 
 void RenderScene(Scene& scene, const Camera& camera, std::uint8_t* pixelBuffer, float* zbuffer)
 {
-    for(auto& model : scene.GetObjects())
+    for(auto& model : scene.GetSceneObjects())
     {
         RenderModel(model.GetModel(), model.GetTransform().GetPos(), model.GetTransform().GetRot(), camera, pixelBuffer, zbuffer);
     }
