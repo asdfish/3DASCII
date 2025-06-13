@@ -39,12 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/sfml-build/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/imgui-sfml-build/cmake_install.cmake")
+  include("C:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/sdl3-build/cmake_install.cmake")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
