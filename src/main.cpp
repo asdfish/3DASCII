@@ -59,12 +59,12 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
 
-    camera = Camera(float3(), float3(), FOV, focalLength, wWidth, wHeight);
-    scene.GetData();
-    
+    camera = Camera(float3(), float3(), FOV, focalLength, wWidth, wHeight);    
     settings.lightingMode = LightingMode::FLAT;
     settings.lightIntensityCoeff = 100.f;
     settings.falloffCoeff = 1.f;
+
+    scene.GetData(lights, camera, settings);
 
     texture = SDL_CreateTexture(renderer,
     SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, wWidth, wHeight);
@@ -154,6 +154,6 @@ void SDL_AppQuit(void *appstate, SDL_AppResult result)
     ImGui_ImplSDL3_Shutdown();
     ImGui::DestroyContext();
 
-    scene.SaveData();
+    scene.SaveData(lights, camera, settings);
 }
 

@@ -5,7 +5,7 @@
 class Toolbar
 {
     public:
-        void Draw(Scene& scene);
+        void Draw(Scene& scene, std::vector<Light>& lights, Camera& camera, SceneSettings& settings);
         void SetVisible(bool visible) { m_visible = visible; }
         bool GetVisible() const { return m_visible; }
     private:

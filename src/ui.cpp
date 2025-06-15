@@ -14,7 +14,7 @@ void DisplayUI(Scene& scene, std::vector<Light>& lights, Camera& camera, SceneSe
     SceneSettingsMenu sceneSettingsMenu;
 
     // Draw the Toolbar (or main menu bar)
-    toolbar.Draw(scene);
+    toolbar.Draw(scene, lights, camera, settings);
 
     // Draw the Asset Browser
     assetBrowser.Draw(scene, selectedObject);

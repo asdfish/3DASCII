@@ -85,9 +85,34 @@ void Scene::GetObjectData()
         }
     }
 }
-bool Scene::SaveData()
+bool Scene::SaveData(std::vector<Light>& lights, Camera& camera, SceneSettings& settings)
 {
     nlohmann::json data;
+
+    //Scene Settings
+    data["Scene"]["Settings"]["Lighting Mode"] = static_cast<int>(settings.lightingMode);
+    data["Scene"]["Settings"]["Light Intensity Coefficient"] = settings.lightIntensityCoeff;
+    data["Scene"]["Settings"]["Falloff Coefficient"] = settings.falloffCoeff;
+
+    //Camera Position, rotation
+    float3 campos = camera.GetTransform().GetPos();
+    float3 camrot = camera.GetTransform().GetRot();
+    float2 pixelDimensions = camera.GetPixelDimensions();
+
+    data["Scene"]["Camera"]["Position"] = {campos.x, campos.y, campos.z};
+    data["Scene"]["Camera"]["Rotation"] = {camrot.x, camrot.y, camrot.z};
+    data["Scene"]["Camera"]["FOV"] = camera.GetFOV();
+    data["Scene"]["Camera"]["Focal Length"] = camera.GetFocalLength();
+    data["Scene"]["Camera"]["Pixel Dimensions"] = {pixelDimensions.x, pixelDimensions.y};
+
+    for (const auto& light : lights)
+    {
+        std::string id = light.GetID();
+        float3 lightpos = light.GetPosition();
+        data["Scene"]["Lights"][id]["Name"] = light.GetName();
+        data["Scene"]["Lights"][id]["Position"] = {lightpos.x, lightpos.y};
+        data["Scene"]["Lights"][id]["Intensity"] = light.GetIntensity();
+    }
 
     //Scene Objects
     for (auto& itr : m_sceneObjects)
@@ -163,7 +188,7 @@ bool Scene::SaveData()
     outFile << data.dump(4);
     return true;
 }
-bool Scene::GetData()
+bool Scene::GetData(std::vector<Light>& lights, Camera& camera, SceneSettings& settings)
 {
     nlohmann::json data;
     std::ifstream file("saveData.json");
@@ -174,6 +199,28 @@ bool Scene::GetData()
     }
 
     file >> data;
+
+    //Scene Settings
+    settings.lightingMode = static_cast<LightingMode>(data["Scene"]["Settings"]["Lighting Mode"].get<int>());
+    settings.lightIntensityCoeff = data["Scene"]["Settings"]["Light Intensity Coefficient"];
+    settings.falloffCoeff = data["Scene"]["Settings"]["Falloff Coefficient"];
+
+    //Camera
+    std::vector<float> campos = data["Scene"]["Camera"]["Position"];
+    std::vector<float> camrot = data["Scene"]["Camera"]["Rotation"];
+    float fov = data["Scene"]["Camera"]["FOV"];
+    float focalLength = data["Scene"]["Camera"]["Focal Length"];
+    std::vector<float> pixelDimensions = data["Scene"]["Camera"]["Pixel Dimensions"];
+
+    //Lights
+    for (auto& [id, lightData] : data["Scene"]["Lights"].items())
+    {
+        std::vector<float> lightpos = lightData["Position"];
+        lights.emplace_back(float3(lightpos[0], lightpos[1], lightpos[2]), lightData["Intensity"], lightData["Name"], id);
+    }
+
+    camera = Camera(float3(campos[0], campos[1],campos[2]), float3(camrot[0], camrot[1],camrot[2]), fov, focalLength, pixelDimensions[0], pixelDimensions[1]);
+
 
     for (auto& [id, objectData] : data["Scene"]["Objects"].items())
     {
@@ -186,7 +233,7 @@ bool Scene::GetData()
         
         for (const auto& v : storedVerts)
         {
-            verts.push_back(float3(v[0], v[1], v[2]));
+            verts.emplace_back(v[0], v[1], v[2]);
         }
 
         std::vector<int> faceIndices = objectData["Model"]["Face Indices"];
@@ -197,7 +244,7 @@ bool Scene::GetData()
         float3 pos = float3(objectData["Transform"]["Position"][0], objectData["Transform"]["Position"][1], objectData["Transform"]["Position"][2]);
         float3 rot = float3(objectData["Transform"]["Rotation"][0], objectData["Transform"]["Rotation"][1], objectData["Transform"]["Rotation"][2]);
 
-        m_sceneObjects.push_back(SceneObject(pos, rot, model, name, id));
+        m_sceneObjects.emplace_back(pos, rot, model, name, id);
     }
 
     for (auto& [id, objectData] : data["Asset"]["Objects"].items())
@@ -211,7 +258,7 @@ bool Scene::GetData()
         
         for (const auto& v : storedVerts)
         {
-            verts.push_back(float3(v[0], v[1], v[2]));
+            verts.emplace_back(v[0], v[1], v[2]);
         }
 
         std::vector<int> faceIndices = objectData["Model"]["Face Indices"];
@@ -222,7 +269,7 @@ bool Scene::GetData()
         float3 pos = float3(objectData["Transform"]["Position"][0], objectData["Transform"]["Position"][1], objectData["Transform"]["Position"][2]);
         float3 rot = float3(objectData["Transform"]["Rotation"][0], objectData["Transform"]["Rotation"][1], objectData["Transform"]["Rotation"][2]);
 
-        m_assetObjects.push_back(SceneObject(pos, rot, model, name, id));
+        m_assetObjects.emplace_back(pos, rot, model, name, id);
     }
     return true;
 }

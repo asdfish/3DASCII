@@ -4,7 +4,7 @@
 #include <imgui_impl_SDL3.h>
 #include <imgui_impl_sdlrenderer3.h>
 
-void Toolbar::Draw(Scene& scene)
+void Toolbar::Draw(Scene& scene, std::vector<Light>& lights, Camera& camera, SceneSettings& settings)
 {
     static bool openPopup = false;
     if (ImGui::BeginMainMenuBar())
@@ -19,7 +19,7 @@ void Toolbar::Draw(Scene& scene)
             }
             if (ImGui::MenuItem("Save Scene and Assets"))
             {
-                scene.SaveData();
+                scene.SaveData(lights, camera, settings);
                 openPopup = true;
             }
             ImGui::EndMenu();
