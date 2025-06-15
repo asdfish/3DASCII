@@ -10,6 +10,7 @@
 #include "modelHandling.hpp"
 #include "renderHandling.hpp"
 #include "camera.hpp"
+#include "SceneSettings.hpp"
 
 #include "ui.hpp"
 
@@ -38,8 +39,9 @@ float zbuffer[wHeight*wWidth];
 std::uint8_t pixelBuffer[wHeight*wWidth*4];
 
 Camera camera(float3(), float3(), 30.f, 1.f, wWidth, wHeight);
+std::vector<Light> lights;
 Scene scene;
-
+SceneSettings settings;
 
 /* This function runs once at startup. */
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
@@ -58,8 +60,11 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
     }
 
     camera = Camera(float3(), float3(), FOV, focalLength, wWidth, wHeight);
-    
     scene.GetData();
+    
+    settings.lightingMode = LightingMode::FLAT;
+    settings.lightIntensityCoeff = 100.f;
+    settings.falloffCoeff = 1.f;
 
     texture = SDL_CreateTexture(renderer,
     SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, wWidth, wHeight);
@@ -106,7 +111,7 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     ImGui_ImplSDL3_NewFrame();
     ImGui::NewFrame();
 
-        RenderScene(scene, camera, pixelBuffer, zbuffer);
+        RenderScene(scene, camera, lights, settings, pixelBuffer, zbuffer);
 
         SDL_UpdateTexture(texture, nullptr, pixelBuffer, wWidth * 4);
 
@@ -129,7 +134,7 @@ SDL_AppResult SDL_AppIterate(void *appstate)
         ImGui::SetNextWindowSize(ImVec2(300, 200), ImGuiCond_FirstUseEver);
         ImGui::ShowDemoWindow();
 
-        DisplayUI(scene);
+        DisplayUI(scene, lights, camera, settings);
 
         SDL_RenderTexture(renderer, texture, nullptr, &dstRect);
 

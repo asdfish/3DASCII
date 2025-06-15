@@ -14,7 +14,7 @@ void AssetBrowser::Draw(Scene &scene, SceneObject*& selectedObject)
             if (ImGui::Button(("Add##" + obj.GetName()).c_str()))
             {
                 scene.AddObjectToScene(obj.GetID());
-                selectedObject = &scene.GetSceneObjects().back();
+                selectedObject = nullptr;
             }
         }
 

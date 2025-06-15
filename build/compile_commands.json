@@ -37,6 +37,12 @@
 },
 {
   "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision -g -o CMakeFiles\\3DASCII.dir\\src\\Light.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\Light.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\Light.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\Light.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision -g -o CMakeFiles\\3DASCII.dir\\src\\ui.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\ui.cpp",
   "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\ui.cpp",
   "output": "CMakeFiles\\3DASCII.dir\\src\\ui.cpp.obj"
@@ -64,6 +70,12 @@
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision -g -o CMakeFiles\\3DASCII.dir\\src\\toolbar.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\toolbar.cpp",
   "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\toolbar.cpp",
   "output": "CMakeFiles\\3DASCII.dir\\src\\toolbar.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision -g -o CMakeFiles\\3DASCII.dir\\src\\sceneSettingsMenu.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\sceneSettingsMenu.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\sceneSettingsMenu.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\sceneSettingsMenu.cpp.obj"
 },
 {
   "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",

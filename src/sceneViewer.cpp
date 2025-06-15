@@ -5,11 +5,46 @@
 
 #include <iostream>
 
-void SceneViewer::Draw(Scene& scene, SceneObject*& selectedObject)
+void SceneViewer::Draw(Scene& scene, SceneObject*& selectedObject, std::vector<Light>& lights, Light*& selectedLight, Camera& camera, Camera*& selectedCamera)
 {
     ImGui::Begin("Scene Viewer", &m_visible);
 
-    ImGui::Text("Scene Objects:");
+    //Popup for adding lights
+    if(ImGui::BeginPopupContextWindow("SceneViewerContextMenu", ImGuiPopupFlags_MouseButtonRight))
+    {
+        if (ImGui::Button("Add New Light"))
+        {
+            lights.emplace_back(Light(float3(), 100.f));
+            selectedObject = nullptr;
+            selectedLight = &lights.back();
+            selectedCamera = nullptr;
+        }
+        ImGui::EndPopup();
+    }
+
+    //Camera
+    ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.0f, 0.5f));
+    if (selectedCamera==&camera)
+    {
+        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.3f, 0.5f, 0.8f, 1.0f));
+    }
+    else
+    {
+        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.3f, 0.5f, 0.8f, 0.0f));
+    }
+
+    if (ImGui::Button("Camera", ImVec2(-FLT_MIN, 0)))
+    {
+        selectedObject = nullptr;
+        selectedLight = nullptr;
+        selectedCamera = &camera;
+    }
+    ImGui::PopStyleColor();
+    ImGui::PopStyleVar();
+
+    //Scene Objects
+    ImGui::Separator();
+    //ImGui::Text("Scene Objects:");
     if (ImGui::BeginTable("SceneObjects", 1))
     {
         ImGui::TableSetupColumn("Objects: ", ImGuiTableColumnFlags_WidthStretch);
@@ -33,6 +68,47 @@ void SceneViewer::Draw(Scene& scene, SceneObject*& selectedObject)
             if (ImGui::Button((obj.GetName() + "##" + obj.GetID()).c_str(), ImVec2(-FLT_MIN, 0)))
             {
                 selectedObject = &obj;
+                selectedLight = nullptr;
+                selectedCamera = nullptr;
+            }
+
+            ImGui::PopStyleColor();
+            
+        }
+        ImGui::PopStyleVar();
+        ImGui::EndTable();
+    }
+
+
+
+    //Lights
+    ImGui::Separator();
+    //ImGui::Text("Lights: ");
+    if (ImGui::BeginTable("Lights", 1))
+    {
+        ImGui::TableSetupColumn("Lights:  ", ImGuiTableColumnFlags_WidthStretch);
+
+        ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.0f, 0.5f)); 
+        for (auto &light : lights)
+        {
+            ImGuiStyle style;
+            
+            ImGui::TableNextColumn();
+
+            if (selectedLight==&light)
+            {
+                ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.3f, 0.5f, 0.8f, 1.0f));
+            }
+            else
+            {
+                ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.3f, 0.5f, 0.8f, 0.0f));
+            }
+            
+            if (ImGui::Button((light.GetName() + "##" + light.GetID()).c_str(), ImVec2(-FLT_MIN, 0)))
+            {
+                selectedObject = nullptr;
+                selectedLight = &light;
+                selectedCamera = nullptr;
             }
 
             ImGui::PopStyleColor();

@@ -30,12 +30,14 @@ add_executable(3DASCII
   src/image.cpp 
   src/renderHandling.cpp 
   src/camera.cpp
+  src/Light.cpp
 
   src/ui.cpp
   src/inspectorMenu.cpp
   src/assetBrowser.cpp
   src/sceneViewer.cpp
   src/toolbar.cpp
+  src/sceneSettingsMenu.cpp
 
   src/ImGuiFileDialog.cpp
 )
