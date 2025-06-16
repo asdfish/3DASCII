@@ -100,9 +100,9 @@ void RenderModel(Model& model, float3 position, float3 rotation, const Camera& c
         Ymax = std::min(static_cast<int>(pixelDimensions.y), Ymax);
 
 
-        for (int x = Xmin; x<Xmax; ++x)
+        for (int x = Xmin; x<Xmax; x++)
         {
-            for (int y = Ymin; y<Ymax; ++y)
+            for (int y = Ymin; y<Ymax; y++)
             {
                 auto bary = GetBarycentricCoords(float2(x+0.5,y+0.5), float2(v1.x, v1.y), float2(v2.x, v2.y), float2(v3.x, v3.y));
                 if (bary)

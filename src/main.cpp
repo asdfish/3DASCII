@@ -4,9 +4,6 @@
 
 #include "ImGuiFileDialog.h"
 
-#include <SDL3/SDL.h>
-#include <SDL3/SDL_render.h>
-
 #include "modelHandling.hpp"
 #include "renderHandling.hpp"
 #include "camera.hpp"
@@ -14,13 +11,17 @@
 
 #include "ui.hpp"
 
+#include "textBrightnessArray.hpp"
+
 #define SDL_MAIN_USE_CALLBACKS 1  /* use the callbacks instead of main() */
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 
-constexpr int wWidth = 300;
-constexpr int wHeight = 220;
-constexpr int scaleFactor = 4;
+#include <iostream>
+
+constexpr int wWidth = 150;
+constexpr int wHeight = 110;
+constexpr int scaleFactor = 8;
 
 SDL_FRect dstRect = {
     0.0f, 0.0f,
@@ -36,12 +37,16 @@ SDL_Renderer* renderer = nullptr;
 SDL_Texture* texture = nullptr;
 
 float zbuffer[wHeight*wWidth];
-std::uint8_t pixelBuffer[wHeight*wWidth*4];
+std::uint8_t pixelBuffer[wHeight*wWidth*4]; //Main Pixel Buffer
+std::uint8_t asciiPixelBuffer[wHeight*scaleFactor*wWidth*scaleFactor*4]; // Optional Pixel Buffer for ASCIIxxx mode
 
 Camera camera(float3(), float3(), 30.f, 1.f, wWidth, wHeight);
 std::vector<Light> lights;
 Scene scene;
 SceneSettings settings;
+
+std::vector<float> RGBtoHSV(float3 RGB);
+float3 HSVtoRGB(std::vector<float> HSV);
 
 /* This function runs once at startup. */
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
@@ -104,17 +109,14 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     SDL_RenderClear(renderer);
 
     std::fill(pixelBuffer, pixelBuffer + (wWidth * wHeight * 4), 0);
+    std::fill(asciiPixelBuffer, pixelBuffer + (wWidth * scaleFactor * wHeight * scaleFactor * 4), 0);
     std::fill(zbuffer, zbuffer + (wWidth * wHeight), FLT_MAX);
 
     
     ImGui_ImplSDLRenderer3_NewFrame();
     ImGui_ImplSDL3_NewFrame();
     ImGui::NewFrame();
-
-        RenderScene(scene, camera, lights, settings, pixelBuffer, zbuffer);
-
-        SDL_UpdateTexture(texture, nullptr, pixelBuffer, wWidth * 4);
-
+        //UI
         if (ImGuiFileDialog::Instance()->Display("ChooseFileDlgKey"))
         {
             if (ImGuiFileDialog::Instance()->IsOk())
@@ -136,7 +138,66 @@ SDL_AppResult SDL_AppIterate(void *appstate)
 
         DisplayUI(scene, lights, camera, settings);
 
-        SDL_RenderTexture(renderer, texture, nullptr, &dstRect);
+        //Rendering
+        RenderScene(scene, camera, lights, settings, pixelBuffer, zbuffer);
+        if (settings.renderMode == RenderMode::NORMAL)
+        {
+            float texH;
+            SDL_GetTextureSize(texture, nullptr, &texH);
+            if(wHeight*scaleFactor == static_cast<int>(texH))
+            {
+                texture = SDL_CreateTexture(renderer,
+                    SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, wWidth, wHeight);
+                SDL_SetTextureScaleMode(texture, SDL_SCALEMODE_NEAREST); 
+            }
+
+            SDL_UpdateTexture(texture, nullptr, pixelBuffer, wWidth * 4);
+            SDL_RenderTexture(renderer, texture, nullptr, &dstRect);
+        }
+        else if (settings.renderMode == RenderMode::ASCIIBASIC)
+        {
+            float texH;
+            SDL_GetTextureSize(texture, nullptr, &texH);
+            if(wHeight == static_cast<int>(texH))
+            {
+                texture = SDL_CreateTexture(renderer,
+                    SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, wWidth*scaleFactor, wHeight*scaleFactor);
+                SDL_SetTextureScaleMode(texture, SDL_SCALEMODE_NEAREST); 
+            }
+
+            const float2& pixelDimensions = camera.GetPixelDimensions();
+            for (int y = 0; y<pixelDimensions.y*scaleFactor; y++)
+            {
+                for (int x = 0; x<pixelDimensions.x*scaleFactor; x++)
+                {
+                    int x_scaledown = x/scaleFactor, y_scaledown = y/scaleFactor;
+                    int idx_scaledown = 4*(y_scaledown * wWidth + x_scaledown);
+
+                    if (pixelBuffer[idx_scaledown + 3] == 0.f) continue; //Alpha = 0 means pixel has not been written in, skip
+
+                    std::vector<float> hsv = RGBtoHSV(float3(
+                        pixelBuffer[idx_scaledown    ],
+                        pixelBuffer[idx_scaledown + 1],
+                        pixelBuffer[idx_scaledown + 2]
+                    ));
+                    int brightnessIndex = std::clamp(static_cast<int>(hsv[2]*31.9999f), 0, 31); //To turn it from 0-1 float to 0-31 index ints (ik theres a magic number stfu)
+                    hsv[2] = 1;
+                    float3 colorToUse = HSVtoRGB(hsv);
+                    if (textBrightnessArray[brightnessIndex][x%scaleFactor] & (1<<(y%scaleFactor)))
+                    {
+                        int idx = 4*(y*wWidth*scaleFactor + x);
+                        asciiPixelBuffer[idx    ] = static_cast<std::uint8_t>(colorToUse.r);
+                        asciiPixelBuffer[idx + 1] = static_cast<std::uint8_t>(colorToUse.g);
+                        asciiPixelBuffer[idx + 2] = static_cast<std::uint8_t>(colorToUse.b);
+                        asciiPixelBuffer[idx + 3] = static_cast<std::uint8_t>(255.f);  //Opaque
+                    }
+                }
+            }
+            SDL_UpdateTexture(texture, nullptr, asciiPixelBuffer, wWidth * scaleFactor * 4);
+            SDL_RenderTexture(renderer, texture, nullptr, &dstRect);
+        }
+
+        
 
     ImGui::Render();
     ImGui_ImplSDLRenderer3_RenderDrawData(ImGui::GetDrawData(), renderer);
@@ -157,3 +218,73 @@ void SDL_AppQuit(void *appstate, SDL_AppResult result)
     scene.SaveData(lights, camera, settings);
 }
 
+std::vector<float> RGBtoHSV(float3 RGB)
+{
+    std::vector<float> HSV = {0.f,0.f,0.f};
+    RGB = RGB / 255;
+    float Cmax = std::max({RGB.x, RGB.y, RGB.z});
+    float Cmin = std::min({RGB.x, RGB.y, RGB.z});
+    float delta = Cmax - Cmin;
+
+    //Hue
+    if (delta == 0.f)
+    {
+        HSV[0] = 0.f;
+    }
+    else if (Cmax == RGB.r)
+    {
+        HSV[0] = 60.f * std::fmod(((RGB.g - RGB.b)/delta), 6.f);
+    }
+    else if (Cmax == RGB.g)
+    {
+        HSV[0] = 60.f * ((RGB.b - RGB.r)/delta) + 2.f;
+    }
+    else if (Cmax == RGB.b)
+    {
+        HSV[0] = 60.f * ((RGB.r - RGB.g)/delta) + 4.f;
+    }
+
+    if (HSV[0] < 0.0f) HSV[0] += 360.0f;
+    
+    //Saturation
+    if (Cmax == 0.f)
+    {
+        HSV[1] = 0.f;
+    }
+    else
+    {
+        HSV[1] = delta/Cmax;
+    }
+
+    //Value (Brightness)
+
+    HSV[2] = Cmax;
+
+    return HSV;
+}
+
+float3 HSVtoRGB(std::vector<float> HSV)
+{
+    float H = HSV[0];
+    float S = HSV[1];
+    float V = HSV[2];
+
+    float C = S * V;
+    float X = C * (1.0f- std::abs(std::fmod(H/60.0f, 2.0f) - 1.0f));
+    float m = V - C;
+
+    float3 RGB;
+
+    //The long and hard process of R', G', B'
+
+    if      (0.0f   <= H && H < 60.0f ) RGB = float3(C, X, 0);
+    else if (60.0f  <= H && H < 120.0f) RGB = float3(X, C, 0);
+    else if (120.0f <= H && H < 180.0f) RGB = float3(0, C, X);
+    else if (180.0f <= H && H < 240.0f) RGB = float3(0, X, C);
+    else if (240.0f <= H && H < 300.0f) RGB = float3(X, 0, C);
+    else if (300.0f <= H && H < 360.0f) RGB = float3(C, 0, X);
+
+    RGB = (RGB+float3(m,m,m))*255;
+
+    return RGB;
+}

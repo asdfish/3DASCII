@@ -12,6 +12,11 @@ void SceneSettingsMenu::Draw(SceneSettings& settings)
     if (lightingMode == 0) {settings.lightingMode = LightingMode::FLAT;}
     if (lightingMode == 1) {settings.lightingMode = LightingMode::LAMBERTIAN;}
 
+    int renderMode = static_cast<int>(settings.renderMode);
+    ImGui::Combo("Render mode", &renderMode, "Normal\0ASCII Basic\0\0");
+    if (renderMode == 0) {settings.renderMode = RenderMode::NORMAL;}
+    if (renderMode == 1) {settings.renderMode = RenderMode::ASCIIBASIC;}
+
     float& intensityCf = settings.lightIntensityCoeff;
     ImGui::DragFloat("Light Intensity Coefficient", &intensityCf);
 
