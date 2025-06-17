@@ -39,6 +39,24 @@ inline float3 operator-(const float3& lhs, const float3& rhs)
     );
 }
 
+inline float3 operator*(const float3& lhs, const float3& rhs)
+{
+        return float3(
+        lhs.x * rhs.x,
+        lhs.y * rhs.y,
+        lhs.z * rhs.z
+    );
+}
+
+inline float3 operator/(const float3& lhs, const float3& rhs)
+{
+        return float3(
+        lhs.x / rhs.x,
+        lhs.y / rhs.y,
+        lhs.z / rhs.z
+    );
+}
+
 inline float3 operator*(const float3& lhs, float rhs)
 {
         return float3(

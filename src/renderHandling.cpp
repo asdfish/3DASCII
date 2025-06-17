@@ -2,6 +2,7 @@
 #include "Light.hpp"
 #include <iostream>
 #include <ranges>
+#include <cmath>
 
 void RenderScene(Scene& scene, const Camera& camera, const std::vector<Light>& lights, SceneSettings& settings, std::uint8_t* pixelBuffer, float* zbuffer)
 {
@@ -22,6 +23,8 @@ void RenderModel(Model& model, float3 position, float3 rotation, const Camera& c
     std::vector<float3> vertices = model.GetVerts(position, rotation);
     std::vector<int> faceIndices = model.GetFaceIndices();
 
+    float3 modelColor = model.GetColor();
+
     for(auto itf = faceIndices.begin(); itf != faceIndices.end(); itf += 3)
     {
         //std::cout<<"Rendering triangle with indices: "<<*(itf  )<<" "<<*(itf+1)<<" "<<*(itf+2)<<"\n";
@@ -30,12 +33,11 @@ void RenderModel(Model& model, float3 position, float3 rotation, const Camera& c
         float3 v2World = vertices[*(itf+1)];
         float3 v3World = vertices[*(itf+2)];
 
-
         float3 centroid = (v1World + v2World + v3World)/3;
         float3 normal = float3::cross(v2World-v1World, v3World-v1World);
         float normalMag = normal.abs();
         
-        float faceLight = 0.f;
+        float3 faceColor = float3(0,0,0);
 
         //Flat Shading enabled
         if (settings.lightingMode == LightingMode::FLAT)
@@ -47,11 +49,14 @@ void RenderModel(Model& model, float3 position, float3 rotation, const Camera& c
                 angleCos = std::max(angleCos, 0.f);
                 float sqDistance = (vectorToLight/settings.falloffCoeff).sqabs();
                 sqDistance = std::max(sqDistance, 0.001f);
-                faceLight += light.GetIntensity()*settings.lightIntensityCoeff*angleCos/sqDistance;
-            }
 
+                float lightIntensity = light.GetIntensity()*settings.lightIntensityCoeff*angleCos/sqDistance;
+                float3 lightColor = light.GetColor();
+                float3 I_out = lightColor*lightIntensity;
+                faceColor = I_out * modelColor;
+            }
             //Reinhard Tone Mapping Wooo
-            faceLight = faceLight/(faceLight+1); 
+            faceColor = faceColor/(faceColor+float3(1,1,1)); 
         }
         float3 v1 = WorldToScreen(v1World, camera);
         float3 v2 = WorldToScreen(v2World, camera);
@@ -116,14 +121,14 @@ void RenderModel(Model& model, float3 position, float3 rotation, const Camera& c
                         if (settings.lightingMode == LightingMode::FLAT)
                         {
                             //TEMP - all tris are white
-                            pixelBuffer[4*(y*screenWidth + x)    ] = static_cast<std::uint8_t>(1 * faceLight * 255.f);
-                            pixelBuffer[4*(y*screenWidth + x) + 1] = static_cast<std::uint8_t>(1 * faceLight * 255.f);
-                            pixelBuffer[4*(y*screenWidth + x) + 2] = static_cast<std::uint8_t>(1 * faceLight * 255.f);
+                            pixelBuffer[4*(y*screenWidth + x) + 0] = static_cast<std::uint8_t>(faceColor.r * 255.f);
+                            pixelBuffer[4*(y*screenWidth + x) + 1] = static_cast<std::uint8_t>(faceColor.g * 255.f);
+                            pixelBuffer[4*(y*screenWidth + x) + 2] = static_cast<std::uint8_t>(faceColor.b * 255.f);
                             pixelBuffer[4*(y*screenWidth + x) + 3] = static_cast<std::uint8_t>(255.f);  //Opaque
                         }
                         if (settings.lightingMode == LightingMode::LAMBERTIAN)
                         {
-                            float pixelLight = 0.f;
+                            float3 pixelColor = float3(0,0,0);
                             float2 screenSpacePos = PixelToScreenSpace(float2(x,y), camera);
                             float3 worldPos = ScreenToWorld(float3(screenSpacePos.x, screenSpacePos.y, z), camera);
                             for (const auto& light : lights)
@@ -133,14 +138,18 @@ void RenderModel(Model& model, float3 position, float3 rotation, const Camera& c
                                 angleCos = std::max(angleCos, 0.f);
                                 float sqDistance = (vectorToLight/settings.falloffCoeff).sqabs();
                                 sqDistance = std::max(sqDistance, 0.001f);
-                                pixelLight += light.GetIntensity()*settings.lightIntensityCoeff*angleCos/sqDistance;
+
+                                float lightIntensity = light.GetIntensity()*settings.lightIntensityCoeff*angleCos/sqDistance;
+                                float3 lightColor = light.GetColor();
+                                float3 I_out = lightColor*lightIntensity;
+                                pixelColor = pixelColor + I_out * modelColor;
                             }
                             //Reinhard Tone Mapping Wooo
-                            pixelLight = pixelLight/(pixelLight+1); 
+                            pixelColor = pixelColor/(pixelColor+float3(1,1,1)); 
                             //TEMP - all tris are white
-                            pixelBuffer[4*(y*screenWidth + x)    ] = static_cast<std::uint8_t>(1 * pixelLight * 255.f);
-                            pixelBuffer[4*(y*screenWidth + x) + 1] = static_cast<std::uint8_t>(1 * pixelLight * 255.f);
-                            pixelBuffer[4*(y*screenWidth + x) + 2] = static_cast<std::uint8_t>(1 * pixelLight * 255.f);
+                            pixelBuffer[4*(y*screenWidth + x) + 0] = static_cast<std::uint8_t>(pixelColor.r * 255.f);
+                            pixelBuffer[4*(y*screenWidth + x) + 1] = static_cast<std::uint8_t>(pixelColor.g * 255.f);
+                            pixelBuffer[4*(y*screenWidth + x) + 2] = static_cast<std::uint8_t>(pixelColor.b * 255.f);
                             pixelBuffer[4*(y*screenWidth + x) + 3] = static_cast<std::uint8_t>(255.f);  //Opaque
                         }
                         zbuffer[y*screenWidth + x] = z;

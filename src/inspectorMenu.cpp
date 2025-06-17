@@ -45,8 +45,10 @@ void InspectorMenu::Draw(SceneObject*& selectedObject, Light*& selectedLight, Ca
         ImGui::Text("Model:");
         ImGui::Text("Vertices: %d", model.GetLocalVerts().size());
         ImGui::Text("Faces: %d", model.GetFaceIndices().size() / 3);
-
         
+        float3 color = model.GetColor();
+        ImGui::ColorEdit3("Color ", &color.r);   
+        model.SetColor(color);  
     }
 
     /* Light */
@@ -66,6 +68,11 @@ void InspectorMenu::Draw(SceneObject*& selectedObject, Light*& selectedLight, Ca
         float intensity = selectedLight->GetIntensity();
         ImGui::DragFloat("Intensity", &intensity, 0.05f);
         selectedLight->SetIntensity(intensity);
+        float3 color = selectedLight->GetColor();
+        if (ImGui::ColorEdit3("Color ", &color.r))
+        {
+            selectedLight->SetColor(color);  
+        }
     }
 
     /* Camera */

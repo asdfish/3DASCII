@@ -18,6 +18,7 @@
 #include <SDL3/SDL_main.h>
 
 #include <iostream>
+#include <algorithm>
 
 constexpr int wWidth = 150;
 constexpr int wHeight = 110;
@@ -48,6 +49,9 @@ SceneSettings settings;
 std::vector<float> RGBtoHSV(float3 RGB);
 float3 HSVtoRGB(std::vector<float> HSV);
 
+//ttest
+float color[] = {0,0,0,0};
+
 /* This function runs once at startup. */
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 {
@@ -72,7 +76,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
     scene.GetData(lights, camera, settings);
 
     texture = SDL_CreateTexture(renderer,
-    SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, wWidth, wHeight);
+    SDL_PIXELFORMAT_ABGR8888, SDL_TEXTUREACCESS_STREAMING, wWidth, wHeight);
     SDL_SetTextureScaleMode(texture, SDL_SCALEMODE_NEAREST); 
 
     // Initialize ImGui
@@ -147,7 +151,7 @@ SDL_AppResult SDL_AppIterate(void *appstate)
             if(wHeight*scaleFactor == static_cast<int>(texH))
             {
                 texture = SDL_CreateTexture(renderer,
-                    SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, wWidth, wHeight);
+                    SDL_PIXELFORMAT_ABGR8888, SDL_TEXTUREACCESS_STREAMING, wWidth, wHeight);
                 SDL_SetTextureScaleMode(texture, SDL_SCALEMODE_NEAREST); 
             }
 
@@ -161,34 +165,35 @@ SDL_AppResult SDL_AppIterate(void *appstate)
             if(wHeight == static_cast<int>(texH))
             {
                 texture = SDL_CreateTexture(renderer,
-                    SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, wWidth*scaleFactor, wHeight*scaleFactor);
+                    SDL_PIXELFORMAT_ABGR8888, SDL_TEXTUREACCESS_STREAMING, wWidth*scaleFactor, wHeight*scaleFactor);
                 SDL_SetTextureScaleMode(texture, SDL_SCALEMODE_NEAREST); 
             }
 
             const float2& pixelDimensions = camera.GetPixelDimensions();
             for (int y = 0; y<pixelDimensions.y*scaleFactor; y++)
             {
+                int y_scaledown = y/scaleFactor;
                 for (int x = 0; x<pixelDimensions.x*scaleFactor; x++)
                 {
-                    int x_scaledown = x/scaleFactor, y_scaledown = y/scaleFactor;
+                    int x_scaledown = x/scaleFactor; 
                     int idx_scaledown = 4*(y_scaledown * wWidth + x_scaledown);
 
                     if (pixelBuffer[idx_scaledown + 3] == 0.f) continue; //Alpha = 0 means pixel has not been written in, skip
 
                     std::vector<float> hsv = RGBtoHSV(float3(
-                        pixelBuffer[idx_scaledown    ],
+                        pixelBuffer[idx_scaledown + 0],
                         pixelBuffer[idx_scaledown + 1],
                         pixelBuffer[idx_scaledown + 2]
                     ));
                     int brightnessIndex = std::clamp(static_cast<int>(hsv[2]*31.9999f), 0, 31); //To turn it from 0-1 float to 0-31 index ints (ik theres a magic number stfu)
                     hsv[2] = 1;
                     float3 colorToUse = HSVtoRGB(hsv);
-                    if (textBrightnessArray[brightnessIndex][x%scaleFactor] & (1<<(y%scaleFactor)))
+                    if (textBrightnessArray[brightnessIndex][y%scaleFactor] & (1<<(x%scaleFactor)))
                     {
                         int idx = 4*(y*wWidth*scaleFactor + x);
-                        asciiPixelBuffer[idx    ] = static_cast<std::uint8_t>(colorToUse.r);
-                        asciiPixelBuffer[idx + 1] = static_cast<std::uint8_t>(colorToUse.g);
-                        asciiPixelBuffer[idx + 2] = static_cast<std::uint8_t>(colorToUse.b);
+                        asciiPixelBuffer[idx + 0] = static_cast<uint8_t>(std::clamp(std::round(colorToUse.r), 0.0f, 255.0f));
+                        asciiPixelBuffer[idx + 1] = static_cast<uint8_t>(std::clamp(std::round(colorToUse.g), 0.0f, 255.0f));
+                        asciiPixelBuffer[idx + 2] = static_cast<uint8_t>(std::clamp(std::round(colorToUse.b), 0.0f, 255.0f));
                         asciiPixelBuffer[idx + 3] = static_cast<std::uint8_t>(255.f);  //Opaque
                     }
                 }
@@ -196,7 +201,6 @@ SDL_AppResult SDL_AppIterate(void *appstate)
             SDL_UpdateTexture(texture, nullptr, asciiPixelBuffer, wWidth * scaleFactor * 4);
             SDL_RenderTexture(renderer, texture, nullptr, &dstRect);
         }
-
         
 
     ImGui::Render();
@@ -221,30 +225,29 @@ void SDL_AppQuit(void *appstate, SDL_AppResult result)
 std::vector<float> RGBtoHSV(float3 RGB)
 {
     std::vector<float> HSV = {0.f,0.f,0.f};
-    RGB = RGB / 255;
-    float Cmax = std::max({RGB.x, RGB.y, RGB.z});
-    float Cmin = std::min({RGB.x, RGB.y, RGB.z});
+    RGB = RGB/255.f;
+    float Cmax = std::max({RGB.r, RGB.g, RGB.b});
+    float Cmin = std::min({RGB.r, RGB.g, RGB.b});
     float delta = Cmax - Cmin;
 
     //Hue
-    if (delta == 0.f)
+    if (delta < 1e-6f)
     {
         HSV[0] = 0.f;
     }
-    else if (Cmax == RGB.r)
-    {
-        HSV[0] = 60.f * std::fmod(((RGB.g - RGB.b)/delta), 6.f);
-    }
     else if (Cmax == RGB.g)
     {
-        HSV[0] = 60.f * ((RGB.b - RGB.r)/delta) + 2.f;
+        HSV[0] = (((RGB.b - RGB.r)/delta) + 2.f);
     }
     else if (Cmax == RGB.b)
     {
-        HSV[0] = 60.f * ((RGB.r - RGB.g)/delta) + 4.f;
+        HSV[0] = (((RGB.r - RGB.g)/delta) + 4.f);
     }
-
-    if (HSV[0] < 0.0f) HSV[0] += 360.0f;
+    else if (Cmax == RGB.r)
+    {
+        HSV[0] = (((RGB.g - RGB.b)/delta) + 0.f);
+    }
+    HSV[0] = std::fmod(HSV[0]/6.f + 1.f, 1.f)*360.f; 
     
     //Saturation
     if (Cmax == 0.f)
@@ -265,7 +268,7 @@ std::vector<float> RGBtoHSV(float3 RGB)
 
 float3 HSVtoRGB(std::vector<float> HSV)
 {
-    float H = HSV[0];
+    float H = std::fmod(HSV[0]+360.f, 360.f);
     float S = HSV[1];
     float V = HSV[2];
 
@@ -277,14 +280,19 @@ float3 HSVtoRGB(std::vector<float> HSV)
 
     //The long and hard process of R', G', B'
 
-    if      (0.0f   <= H && H < 60.0f ) RGB = float3(C, X, 0);
-    else if (60.0f  <= H && H < 120.0f) RGB = float3(X, C, 0);
-    else if (120.0f <= H && H < 180.0f) RGB = float3(0, C, X);
-    else if (180.0f <= H && H < 240.0f) RGB = float3(0, X, C);
-    else if (240.0f <= H && H < 300.0f) RGB = float3(X, 0, C);
-    else if (300.0f <= H && H < 360.0f) RGB = float3(C, 0, X);
+    if      (0.0f   <= H && H < 60.0f ) {RGB = float3(C, X, 0);}
+    else if (60.0f  <= H && H < 120.0f) {RGB = float3(X, C, 0);}
+    else if (120.0f <= H && H < 180.0f) {RGB = float3(0, C, X);}
+    else if (180.0f <= H && H < 240.0f) {RGB = float3(0, X, C);}
+    else if (240.0f <= H && H < 300.0f) {RGB = float3(X, 0, C);}
+    else if (300.0f <= H && H < 360.0f) {RGB = float3(C, 0, X);}
+    else RGB = float3(0.1f,0.1f,0.1f);
 
     RGB = (RGB+float3(m,m,m))*255;
+    RGB.r = std::clamp(std::round(RGB.r), 0.0f, 255.0f);
+    RGB.g = std::clamp(std::round(RGB.g), 0.0f, 255.0f);
+    RGB.b = std::clamp(std::round(RGB.b), 0.0f, 255.0f);
+    
 
     return RGB;
 }

@@ -238,7 +238,7 @@ bool Scene::GetData(std::vector<Light>& lights, Camera& camera, SceneSettings& s
 
         std::vector<int> faceIndices = objectData["Model"]["Face Indices"];
 
-        Model model(verts, faceIndices);
+        Model model(verts, faceIndices, float3(1,1,1));
 
         //Transform
         float3 pos = float3(objectData["Transform"]["Position"][0], objectData["Transform"]["Position"][1], objectData["Transform"]["Position"][2]);
@@ -263,7 +263,7 @@ bool Scene::GetData(std::vector<Light>& lights, Camera& camera, SceneSettings& s
 
         std::vector<int> faceIndices = objectData["Model"]["Face Indices"];
 
-        Model model(verts, faceIndices);
+        Model model(verts, faceIndices, float3(1,1,1));
 
         //Transform
         float3 pos = float3(objectData["Transform"]["Position"][0], objectData["Transform"]["Position"][1], objectData["Transform"]["Position"][2]);
@@ -386,12 +386,12 @@ void Transform::SetParent(Transform* parent)
 //---------------------------------------------------------
 
 Model::Model()
-    : m_verts(), m_faceIndices()
+    : m_verts(), m_faceIndices(), m_color(1,1,1)
 {
 }
 
-Model::Model(const std::vector<float3> &verts, const std::vector<int> &faceIndices)
-    : m_verts(verts), m_faceIndices(faceIndices) 
+Model::Model(const std::vector<float3> &verts, const std::vector<int> &faceIndices, float3 color)
+    : m_verts(verts), m_faceIndices(faceIndices) , m_color(color)
 {
 }
 
@@ -437,6 +437,11 @@ const std::vector<float3> &Model::GetLocalVerts() const
 const std::vector<int> &Model::GetFaceIndices() const
 {
     return m_faceIndices;
+}
+
+const float3 &Model::GetColor() const
+{
+    return m_color;
 }
 
 //Recalculate coordinates of all points from the average of all vertices. Also returns said average.
@@ -487,6 +492,12 @@ void Model::AddFaceIndex(int index)
 {
     m_faceIndices.push_back(index);
 }
+
+void Model::SetColor(const float3 &color)
+{
+    m_color = color;
+}
+
 
 //----------------------------------------------------------------
 
