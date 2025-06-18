@@ -13,6 +13,10 @@ class Transform
         float3 GetRot() const;
         Transform* GetParent();
 
+        float3 GetForwardVector() const;
+        float3 GetRightVector() const;
+        float3 GetUpVector() const;
+
         void SetPos(const float3& newPos);
         void SetRot(const float3& newRot);
         void SetParent(Transform* parent);

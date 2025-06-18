@@ -7,6 +7,7 @@
 void SceneSettingsMenu::Draw(SceneSettings& settings)
 {
     ImGui::Begin("Scene Settings Menu", &m_visible);
+    ImGui::SeparatorText("Lighting");
     int lightingMode = static_cast<int>(settings.lightingMode);
     ImGui::Combo("Lighting mode", &lightingMode, "Flat\0Lambertian\0\0");
     if (lightingMode == 0) {settings.lightingMode = LightingMode::FLAT;}
@@ -22,6 +23,22 @@ void SceneSettingsMenu::Draw(SceneSettings& settings)
 
     float& falloffCf = settings.falloffCoeff;
     ImGui::DragFloat("Falloff Coefficient", &falloffCf);
+
+    ImGui::SeparatorText("Camera Movement");
+    float& sVel = settings.scrollVel;
+    ImGui::DragFloat("Scroll Velocity", &sVel);
+    
+    float& pVel = settings.panVel;
+    ImGui::DragFloat("Pan Velocity", &pVel);
+
+    float& rVel = settings.rotVel;
+    ImGui::DragFloat("Rotation Velocity", &rVel);
+
+    float& fVel = settings.FOVChangeSpeed;
+    ImGui::DragFloat("FOV Change Speed", &fVel);
+
+    float& mVel = settings.motionVel;
+    ImGui::DragFloat("QEWASD Motion Velocity", &mVel);
     
     ImGui::End();
 }

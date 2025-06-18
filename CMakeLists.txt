@@ -38,6 +38,7 @@ add_executable(3DASCII
   src/sceneViewer.cpp
   src/toolbar.cpp
   src/sceneSettingsMenu.cpp
+  src/mouseLogic.cpp
 
   src/ImGuiFileDialog.cpp
 )

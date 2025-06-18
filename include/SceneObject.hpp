@@ -21,6 +21,7 @@ class SceneObject
         void SetModel(Model model);
         void SetName(std::string name);
         void ChangeID();
+
     private:
         Transform m_transform;
         Model m_model;

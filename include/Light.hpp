@@ -9,7 +9,7 @@ class Light
     public:
         Light(float3 pos, float intensity);
         Light(float3 pos, float intensity, std::string name);
-        Light(float3 pos, float intensity, std::string name, std::string id);
+        Light(float3 pos, float intensity, std::string name, std::string id, float3 color);
         ~Light();
 
         float3 GetPosition() const;

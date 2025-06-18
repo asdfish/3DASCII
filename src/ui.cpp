@@ -13,6 +13,8 @@ void DisplayUI(Scene& scene, std::vector<Light>& lights, Camera& camera, SceneSe
     SceneViewer sceneViewer;
     SceneSettingsMenu sceneSettingsMenu;
 
+    RunLogic(camera, settings);
+
     // Draw the Toolbar (or main menu bar)
     toolbar.Draw(scene, lights, camera, settings);
 
@@ -23,7 +25,7 @@ void DisplayUI(Scene& scene, std::vector<Light>& lights, Camera& camera, SceneSe
     sceneViewer.Draw(scene, selectedObject, lights, selectedLight, camera, selectedCamera);
 
     // Draw the Inspector Menu
-    inspectorMenu.Draw(selectedObject, selectedLight, selectedCamera);
+    inspectorMenu.Draw(scene, selectedObject, selectedLight, selectedCamera);
 
     // Draw the Scene Settings Menu
     sceneSettingsMenu.Draw(settings);

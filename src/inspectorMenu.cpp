@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-void InspectorMenu::Draw(SceneObject*& selectedObject, Light*& selectedLight, Camera*& selectedCamera)
+void InspectorMenu::Draw(Scene& scene, SceneObject*& selectedObject, Light*& selectedLight, Camera*& selectedCamera)
 {
 
     int count = (selectedObject != nullptr)+(selectedLight != nullptr)+(selectedCamera != nullptr);
@@ -49,6 +49,17 @@ void InspectorMenu::Draw(SceneObject*& selectedObject, Light*& selectedLight, Ca
         float3 color = model.GetColor();
         ImGui::ColorEdit3("Color ", &color.r);   
         model.SetColor(color);  
+
+        //Display deletion button
+        if (ImGui::Button("Delete"))
+        {
+            if (scene.RemoveObjectFromScene(selectedObject->GetID()))
+            {
+                selectedObject = nullptr;
+                selectedLight = nullptr;
+                selectedCamera = nullptr;
+            }
+        }
     }
 
     /* Light */
@@ -85,12 +96,18 @@ void InspectorMenu::Draw(SceneObject*& selectedObject, Light*& selectedLight, Ca
         Transform &transform = selectedCamera->GetModifiableTransform();
         float3 position = transform.GetPos();
         float3 rotation = transform.GetRot();
+        float FOV = selectedCamera->GetFOV();
+        float focalLength = selectedCamera -> GetFocalLength();
         ImGui::DragFloat3("Position", &position.x, 0.05f);
         ImGui::DragFloat3("Rotation", &rotation.x, 0.1f, 0.0f, 2.f*M_PI, "%.2f rad", ImGuiSliderFlags_WrapAround);
+        ImGui::DragFloat("FOV", &FOV, 0.f, 180.f);
+        ImGui::DragFloat("Focal Length", &focalLength);
 
         // Update the transform with new values
         transform.SetPos(position);
         transform.SetRot(rotation);     
+        selectedCamera->SetFOV(FOV);
+        selectedCamera->SetFocalLength(focalLength);
     }
     else
     {

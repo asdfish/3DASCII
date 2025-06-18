@@ -1,4 +1,5 @@
 #include <imgui.h>
+#include <imgui_internal.h>
 #include <imgui_impl_SDL3.h>
 #include <imgui_impl_sdlrenderer3.h>
 
@@ -19,6 +20,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <cstring>
 
 constexpr int wWidth = 150;
 constexpr int wHeight = 110;
@@ -113,7 +115,7 @@ SDL_AppResult SDL_AppIterate(void *appstate)
     SDL_RenderClear(renderer);
 
     std::fill(pixelBuffer, pixelBuffer + (wWidth * wHeight * 4), 0);
-    std::fill(asciiPixelBuffer, pixelBuffer + (wWidth * scaleFactor * wHeight * scaleFactor * 4), 0);
+    std::fill(asciiPixelBuffer, asciiPixelBuffer + (wWidth * scaleFactor * wHeight * scaleFactor * 4), 0);
     std::fill(zbuffer, zbuffer + (wWidth * wHeight), FLT_MAX);
 
     
@@ -133,8 +135,9 @@ SDL_AppResult SDL_AppIterate(void *appstate)
 
             ImGuiFileDialog::Instance()->Close();
         }
-
-        ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode);
+        
+        ImGuiID id = ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport(), ImGuiDockNodeFlags_NoDockingInCentralNode | ImGuiDockNodeFlags_PassthruCentralNode, nullptr);
+        ImGuiDockNode* node = ImGui::DockBuilderGetCentralNode(id);
 
         ImGui::SetNextWindowPos(ImVec2(10, 10), ImGuiCond_FirstUseEver);
         ImGui::SetNextWindowSize(ImVec2(300, 200), ImGuiCond_FirstUseEver);
@@ -154,6 +157,8 @@ SDL_AppResult SDL_AppIterate(void *appstate)
                     SDL_PIXELFORMAT_ABGR8888, SDL_TEXTUREACCESS_STREAMING, wWidth, wHeight);
                 SDL_SetTextureScaleMode(texture, SDL_SCALEMODE_NEAREST); 
             }
+            void* pixels = nullptr;
+            int pitch = 0;
 
             SDL_UpdateTexture(texture, nullptr, pixelBuffer, wWidth * 4);
             SDL_RenderTexture(renderer, texture, nullptr, &dstRect);
@@ -198,6 +203,9 @@ SDL_AppResult SDL_AppIterate(void *appstate)
                     }
                 }
             }
+            void* pixels = nullptr;
+            int pitch = 0;
+
             SDL_UpdateTexture(texture, nullptr, asciiPixelBuffer, wWidth * scaleFactor * 4);
             SDL_RenderTexture(renderer, texture, nullptr, &dstRect);
         }

@@ -16,6 +16,9 @@ class Scene
         void AddObjectToScene(std::string id);
         void AddObjectToAssets(SceneObject object);
 
+        bool RemoveObjectFromScene(const std::string& id);
+        bool RemoveObjectFromAssets(const std::string& id);
+
         void GetObjectList() const;
         void GetObjectData();
 

@@ -16,10 +16,6 @@ void RenderScene(Scene& scene, const Camera& camera, const std::vector<Light>& l
 void RenderModel(Model& model, float3 position, float3 rotation, const Camera& camera, const std::vector<Light>& lights, SceneSettings& settings, std::uint8_t* pixelBuffer, float* zbuffer)
 {
 
-    static std::random_device rd;
-    static std::mt19937 gen(rd());
-    static std::uniform_real_distribution<float> dist(0.0f, 1.0f);
-
     std::vector<float3> vertices = model.GetVerts(position, rotation);
     std::vector<int> faceIndices = model.GetFaceIndices();
 
@@ -53,7 +49,7 @@ void RenderModel(Model& model, float3 position, float3 rotation, const Camera& c
                 float lightIntensity = light.GetIntensity()*settings.lightIntensityCoeff*angleCos/sqDistance;
                 float3 lightColor = light.GetColor();
                 float3 I_out = lightColor*lightIntensity;
-                faceColor = I_out * modelColor;
+                faceColor = faceColor + I_out * modelColor;
             }
             //Reinhard Tone Mapping Wooo
             faceColor = faceColor/(faceColor+float3(1,1,1)); 
@@ -89,8 +85,6 @@ void RenderModel(Model& model, float3 position, float3 rotation, const Camera& c
         }
         
         //std::cout<<"v1: "<<v1.x<<" "<<v1.y<<" "<<v1.z<<" | v2: "<<v2.x<<" "<<v2.y<<" "<<v2.z<<" | v3: "<<v3.x<<" "<<v3.y<<" "<<v3.z<<"\n";
-
-        float3 randColor = float3(dist(gen), dist(gen), dist(gen));
 
         //std::cout<<"color: "<<randColor.r<<" "<<randColor.g<<" "<<randColor.b<<"\n";
 
