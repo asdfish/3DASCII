@@ -7,6 +7,9 @@ void DisplayUI(Scene& scene, std::vector<Light>& lights, Camera& camera, SceneSe
     static Light* selectedLight = nullptr;
     static Camera* selectedCamera = nullptr;
 
+    static std::optional<SceneObject> copieObject = std::nullopt;
+    static std::optional<Light> copiedLight = std::nullopt;
+
     Toolbar toolbar;
     AssetBrowser assetBrowser;
     InspectorMenu inspectorMenu;
@@ -22,7 +25,7 @@ void DisplayUI(Scene& scene, std::vector<Light>& lights, Camera& camera, SceneSe
     assetBrowser.Draw(scene, selectedObject);
 
     // Draw the Scene Viewer
-    sceneViewer.Draw(scene, selectedObject, lights, selectedLight, camera, selectedCamera);
+    sceneViewer.Draw(scene, selectedObject, lights, selectedLight, camera, selectedCamera, copiedLight, copieObject);
 
     // Draw the Inspector Menu
     inspectorMenu.Draw(scene, selectedObject, selectedLight, selectedCamera);

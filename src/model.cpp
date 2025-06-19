@@ -45,6 +45,11 @@ void Scene::AddObjectToScene(std::string id)
     }
 }
 
+void Scene::AddObjectToScene(SceneObject object)
+{
+    m_sceneObjects.push_back(object);
+}
+
 void Scene::AddObjectToAssets(SceneObject object)
 {
     m_assetObjects.push_back(object);
@@ -614,12 +619,18 @@ void objImporter(const char* path, Scene& scene)
         //Face Indices (f)
         else if (temp == "f")
         {
+            std::vector<int> tempFaceIndices;
             //For now, we are only looking at vertex data, not materials
             while(s>>temp) 
             {
-                modelFaceIndices.back().push_back(std::stoi(temp.substr(0, temp.find('/')))-1); // -1 for turning array from 1-indexed to 0-indexed
+                tempFaceIndices.push_back(std::stoi(temp.substr(0, temp.find('/')))-1); // -1 for turning array from 1-indexed to 0-indexed
             }
-            
+            for (int i = 2; i<tempFaceIndices.size(); i++)
+            {
+                modelFaceIndices.back().push_back(tempFaceIndices[0]);
+                modelFaceIndices.back().push_back(tempFaceIndices[i-1]);
+                modelFaceIndices.back().push_back(tempFaceIndices[i]);
+            }
         }
     }
 

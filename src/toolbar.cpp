@@ -3,6 +3,7 @@
 #include <imgui.h>
 #include <imgui_impl_SDL3.h>
 #include <imgui_impl_sdlrenderer3.h>
+#include <SDL3/SDL.h>
 
 void Toolbar::Draw(Scene& scene, std::vector<Light>& lights, Camera& camera, SceneSettings& settings)
 {
@@ -21,6 +22,26 @@ void Toolbar::Draw(Scene& scene, std::vector<Light>& lights, Camera& camera, Sce
             {
                 scene.SaveData(lights, camera, settings);
                 openPopup = true;
+            }
+            if (ImGui::MenuItem("Export Colored ASCII"))
+            {
+                SDL_Event event;
+                SDL_zero(event);
+                event.type = SDL_EVENT_USER;
+                event.user.code = 1001;
+                event.user.data1 = (void*)"color";
+
+                SDL_PushEvent(&event);
+            }
+            if (ImGui::MenuItem("Export Normal ASCII"))
+            {
+                SDL_Event event;
+                SDL_zero(event);
+                event.type = SDL_EVENT_USER;
+                event.user.code = 1002;
+                event.user.data1 = (void*)"nocolor";
+
+                SDL_PushEvent(&event);
             }
             ImGui::EndMenu();
         }

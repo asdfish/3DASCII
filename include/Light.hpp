@@ -22,6 +22,7 @@ class Light
         void SetIntensity(float intensity);
         void SetName(std::string name);
         void SetColor(const float3& color);
+        void ChangeID();
     private:
         float3 m_position;
         float3 m_color;

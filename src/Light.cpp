@@ -65,3 +65,7 @@ void Light::SetColor(const float3 &color)
 {
     m_color = color;
 }
+void Light::ChangeID()
+{
+    m_id = uuid::generate_uuid_v4();
+}

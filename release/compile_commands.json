@@ -79,6 +79,12 @@
 },
 {
   "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/release",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/sdl3-build/include-revision -O3 -DNDEBUG -o CMakeFiles\\3DASCII.dir\\src\\mouseLogic.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\mouseLogic.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\mouseLogic.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\mouseLogic.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/release",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/release/_deps/sdl3-build/include-revision -O3 -DNDEBUG -o CMakeFiles\\3DASCII.dir\\src\\ImGuiFileDialog.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\ImGuiFileDialog.cpp",
   "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\ImGuiFileDialog.cpp",
   "output": "CMakeFiles\\3DASCII.dir\\src\\ImGuiFileDialog.cpp.obj"

@@ -19,6 +19,7 @@
 #include <SDL3/SDL_main.h>
 
 #include <iostream>
+#include <fstream>
 #include <algorithm>
 #include <cstring>
 
@@ -50,9 +51,9 @@ SceneSettings settings;
 
 std::vector<float> RGBtoHSV(float3 RGB);
 float3 HSVtoRGB(std::vector<float> HSV);
+void ExportCheck();
 
-//ttest
-float color[] = {0,0,0,0};
+int shouldExport = 0;
 
 /* This function runs once at startup. */
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
@@ -100,6 +101,18 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
 {
     if (event->type == SDL_EVENT_QUIT) {
         return SDL_APP_SUCCESS;  /* end the program, reporting success to the OS. */
+    }
+    if (event->type == SDL_EVENT_USER)
+    {
+        //ASCII Export
+        if(event->user.code == 1001)
+        {
+            shouldExport = 1;
+        }
+        if(event->user.code == 1002)
+        {
+            shouldExport = 2;
+        }
     }
     ImGui_ImplSDL3_ProcessEvent(event);
     return SDL_APP_CONTINUE;  /* carry on with the program! */
@@ -216,6 +229,10 @@ SDL_AppResult SDL_AppIterate(void *appstate)
 
     /* put the newly-cleared rendering on the screen. */
     SDL_RenderPresent(renderer);
+    
+    //EXPORT
+    ExportCheck();
+
 
     return SDL_APP_CONTINUE;  /* carry on with the program! */
 }
@@ -229,6 +246,55 @@ void SDL_AppQuit(void *appstate, SDL_AppResult result)
 
     scene.SaveData(lights, camera, settings);
 }
+
+//---------------------------------------
+void ExportCheck()
+{
+    if (shouldExport != 0)
+    {
+        std::ofstream file("export.txt", std::ios::binary);
+        file << "\xEF\xBB\xBF";
+        float2 dimensions = camera.GetPixelDimensions();
+        for (int y = 0; y<dimensions.y; y++)
+        {
+            for(int x = 0; x<dimensions.x; x++)
+            {
+                int idx = 4*(y * dimensions.x + x);
+
+                if (pixelBuffer[idx + 3] == 0.f) 
+                {file<<" "; continue;}
+
+                std::vector<float> hsv = RGBtoHSV(float3(
+                    pixelBuffer[idx + 0],
+                    pixelBuffer[idx + 1],
+                    pixelBuffer[idx + 2]
+                ));
+                int brightnessIndex = std::clamp(static_cast<int>(hsv[2]*31.9999f), 0, 31);
+                hsv[2] = 1;
+                float3 colorToUse = HSVtoRGB(hsv);
+                if (shouldExport == 1)
+                {
+                    float3 colorToUse = HSVtoRGB(hsv);
+                    file<<"\x1b[38;2;"
+                    <<static_cast<int>(colorToUse.r)<<";"
+                    <<static_cast<int>(colorToUse.g)<<";"
+                    <<static_cast<int>(colorToUse.b)<<"m"
+                    <<textBrightnessArrayCharacters[brightnessIndex]
+                    <<"\x1b[0m";
+                }
+                if (shouldExport == 2)
+                {
+                    file<<textBrightnessArrayCharacters[brightnessIndex];
+                }
+            }
+            file<<"\n";
+        }
+        shouldExport = 0;
+        SDL_Log("Export Done!");
+    }
+}
+
+//---------------------------------------
 
 std::vector<float> RGBtoHSV(float3 RGB)
 {

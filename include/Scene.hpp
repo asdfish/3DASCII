@@ -14,6 +14,7 @@ class Scene
         std::vector<SceneObject>& GetSceneObjects();
         std::vector<SceneObject>& GetAssetObjects();
         void AddObjectToScene(std::string id);
+        void AddObjectToScene(SceneObject object);
         void AddObjectToAssets(SceneObject object);
 
         bool RemoveObjectFromScene(const std::string& id);

@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-void SceneViewer::Draw(Scene& scene, SceneObject*& selectedObject, std::vector<Light>& lights, Light*& selectedLight, Camera& camera, Camera*& selectedCamera)
+void SceneViewer::Draw(Scene& scene, SceneObject*& selectedObject, std::vector<Light>& lights, Light*& selectedLight, Camera& camera, Camera*& selectedCamera, std::optional<Light>& copiedLight, std::optional<SceneObject>& copiedObject)
 {
     ImGui::Begin("Scene Viewer", &m_visible);
 
@@ -117,6 +117,40 @@ void SceneViewer::Draw(Scene& scene, SceneObject*& selectedObject, std::vector<L
         ImGui::PopStyleVar();
         ImGui::EndTable();
     }
-    
+    if(ImGui::IsKeyChordPressed(ImGuiMod_Ctrl | ImGuiKey_C))
+    {
+        if (selectedObject != nullptr)
+        {
+            copiedObject = *selectedObject;
+            copiedLight = std::nullopt;
+
+            copiedObject->ChangeID();
+        }
+        if (selectedLight != nullptr)
+        {
+            copiedObject = std::nullopt;
+            copiedLight = *selectedLight;
+
+            copiedLight->ChangeID();
+        }
+    }
+    if(ImGui::IsKeyChordPressed(ImGuiMod_Ctrl | ImGuiKey_V))
+    {
+        if(copiedObject.has_value())
+        {
+            scene.AddObjectToScene(*copiedObject);
+            selectedObject = nullptr;
+            selectedLight = nullptr;
+            selectedCamera = nullptr;
+            
+        }
+        if(copiedLight.has_value())
+        {
+            lights.push_back(*copiedLight);
+            selectedObject = nullptr;
+            selectedLight = nullptr;
+            selectedCamera = nullptr;
+        }
+    }
     ImGui::End();
 }
