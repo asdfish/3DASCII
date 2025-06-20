@@ -53,7 +53,7 @@ build CMakeFiles/3DASCII.dir/src/main.cpp.obj: CXX_COMPILER__3DASCII_unscanned_D
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\main.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
@@ -61,7 +61,7 @@ build CMakeFiles/3DASCII.dir/src/model.cpp.obj: CXX_COMPILER__3DASCII_unscanned_
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\model.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
@@ -69,7 +69,7 @@ build CMakeFiles/3DASCII.dir/src/multifloat.cpp.obj: CXX_COMPILER__3DASCII_unsca
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\multifloat.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
@@ -77,7 +77,7 @@ build CMakeFiles/3DASCII.dir/src/image.cpp.obj: CXX_COMPILER__3DASCII_unscanned_
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\image.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
@@ -85,7 +85,7 @@ build CMakeFiles/3DASCII.dir/src/renderHandling.cpp.obj: CXX_COMPILER__3DASCII_u
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\renderHandling.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
@@ -93,7 +93,7 @@ build CMakeFiles/3DASCII.dir/src/camera.cpp.obj: CXX_COMPILER__3DASCII_unscanned
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\camera.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
@@ -101,7 +101,7 @@ build CMakeFiles/3DASCII.dir/src/Light.cpp.obj: CXX_COMPILER__3DASCII_unscanned_
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\Light.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
@@ -109,7 +109,7 @@ build CMakeFiles/3DASCII.dir/src/ui.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Deb
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\ui.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
@@ -117,7 +117,7 @@ build CMakeFiles/3DASCII.dir/src/inspectorMenu.cpp.obj: CXX_COMPILER__3DASCII_un
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\inspectorMenu.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
@@ -125,7 +125,7 @@ build CMakeFiles/3DASCII.dir/src/assetBrowser.cpp.obj: CXX_COMPILER__3DASCII_uns
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\assetBrowser.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
@@ -133,7 +133,7 @@ build CMakeFiles/3DASCII.dir/src/sceneViewer.cpp.obj: CXX_COMPILER__3DASCII_unsc
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\sceneViewer.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
@@ -141,7 +141,7 @@ build CMakeFiles/3DASCII.dir/src/toolbar.cpp.obj: CXX_COMPILER__3DASCII_unscanne
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\toolbar.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
@@ -149,7 +149,7 @@ build CMakeFiles/3DASCII.dir/src/sceneSettingsMenu.cpp.obj: CXX_COMPILER__3DASCI
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\sceneSettingsMenu.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
@@ -157,7 +157,7 @@ build CMakeFiles/3DASCII.dir/src/mouseLogic.cpp.obj: CXX_COMPILER__3DASCII_unsca
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\mouseLogic.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
@@ -165,7 +165,7 @@ build CMakeFiles/3DASCII.dir/src/ImGuiFileDialog.cpp.obj: CXX_COMPILER__3DASCII_
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\ImGuiFileDialog.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src
 
@@ -173,7 +173,7 @@ build CMakeFiles/3DASCII.dir/_deps/imgui-src/imgui.cpp.obj: CXX_COMPILER__3DASCI
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\_deps\imgui-src\imgui.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\_deps\imgui-src
 
@@ -181,7 +181,7 @@ build CMakeFiles/3DASCII.dir/_deps/imgui-src/imgui_draw.cpp.obj: CXX_COMPILER__3
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\_deps\imgui-src\imgui_draw.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\_deps\imgui-src
 
@@ -189,7 +189,7 @@ build CMakeFiles/3DASCII.dir/_deps/imgui-src/imgui_widgets.cpp.obj: CXX_COMPILER
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\_deps\imgui-src\imgui_widgets.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\_deps\imgui-src
 
@@ -197,7 +197,7 @@ build CMakeFiles/3DASCII.dir/_deps/imgui-src/imgui_tables.cpp.obj: CXX_COMPILER_
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\_deps\imgui-src\imgui_tables.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\_deps\imgui-src
 
@@ -205,7 +205,7 @@ build CMakeFiles/3DASCII.dir/_deps/imgui-src/imgui_demo.cpp.obj: CXX_COMPILER__3
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\_deps\imgui-src\imgui_demo.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\_deps\imgui-src
 
@@ -213,7 +213,7 @@ build CMakeFiles/3DASCII.dir/_deps/imgui-src/backends/imgui_impl_sdl3.cpp.obj: C
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\_deps\imgui-src\backends\imgui_impl_sdl3.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\_deps\imgui-src\backends
 
@@ -221,7 +221,7 @@ build CMakeFiles/3DASCII.dir/_deps/imgui-src/backends/imgui_impl_sdlrenderer3.cp
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\_deps\imgui-src\backends\imgui_impl_sdlrenderer3.cpp.obj.d
   FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/imgui-src/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-src/include -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test -IC:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/include-revision
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\_deps\imgui-src\backends
 

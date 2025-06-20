@@ -197,7 +197,7 @@
 13130	13931	7719471324881171	_deps/sdl3-build/CMakeFiles/SDL3-shared.dir/src/video/yuv2rgb/yuv_rgb_lsx.c.obj	d586d553236887b
 1685	2817	7720222277356758	_deps/sdl3-build/CMakeFiles/SDL3-shared.dir/src/video/SDL_blit_A.c.obj	698df8183bdec4b7
 13450	14589	7719471328086783	_deps/sdl3-build/CMakeFiles/SDL3-shared.dir/src/video/yuv2rgb/yuv_rgb_std.c.obj	66fcb3c71bc6b011
-7	7066	7721028911472960	build.ninja	f316613e25647624
+7	7066	7721160202949550	build.ninja	f316613e25647624
 2357	2877	7720222284078989	_deps/sdl3-build/CMakeFiles/SDL3-shared.dir/src/audio/disk/SDL_diskaudio.c.obj	527a8c19e3bd0038
 12853	14294	7719471322107194	_deps/sdl3-build/CMakeFiles/SDL3-shared.dir/src/video/SDL_stb.c.obj	b281e78ef1f3e6ba
 13564	14178	7719471329222523	_deps/sdl3-build/CMakeFiles/SDL3-shared.dir/src/camera/dummy/SDL_camera_dummy.c.obj	4df01e918093bb49
@@ -276,7 +276,7 @@
 6359	8066	7720222324085962	_deps/sdl3-build/CMakeFiles/SDL3-shared.dir/src/gpu/vulkan/SDL_gpu_vulkan.c.obj	47b0f39df3df2b43
 21811	25553	7719471411688055	_deps/sdl3-build/CMakeFiles/SDL3-shared.dir/src/joystick/windows/SDL_windows_gaming_input.c.obj	627e006062d134e7
 54	1069	7720433808455665	CMakeFiles/3DASCII.dir/src/inspectorMenu.cpp.obj	1dc28395ec6f05e6
-7	7066	7721028910836857	C:/Users/Joseph/Documents/Projects/3DASCII/build/cmake_install.cmake	f316613e25647624
+7	7066	7721160202227575	C:/Users/Joseph/Documents/Projects/3DASCII/build/cmake_install.cmake	f316613e25647624
 58	1069	7720433808485693	CMakeFiles/3DASCII.dir/src/assetBrowser.cpp.obj	447eadde71346641
 34	985	7720454137848069	CMakeFiles/3DASCII.dir/src/sceneViewer.cpp.obj	d87b76abc3ae0a59
 24595	25451	7719471439532157	CMakeFiles/3DASCII.dir/_deps/imgui-src/backends/imgui_impl_sdlrenderer3.cpp.obj	9231dfecb9b8a501
@@ -290,6 +290,6 @@
 3770	21675	7719471231281705	CMakeFiles/3DASCII.dir/src/ImGuiFileDialog.cpp.obj	36f4533999cfb7c2
 986	1680	7720454147368000	bin/3DASCII.exe	77d39896b870dd60
 48	1001	7720433808390501	CMakeFiles/3DASCII.dir/src/Light.cpp.obj	cba602f119f8f412
-7	7066	7721028911119402	C:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/cmake_install.cmake	f316613e25647624
+7	7066	7721160202545652	C:/Users/Joseph/Documents/Projects/3DASCII/build/_deps/sdl3-build/cmake_install.cmake	f316613e25647624
 47	343	7719592254558551	CMakeFiles/3DASCII.dir/src/sceneSettingsMenu.cpp.obj	1cf467d17cbc8e38
 38	275	7719669814014274	CMakeFiles/3DASCII.dir/src/mouseLogic.cpp.obj	6ea69a57c6a2cf50

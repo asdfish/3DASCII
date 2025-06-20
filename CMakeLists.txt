@@ -63,7 +63,7 @@ target_include_directories(3DASCII PRIVATE
   ${imgui_SOURCE_DIR}
   ${imgui_SOURCE_DIR}/backends
   ${sdl3_SOURCE_DIR}/include
-  ${PROJECT_SOURCE_DIR}/include
+  ${PROJECT_SOURCE_DIR}/include-test
 )
 
 # Link libraries
