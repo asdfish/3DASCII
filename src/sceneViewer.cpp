@@ -142,7 +142,6 @@ void SceneViewer::Draw(Scene& scene, SceneObject*& selectedObject, std::vector<L
             selectedObject = nullptr;
             selectedLight = nullptr;
             selectedCamera = nullptr;
-            
         }
         if(copiedLight.has_value())
         {
