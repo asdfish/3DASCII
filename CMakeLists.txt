@@ -54,11 +54,14 @@ target_include_directories(imgui PUBLIC
 )
 
 # === Link All Dependencies ===
+find_package(OpenGL REQUIRED)
+
 target_link_libraries(3DASCII PRIVATE
     glad
     glm
     glfw
     imgui
+    OpenGL::GL
 )
 
 # === Add ImGui + GLAD include dirs to your app ===
@@ -69,3 +72,6 @@ target_include_directories(3DASCII PRIVATE
     lib/imgui/backends
     lib/glfw/include
 )
+
+
+
