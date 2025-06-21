@@ -1,39 +1,38 @@
 {
-    "version": 3,
-    "configurePresets": [
-        {
-            "name": "default",
-            "displayName": "Debug Build",
-            "description": " debug (and default) settings, using msys2 and ninja",
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/build",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_C_COMPILER": "C:/msys64/ucrt64/bin/gcc.exe",
-                "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe",
-                "CMAKE_EXPORT_COMPILE_COMMANDS": "YES"
-            }
-        },
-        {
-            "name": "release",
-            "displayName": "Release Build",
-            "description": "release settings, using msys2 and ninja",
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/release",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release",
-                "CMAKE_C_COMPILER": "C:/msys64/ucrt64/bin/gcc.exe",
-                "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe",
-                "CMAKE_EXPORT_COMPILE_COMMANDS": "YES"
-            }
-        }
-    ],
-    "buildPresets": [
-        {
-            "name": "Release Build",
-            "description": "",
-            "displayName": "",
-            "configurePreset": "release"
-        }
-    ]
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "Debug Build (MSVC + Ninja)",
+      "description": "Default debug build using MSVC and Ninja generator",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
+        "CMAKE_C_COMPILER": "C:/msys64/ucrt64/bin/gcc.exe",
+        "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe"
+      }
+    },
+    {
+      "name": "release",
+      "displayName": "Release Build (MSVC + Ninja)",
+      "description": "Release build using MSVC and Ninja generator",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
+        "CMAKE_C_COMPILER": "C:/msys64/ucrt64/bin/gcc.exe",
+        "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "release-build",
+      "displayName": "Build (Release)",
+      "configurePreset": "release"
+    }
+  ]
 }

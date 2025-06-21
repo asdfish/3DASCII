@@ -1,7 +1,11 @@
 {
 	"InstallScripts" : 
 	[
-		"C:/Users/Joseph/Documents/Projects/3DASCII/build/cmake_install.cmake"
+		"C:/Users/Joseph/Documents/Projects/3DASCII/build/cmake_install.cmake",
+		"C:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glm/cmake_install.cmake",
+		"C:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glm/glm/cmake_install.cmake",
+		"C:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/cmake_install.cmake",
+		"C:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

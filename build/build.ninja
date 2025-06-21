@@ -47,111 +47,55 @@ cmake_ninja_workdir = C$:/Users/Joseph/Documents/Projects/3DASCII/build/
 #############################################
 # Order-only phony target for 3DASCII
 
-build cmake_object_order_depends_target_3DASCII: phony || .
+build cmake_object_order_depends_target_3DASCII: phony || cmake_object_order_depends_target_glad cmake_object_order_depends_target_glfw cmake_object_order_depends_target_glm cmake_object_order_depends_target_imgui
 
 build CMakeFiles/3DASCII.dir/src/core/main.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/core/main.cpp || cmake_object_order_depends_target_3DASCII
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\core\main.cpp.obj.d
-  FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/SDL3/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src\core
 
 build CMakeFiles/3DASCII.dir/src/core/managers/Coordinator.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/core/managers/Coordinator.cpp || cmake_object_order_depends_target_3DASCII
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\core\managers\Coordinator.cpp.obj.d
-  FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/SDL3/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src\core\managers
 
 build CMakeFiles/3DASCII.dir/src/core/managers/EventBus.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/core/managers/EventBus.cpp || cmake_object_order_depends_target_3DASCII
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\core\managers\EventBus.cpp.obj.d
-  FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/SDL3/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src\core\managers
 
 build CMakeFiles/3DASCII.dir/src/core/managers/EntityManager.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/core/managers/EntityManager.cpp || cmake_object_order_depends_target_3DASCII
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\core\managers\EntityManager.cpp.obj.d
-  FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/SDL3/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src\core\managers
 
 build CMakeFiles/3DASCII.dir/src/core/managers/ComponentManager.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/core/managers/ComponentManager.cpp || cmake_object_order_depends_target_3DASCII
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\core\managers\ComponentManager.cpp.obj.d
-  FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/SDL3/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src\core\managers
 
 build CMakeFiles/3DASCII.dir/src/core/managers/SystemManager.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/core/managers/SystemManager.cpp || cmake_object_order_depends_target_3DASCII
   CONFIG = Debug
   DEP_FILE = CMakeFiles\3DASCII.dir\src\core\managers\SystemManager.cpp.obj.d
-  FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/SDL3/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src\core\managers
-
-build CMakeFiles/3DASCII.dir/lib/imgui/imgui.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/imgui.cpp || cmake_object_order_depends_target_3DASCII
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles\3DASCII.dir\lib\imgui\imgui.cpp.obj.d
-  FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/SDL3/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test
-  OBJECT_DIR = CMakeFiles\3DASCII.dir
-  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\lib\imgui
-
-build CMakeFiles/3DASCII.dir/lib/imgui/imgui_draw.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/imgui_draw.cpp || cmake_object_order_depends_target_3DASCII
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles\3DASCII.dir\lib\imgui\imgui_draw.cpp.obj.d
-  FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/SDL3/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test
-  OBJECT_DIR = CMakeFiles\3DASCII.dir
-  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\lib\imgui
-
-build CMakeFiles/3DASCII.dir/lib/imgui/imgui_widgets.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/imgui_widgets.cpp || cmake_object_order_depends_target_3DASCII
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles\3DASCII.dir\lib\imgui\imgui_widgets.cpp.obj.d
-  FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/SDL3/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test
-  OBJECT_DIR = CMakeFiles\3DASCII.dir
-  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\lib\imgui
-
-build CMakeFiles/3DASCII.dir/lib/imgui/imgui_tables.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/imgui_tables.cpp || cmake_object_order_depends_target_3DASCII
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles\3DASCII.dir\lib\imgui\imgui_tables.cpp.obj.d
-  FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/SDL3/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test
-  OBJECT_DIR = CMakeFiles\3DASCII.dir
-  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\lib\imgui
-
-build CMakeFiles/3DASCII.dir/lib/imgui/imgui_demo.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/imgui_demo.cpp || cmake_object_order_depends_target_3DASCII
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles\3DASCII.dir\lib\imgui\imgui_demo.cpp.obj.d
-  FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/SDL3/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test
-  OBJECT_DIR = CMakeFiles\3DASCII.dir
-  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\lib\imgui
-
-build CMakeFiles/3DASCII.dir/lib/imgui/backends/imgui_impl_sdl3.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends/imgui_impl_sdl3.cpp || cmake_object_order_depends_target_3DASCII
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles\3DASCII.dir\lib\imgui\backends\imgui_impl_sdl3.cpp.obj.d
-  FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/SDL3/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test
-  OBJECT_DIR = CMakeFiles\3DASCII.dir
-  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\lib\imgui\backends
-
-build CMakeFiles/3DASCII.dir/lib/imgui/backends/imgui_impl_sdlrenderer3.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends/imgui_impl_sdlrenderer3.cpp || cmake_object_order_depends_target_3DASCII
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles\3DASCII.dir\lib\imgui\backends\imgui_impl_sdlrenderer3.cpp.obj.d
-  FLAGS = -g
-  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/SDL3/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/include-test
-  OBJECT_DIR = CMakeFiles\3DASCII.dir
-  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\lib\imgui\backends
 
 
 # =============================================================================
@@ -161,17 +105,132 @@ build CMakeFiles/3DASCII.dir/lib/imgui/backends/imgui_impl_sdlrenderer3.cpp.obj:
 #############################################
 # Link the executable bin\3DASCII.exe
 
-build bin/3DASCII.exe: CXX_EXECUTABLE_LINKER__3DASCII_Debug CMakeFiles/3DASCII.dir/src/core/main.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/Coordinator.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/EventBus.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/EntityManager.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/ComponentManager.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/SystemManager.cpp.obj CMakeFiles/3DASCII.dir/lib/imgui/imgui.cpp.obj CMakeFiles/3DASCII.dir/lib/imgui/imgui_draw.cpp.obj CMakeFiles/3DASCII.dir/lib/imgui/imgui_widgets.cpp.obj CMakeFiles/3DASCII.dir/lib/imgui/imgui_tables.cpp.obj CMakeFiles/3DASCII.dir/lib/imgui/imgui_demo.cpp.obj CMakeFiles/3DASCII.dir/lib/imgui/backends/imgui_impl_sdl3.cpp.obj CMakeFiles/3DASCII.dir/lib/imgui/backends/imgui_impl_sdlrenderer3.cpp.obj
+build bin/3DASCII.exe: CXX_EXECUTABLE_LINKER__3DASCII_Debug CMakeFiles/3DASCII.dir/src/core/main.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/Coordinator.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/EventBus.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/EntityManager.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/ComponentManager.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/SystemManager.cpp.obj | libglad.a lib/glm/glm/libglm.a lib/glfw/src/libglfw3.a libimgui.a || lib/glfw/src/libglfw3.a lib/glm/glm/libglm.a libglad.a libimgui.a
   CONFIG = Debug
   FLAGS = -g
-  LINK_LIBRARIES = -lSDL3  -lopengl32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  LINK_PATH = -LC:/Users/Joseph/Documents/Projects/3DASCII/lib/SDL3/lib/x64
+  LINK_LIBRARIES = libglad.a  lib/glm/glm/libglm.a  lib/glfw/src/libglfw3.a  libimgui.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\3DASCII.dir
-  POST_BUILD = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build && "C:\Program Files\CMake\bin\cmake.exe" -E copy_if_different C:/Users/Joseph/Documents/Projects/3DASCII/lib/SDL3/lib/x64/SDL3.dll C:/Users/Joseph/Documents/Projects/3DASCII/build/bin"
+  POST_BUILD = cd .
   PRE_LINK = cd .
   TARGET_FILE = bin\3DASCII.exe
   TARGET_IMPLIB = lib3DASCII.dll.a
   TARGET_PDB = 3DASCII.exe.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target glad
+
+
+#############################################
+# Order-only phony target for glad
+
+build cmake_object_order_depends_target_glad: phony || .
+
+build CMakeFiles/glad.dir/lib/glad/src/gl.c.obj: C_COMPILER__glad_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/src/gl.c || cmake_object_order_depends_target_glad
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\glad.dir\lib\glad\src\gl.c.obj.d
+  FLAGS = -g
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include
+  OBJECT_DIR = CMakeFiles\glad.dir
+  OBJECT_FILE_DIR = CMakeFiles\glad.dir\lib\glad\src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target glad
+
+
+#############################################
+# Link the static library libglad.a
+
+build libglad.a: C_STATIC_LIBRARY_LINKER__glad_Debug CMakeFiles/glad.dir/lib/glad/src/gl.c.obj
+  CONFIG = Debug
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles\glad.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = libglad.a
+  TARGET_PDB = glad.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target imgui
+
+
+#############################################
+# Order-only phony target for imgui
+
+build cmake_object_order_depends_target_imgui: phony || .
+
+build CMakeFiles/imgui.dir/lib/imgui/backends/imgui_impl_glfw.cpp.obj: CXX_COMPILER__imgui_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends/imgui_impl_glfw.cpp || cmake_object_order_depends_target_imgui
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\imgui.dir\lib\imgui\backends\imgui_impl_glfw.cpp.obj.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include
+  OBJECT_DIR = CMakeFiles\imgui.dir
+  OBJECT_FILE_DIR = CMakeFiles\imgui.dir\lib\imgui\backends
+
+build CMakeFiles/imgui.dir/lib/imgui/backends/imgui_impl_opengl3.cpp.obj: CXX_COMPILER__imgui_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends/imgui_impl_opengl3.cpp || cmake_object_order_depends_target_imgui
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\imgui.dir\lib\imgui\backends\imgui_impl_opengl3.cpp.obj.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include
+  OBJECT_DIR = CMakeFiles\imgui.dir
+  OBJECT_FILE_DIR = CMakeFiles\imgui.dir\lib\imgui\backends
+
+build CMakeFiles/imgui.dir/lib/imgui/imgui.cpp.obj: CXX_COMPILER__imgui_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/imgui.cpp || cmake_object_order_depends_target_imgui
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\imgui.dir\lib\imgui\imgui.cpp.obj.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include
+  OBJECT_DIR = CMakeFiles\imgui.dir
+  OBJECT_FILE_DIR = CMakeFiles\imgui.dir\lib\imgui
+
+build CMakeFiles/imgui.dir/lib/imgui/imgui_demo.cpp.obj: CXX_COMPILER__imgui_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/imgui_demo.cpp || cmake_object_order_depends_target_imgui
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\imgui.dir\lib\imgui\imgui_demo.cpp.obj.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include
+  OBJECT_DIR = CMakeFiles\imgui.dir
+  OBJECT_FILE_DIR = CMakeFiles\imgui.dir\lib\imgui
+
+build CMakeFiles/imgui.dir/lib/imgui/imgui_draw.cpp.obj: CXX_COMPILER__imgui_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/imgui_draw.cpp || cmake_object_order_depends_target_imgui
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\imgui.dir\lib\imgui\imgui_draw.cpp.obj.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include
+  OBJECT_DIR = CMakeFiles\imgui.dir
+  OBJECT_FILE_DIR = CMakeFiles\imgui.dir\lib\imgui
+
+build CMakeFiles/imgui.dir/lib/imgui/imgui_tables.cpp.obj: CXX_COMPILER__imgui_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/imgui_tables.cpp || cmake_object_order_depends_target_imgui
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\imgui.dir\lib\imgui\imgui_tables.cpp.obj.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include
+  OBJECT_DIR = CMakeFiles\imgui.dir
+  OBJECT_FILE_DIR = CMakeFiles\imgui.dir\lib\imgui
+
+build CMakeFiles/imgui.dir/lib/imgui/imgui_widgets.cpp.obj: CXX_COMPILER__imgui_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/imgui_widgets.cpp || cmake_object_order_depends_target_imgui
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\imgui.dir\lib\imgui\imgui_widgets.cpp.obj.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include
+  OBJECT_DIR = CMakeFiles\imgui.dir
+  OBJECT_FILE_DIR = CMakeFiles\imgui.dir\lib\imgui
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target imgui
+
+
+#############################################
+# Link the static library libimgui.a
+
+build libimgui.a: CXX_STATIC_LIBRARY_LINKER__imgui_Debug CMakeFiles/imgui.dir/lib/imgui/backends/imgui_impl_glfw.cpp.obj CMakeFiles/imgui.dir/lib/imgui/backends/imgui_impl_opengl3.cpp.obj CMakeFiles/imgui.dir/lib/imgui/imgui.cpp.obj CMakeFiles/imgui.dir/lib/imgui/imgui_demo.cpp.obj CMakeFiles/imgui.dir/lib/imgui/imgui_draw.cpp.obj CMakeFiles/imgui.dir/lib/imgui/imgui_tables.cpp.obj CMakeFiles/imgui.dir/lib/imgui/imgui_widgets.cpp.obj
+  CONFIG = Debug
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles\imgui.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = libimgui.a
+  TARGET_PDB = imgui.a.dbg
 
 
 #############################################
@@ -197,12 +256,630 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build CMakeFiles/install.util: CUSTOM_COMMAND all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build && "C:\Program Files\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build install: phony CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles/install/local.util: CUSTOM_COMMAND all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build && "C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install/local: phony CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build && "C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build install/strip: phony CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/Joseph/Documents/Projects/3DASCII/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build lib/glm/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glm && "C:\Program Files\CMake\bin\cmake-gui.exe" -SC:\Users\Joseph\Documents\Projects\3DASCII -BC:\Users\Joseph\Documents\Projects\3DASCII\build"
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build lib/glm/edit_cache: phony lib/glm/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build lib/glm/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glm && "C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Joseph\Documents\Projects\3DASCII -BC:\Users\Joseph\Documents\Projects\3DASCII\build"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build lib/glm/rebuild_cache: phony lib/glm/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build lib/glm/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build lib/glm/CMakeFiles/install.util: CUSTOM_COMMAND lib/glm/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glm && "C:\Program Files\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build lib/glm/install: phony lib/glm/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build lib/glm/CMakeFiles/install/local.util: CUSTOM_COMMAND lib/glm/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glm && "C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build lib/glm/install/local: phony lib/glm/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build lib/glm/CMakeFiles/install/strip.util: CUSTOM_COMMAND lib/glm/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glm && "C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build lib/glm/install/strip: phony lib/glm/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/Joseph/Documents/Projects/3DASCII/lib/glm/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target glm
+
+
+#############################################
+# Order-only phony target for glm
+
+build cmake_object_order_depends_target_glm: phony || .
+
+build lib/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.obj: CXX_COMPILER__glm_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glm/glm/detail/glm.cpp || cmake_object_order_depends_target_glm
+  CONFIG = Debug
+  DEP_FILE = lib\glm\glm\CMakeFiles\glm.dir\detail\glm.cpp.obj.d
+  FLAGS = -g -std=c++17
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm
+  OBJECT_DIR = lib\glm\glm\CMakeFiles\glm.dir
+  OBJECT_FILE_DIR = lib\glm\glm\CMakeFiles\glm.dir\detail
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target glm
+
+
+#############################################
+# Link the static library lib\glm\glm\libglm.a
+
+build lib/glm/glm/libglm.a: CXX_STATIC_LIBRARY_LINKER__glm_Debug lib/glm/glm/CMakeFiles/glm.dir/detail/glm.cpp.obj
+  CONFIG = Debug
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = lib\glm\glm\CMakeFiles\glm.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = lib\glm\glm\libglm.a
+  TARGET_PDB = glm.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build lib/glm/glm/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glm\glm && "C:\Program Files\CMake\bin\cmake-gui.exe" -SC:\Users\Joseph\Documents\Projects\3DASCII -BC:\Users\Joseph\Documents\Projects\3DASCII\build"
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build lib/glm/glm/edit_cache: phony lib/glm/glm/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build lib/glm/glm/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glm\glm && "C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Joseph\Documents\Projects\3DASCII -BC:\Users\Joseph\Documents\Projects\3DASCII\build"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build lib/glm/glm/rebuild_cache: phony lib/glm/glm/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build lib/glm/glm/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build lib/glm/glm/CMakeFiles/install.util: CUSTOM_COMMAND lib/glm/glm/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glm\glm && "C:\Program Files\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build lib/glm/glm/install: phony lib/glm/glm/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build lib/glm/glm/CMakeFiles/install/local.util: CUSTOM_COMMAND lib/glm/glm/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glm\glm && "C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build lib/glm/glm/install/local: phony lib/glm/glm/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build lib/glm/glm/CMakeFiles/install/strip.util: CUSTOM_COMMAND lib/glm/glm/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glm\glm && "C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build lib/glm/glm/install/strip: phony lib/glm/glm/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/Joseph/Documents/Projects/3DASCII/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for uninstall
+
+build lib/glfw/uninstall: phony lib/glfw/CMakeFiles/uninstall
+
+
+#############################################
+# Utility command for edit_cache
+
+build lib/glfw/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glfw && "C:\Program Files\CMake\bin\cmake-gui.exe" -SC:\Users\Joseph\Documents\Projects\3DASCII -BC:\Users\Joseph\Documents\Projects\3DASCII\build"
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build lib/glfw/edit_cache: phony lib/glfw/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build lib/glfw/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glfw && "C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Joseph\Documents\Projects\3DASCII -BC:\Users\Joseph\Documents\Projects\3DASCII\build"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build lib/glfw/rebuild_cache: phony lib/glfw/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build lib/glfw/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build lib/glfw/CMakeFiles/install.util: CUSTOM_COMMAND lib/glfw/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glfw && "C:\Program Files\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build lib/glfw/install: phony lib/glfw/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build lib/glfw/CMakeFiles/install/local.util: CUSTOM_COMMAND lib/glfw/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glfw && "C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build lib/glfw/install/local: phony lib/glfw/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build lib/glfw/CMakeFiles/install/strip.util: CUSTOM_COMMAND lib/glfw/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glfw && "C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build lib/glfw/install/strip: phony lib/glfw/CMakeFiles/install/strip.util
+
+
+#############################################
+# Custom command for lib\glfw\CMakeFiles\uninstall
+
+build lib/glfw/CMakeFiles/uninstall | ${cmake_ninja_workdir}lib/glfw/CMakeFiles/uninstall: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glfw && "C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/cmake_uninstall.cmake"
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target glfw
+
+
+#############################################
+# Order-only phony target for glfw
+
+build cmake_object_order_depends_target_glfw: phony || .
+
+build lib/glfw/src/CMakeFiles/glfw.dir/context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/context.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\context.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/init.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/init.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\init.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/input.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/input.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\input.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/monitor.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\monitor.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/platform.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/platform.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\platform.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/vulkan.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\vulkan.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/window.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/window.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\window.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/egl_context.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\egl_context.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/osmesa_context.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\osmesa_context.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/null_init.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\null_init.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/null_monitor.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\null_monitor.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/null_window.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\null_window.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/null_joystick.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\null_joystick.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/win32_module.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\win32_module.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/win32_time.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\win32_time.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/win32_thread.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\win32_thread.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/win32_init.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\win32_init.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/win32_joystick.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\win32_joystick.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/win32_monitor.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\win32_monitor.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/win32_window.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\win32_window.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+build lib/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/wgl_context.c || cmake_object_order_depends_target_glfw
+  CONFIG = Debug
+  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
+  DEP_FILE = lib\glfw\src\CMakeFiles\glfw.dir\wgl_context.c.obj.d
+  FLAGS = -g -std=c99 -Wall
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src -IC:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target glfw
+
+
+#############################################
+# Link the static library lib\glfw\src\libglfw3.a
+
+build lib/glfw/src/libglfw3.a: C_STATIC_LIBRARY_LINKER__glfw_Debug lib/glfw/src/CMakeFiles/glfw.dir/context.c.obj lib/glfw/src/CMakeFiles/glfw.dir/init.c.obj lib/glfw/src/CMakeFiles/glfw.dir/input.c.obj lib/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj lib/glfw/src/CMakeFiles/glfw.dir/platform.c.obj lib/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj lib/glfw/src/CMakeFiles/glfw.dir/window.c.obj lib/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj lib/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj lib/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj lib/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj lib/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj lib/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj lib/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj lib/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj lib/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj lib/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj lib/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj lib/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj lib/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj lib/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj
+  CONFIG = Debug
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = lib\glfw\src\CMakeFiles\glfw.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = lib\glfw\src\libglfw3.a
+  TARGET_PDB = glfw3.a.dbg
+
+
+#############################################
+# Utility command for update_mappings
+
+build lib/glfw/src/update_mappings: phony lib/glfw/src/CMakeFiles/update_mappings
+
+
+#############################################
+# Utility command for edit_cache
+
+build lib/glfw/src/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glfw\src && "C:\Program Files\CMake\bin\cmake-gui.exe" -SC:\Users\Joseph\Documents\Projects\3DASCII -BC:\Users\Joseph\Documents\Projects\3DASCII\build"
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build lib/glfw/src/edit_cache: phony lib/glfw/src/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build lib/glfw/src/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glfw\src && "C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\Joseph\Documents\Projects\3DASCII -BC:\Users\Joseph\Documents\Projects\3DASCII\build"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build lib/glfw/src/rebuild_cache: phony lib/glfw/src/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build lib/glfw/src/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build lib/glfw/src/CMakeFiles/install.util: CUSTOM_COMMAND lib/glfw/src/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glfw\src && "C:\Program Files\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build lib/glfw/src/install: phony lib/glfw/src/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build lib/glfw/src/CMakeFiles/install/local.util: CUSTOM_COMMAND lib/glfw/src/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glfw\src && "C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build lib/glfw/src/install/local: phony lib/glfw/src/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build lib/glfw/src/CMakeFiles/install/strip.util: CUSTOM_COMMAND lib/glfw/src/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\build\lib\glfw\src && "C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build lib/glfw/src/install/strip: phony lib/glfw/src/CMakeFiles/install/strip.util
+
+
+#############################################
+# Custom command for lib\glfw\src\CMakeFiles\update_mappings
+
+build lib/glfw/src/CMakeFiles/update_mappings | ${cmake_ninja_workdir}lib/glfw/src/CMakeFiles/update_mappings: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\Joseph\Documents\Projects\3DASCII\lib\glfw\src && "C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/CMake/GenerateMappings.cmake mappings.h.in mappings.h"
+  DESC = Updating gamepad mappings from upstream repository
+
 # =============================================================================
 # Target aliases.
 
 build 3DASCII: phony bin/3DASCII.exe
 
 build 3DASCII.exe: phony bin/3DASCII.exe
+
+build glad: phony libglad.a
+
+build glfw: phony lib/glfw/src/libglfw3.a
+
+build glm: phony lib/glm/glm/libglm.a
+
+build imgui: phony libimgui.a
+
+build libglfw3.a: phony lib/glfw/src/libglfw3.a
+
+build libglm.a: phony lib/glm/glm/libglm.a
+
+build uninstall: phony lib/glfw/uninstall
+
+build update_mappings: phony lib/glfw/src/update_mappings
 
 # =============================================================================
 # Folder targets.
@@ -212,7 +889,35 @@ build 3DASCII.exe: phony bin/3DASCII.exe
 #############################################
 # Folder: C:/Users/Joseph/Documents/Projects/3DASCII/build
 
-build all: phony bin/3DASCII.exe
+build all: phony bin/3DASCII.exe libglad.a libimgui.a lib/glm/all lib/glfw/all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw
+
+build lib/glfw/all: phony lib/glfw/src/all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src
+
+build lib/glfw/src/all: phony lib/glfw/src/libglfw3.a
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glm
+
+build lib/glm/all: phony lib/glm/glm/all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glm/glm
+
+build lib/glm/glm/all: phony lib/glm/glm/libglm.a
 
 # =============================================================================
 # Built-in targets
@@ -221,14 +926,14 @@ build all: phony bin/3DASCII.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja C$:/Users/Joseph/Documents/Projects/3DASCII/build/cmake_install.cmake: RERUN_CMAKE | C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeRCInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindOpenGL.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindPackageMessage.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake C$:/Users/Joseph/Documents/Projects/3DASCII/CMakeLists.txt CMakeCache.txt CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeRCCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake
+build build.ninja C$:/Users/Joseph/Documents/Projects/3DASCII/build/cmake_install.cmake C$:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glm/cmake_install.cmake C$:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glm/glm/cmake_install.cmake C$:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/cmake_install.cmake C$:/Users/Joseph/Documents/Projects/3DASCII/build/lib/glfw/src/cmake_install.cmake: RERUN_CMAKE | C$:/Program$ Files/CMake/share/cmake-4.0/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDependentOption.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakePackageConfigHelpers.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeRCInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CheckCSourceCompiles.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CheckIncludeFile.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CheckLibraryExists.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindPackageMessage.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindThreads.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/GNUInstallDirs.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CheckSourceCompiles.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/WriteBasicConfigVersionFile.cmake C$:/Users/Joseph/Documents/Projects/3DASCII/CMakeLists.txt C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/CMakeLists.txt C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/CMake/cmake_uninstall.cmake.in C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/CMake/glfw3.pc.in C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/CMake/glfw3Config.cmake.in C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/CMakeLists.txt C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glm/CMakeLists.txt C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glm/glm/CMakeLists.txt CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeRCCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeRCInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindOpenGL.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindPackageMessage.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake C$:/Users/Joseph/Documents/Projects/3DASCII/CMakeLists.txt CMakeCache.txt CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeRCCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake: phony
+build C$:/Program$ Files/CMake/share/cmake-4.0/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDependentOption.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakePackageConfigHelpers.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeRCInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CheckCSourceCompiles.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CheckIncludeFile.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CheckLibraryExists.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindPackageMessage.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindThreads.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/GNUInstallDirs.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CheckSourceCompiles.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/WriteBasicConfigVersionFile.cmake C$:/Users/Joseph/Documents/Projects/3DASCII/CMakeLists.txt C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/CMakeLists.txt C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/CMake/cmake_uninstall.cmake.in C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/CMake/glfw3.pc.in C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/CMake/glfw3Config.cmake.in C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/src/CMakeLists.txt C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glm/CMakeLists.txt C$:/Users/Joseph/Documents/Projects/3DASCII/lib/glm/glm/CMakeLists.txt CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeRCCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake: phony
 
 
 #############################################

@@ -1,10 +1,9 @@
 #include "managers/ComponentManager.hpp"
-#include "ComponentManager.hpp"
 
 template <typename T>
 void ComponentStore<T>::AddData(Entity entity, T component)
 {
-    size_t index = size;
+    size_t index = m_size;
     m_entityToIndex[entity] = index;
     m_indexToEntity[index] = entity;
     m_componentArray[index] = component;
@@ -14,22 +13,22 @@ void ComponentStore<T>::AddData(Entity entity, T component)
 template <typename T>
 void ComponentStore<T>::RemoveData(Entity entity)
 {
-    size_t indexOfRemoved = entityToIndex[entity];
-    size_t lastIndex = size-1;
+    size_t indexOfRemoved = m_entityToIndex[entity];
+    size_t lastIndex = m_size-1;
     m_componentArray[indexOfRemoved] = m_componentArray[lastIndex];
 
     Entity lastEntity = m_indexToEntity[lastIndex];
     m_entityToIndex[lastEntity] = indexOfRemoved;
     m_indexToEntity[indexOfRemoved] = lastEntity;
-    entityToIndex.erase(entity);
-    indexToEntity.erase(lastIndex);
-    --size;
+    m_entityToIndex.erase(entity);
+    m_indexToEntity.erase(lastIndex);
+    --m_size;
 }
 
 template <typename T>
 void ComponentStore<T>::GetData(Entity entity)
 {
-    return m_componentArray[entityToIndex[entity]];
+    return m_componentArray[m_entityToIndex[entity]];
 }
 
 //--------------------------------------------------------------------------- 
@@ -49,11 +48,17 @@ ComponentType ComponentManager::GetComponentType()
     return m_componentTypes[typeid(T).name()];
 }
 
+template<typename T>
+std::shared_ptr<T> ComponentManager::GetComponentArray()
+{
+    return std::static_pointer_cast<ComponentStore<T>>(m_componentArrays[typeid(T).name()]);
+}
+
 //Add component to an Entuty
 template<typename T>
 void ComponentManager::AddComponent(Entity entity, T component)
 {
-    GetComponentArray<T>()->AddData(entity, component)
+    GetComponentArray<T>()->AddData(entity, component);
 }
 
 template<typename T>

@@ -37,6 +37,9 @@ class ComponentManager
         //Get the component ID
         template<typename T>
         ComponentType GetComponentType();
+
+        template <typename T>
+        std::shared_ptr<T> GetComponentArray();
         
         //Add component to an Entity
         template<typename T>

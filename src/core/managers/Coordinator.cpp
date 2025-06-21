@@ -24,7 +24,7 @@ void Coordinator::AddComponent(Entity entity, T component)
     auto signature = entityManager->GetSignature(entity);
     signature.set(componentManager->GetComponentType<T>, true);
     entityManager->SetSignature(entity, signature);
-    systemManager->EntitySignatureChanged(entity, signature)
+    systemManager->EntitySignatureChanged(entity, signature);
 }
 
 template <typename T>
@@ -36,7 +36,7 @@ T& Coordinator::GetComponent(Entity entity)
 template<typename T>
 std::shared_ptr<T> Coordinator::RegisterSystem()
 {
-    return systemManager->RegisterSystem<T>()
+    return systemManager->RegisterSystem<T>();
 }
 
 template<typename T>

@@ -1,32 +1,15 @@
 cmake_minimum_required(VERSION 3.22)
-project(3DASCII VERSION 0.1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-# === SDL3 Setup ===
-set(SDL3_DIR "${CMAKE_SOURCE_DIR}/lib/SDL3")
-include_directories(${SDL3_DIR}/include)
-link_directories(${SDL3_DIR}/lib/x64)
+project(3DASCII VERSION 0.1.0 LANGUAGES C CXX)
 
-# === ImGui Setup ===
-set(IMGUI_DIR "${CMAKE_SOURCE_DIR}/lib/imgui")
-
-set(IMGUI_SRC
-    ${IMGUI_DIR}/imgui.cpp
-    ${IMGUI_DIR}/imgui_draw.cpp
-    ${IMGUI_DIR}/imgui_widgets.cpp
-    ${IMGUI_DIR}/imgui_tables.cpp
-    ${IMGUI_DIR}/imgui_demo.cpp  # Optional
-    ${IMGUI_DIR}/backends/imgui_impl_sdl3.cpp
-    ${IMGUI_DIR}/backends/imgui_impl_sdlrenderer3.cpp
-)
-
-# === Source Files ===
+# === Project Source Files ===
 set(SRC_FILES
-    # Core
     src/core/main.cpp
-    # # Managers
     src/core/managers/Coordinator.cpp
     src/core/managers/EventBus.cpp 
     src/core/managers/EntityManager.cpp 
@@ -34,32 +17,55 @@ set(SRC_FILES
     src/core/managers/SystemManager.cpp
 )
 
-# === Executable ===
-add_executable(3DASCII
-    ${SRC_FILES}
-    ${IMGUI_SRC}
-)
+# === Executable Target ===
+add_executable(3DASCII ${SRC_FILES})
 
-# === Includes ===
+# === Include Directories ===
 target_include_directories(3DASCII PRIVATE
-    ${IMGUI_DIR}
-    ${IMGUI_DIR}/backends
-    ${SDL3_DIR}/include
-    ${PROJECT_SOURCE_DIR}/include-test
+    ${PROJECT_SOURCE_DIR}/include
 )
 
-# === Link Libraries ===
-find_package(OpenGL REQUIRED)
+# === GLAD ===
+add_library(glad STATIC
+    lib/glad/src/gl.c
+)
+target_include_directories(glad PUBLIC lib/glad/include)
 
+# === GLM ===
+add_subdirectory(lib/glm)
+
+# === GLFW ===
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+add_subdirectory(lib/glfw)
+
+# === ImGui ===
+file(GLOB IMGUI_SRC
+    lib/imgui/*.cpp
+    lib/imgui/backends/imgui_impl_glfw.cpp
+    lib/imgui/backends/imgui_impl_opengl3.cpp
+)
+add_library(imgui STATIC ${IMGUI_SRC})
+target_include_directories(imgui PUBLIC
+    lib/imgui
+    lib/imgui/backends
+    lib/glfw/include
+)
+
+# === Link All Dependencies ===
 target_link_libraries(3DASCII PRIVATE
-    SDL3           # From link_directories
-    OpenGL::GL     # From find_package
+    glad
+    glm
+    glfw
+    imgui
 )
 
-# Optional: Copy SDL3.dll to output (for runtime on Windows)
-if (WIN32)
-    add_custom_command(TARGET 3DASCII POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${SDL3_DIR}/lib/x64/SDL3.dll"
-        $<TARGET_FILE_DIR:3DASCII>)
-endif()
+# === Add ImGui + GLAD include dirs to your app ===
+target_include_directories(3DASCII PRIVATE
+    lib/glad/include
+    lib/glm
+    lib/imgui
+    lib/imgui/backends
+    lib/glfw/include
+)

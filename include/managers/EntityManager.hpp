@@ -9,7 +9,7 @@ class EntityManager
 {
     public:
         Entity CreateEntity();
-        Entity DestroyEntity(Entity entity);
+        void DestroyEntity(Entity entity);
         void SetSignature(Entity entity, Signature signature);
         Signature GetSignature(Entity entity);
 

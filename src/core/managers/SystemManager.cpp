@@ -4,7 +4,7 @@
 template<typename T>
 std::shared_ptr<T> SystemManager::RegisterSystem()
 {
-    const char* typeName = type(T).name();
+    const char* typeName = typeid(T).name();
     auto system = std::make_shared<T>;
     m_systems[typeName] = system;
     return system;
@@ -13,7 +13,7 @@ std::shared_ptr<T> SystemManager::RegisterSystem()
 template<typename T>
 void SystemManager::SetSignature(Signature signature)
 {
-    m_signatures[type(T).name()] = signature;
+    m_signatures[typeid(T).name()] = signature;
 }
 
 void SystemManager::EntityDestroyed(Entity entity)

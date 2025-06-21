@@ -4,7 +4,7 @@ Entity EntityManager::CreateEntity()
 {
     return m_nextID++;
 }
-Entity EntityManager::DestroyEntity(Entity entity)
+void EntityManager::DestroyEntity(Entity entity)
 {
     m_signatures.erase(entity);
 }

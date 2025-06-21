@@ -1,0 +1,14 @@
+[
+  {
+    "name": "MSVC 2022 x64",
+    "compilers": {
+      "C": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/<version>/bin/Hostx64/x64/cl.exe",
+      "CXX": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/<version>/bin/Hostx64/x64/cl.exe"
+    },
+    "visualStudio": "C:/Program Files/Microsoft Visual Studio/2022/Community",
+    "visualStudioArchitecture": "x64",
+    "preferredGenerator": {
+      "name": "Ninja"
+    }
+  }
+]
