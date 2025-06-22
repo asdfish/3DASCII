@@ -15,6 +15,7 @@ set(SRC_FILES
     src/core/managers/EntityManager.cpp 
     src/core/managers/ComponentManager.cpp 
     src/core/managers/SystemManager.cpp
+    src/core/managers/ShaderManager.cpp
 )
 
 # === Executable Target ===
@@ -73,5 +74,6 @@ target_include_directories(3DASCII PRIVATE
     lib/glfw/include
 )
 
+file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_BINARY_DIR})
 
 

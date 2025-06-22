@@ -1,11 +1,12 @@
 #include "managers/Coordinator.hpp"
 
-void Coordinator::Init()
+
+Coordinator &Coordinator::Instance()
 {
-    entityManager = std::make_unique<EntityManager>();
-    componentManager = std::make_unique<ComponentManager>();
-    systemManager = std::make_unique<SystemManager>();
+    static Coordinator c;
+    return c;
 }
+
 Entity Coordinator::CreateEntity()
 {
     return entityManager->CreateEntity();

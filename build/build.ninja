@@ -97,6 +97,14 @@ build CMakeFiles/3DASCII.dir/src/core/managers/SystemManager.cpp.obj: CXX_COMPIL
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src\core\managers
 
+build CMakeFiles/3DASCII.dir/src/core/managers/ShaderManager.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/core/managers/ShaderManager.cpp || cmake_object_order_depends_target_3DASCII
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\3DASCII.dir\src\core\managers\ShaderManager.cpp.obj.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include
+  OBJECT_DIR = CMakeFiles\3DASCII.dir
+  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src\core\managers
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target 3DASCII
@@ -105,7 +113,7 @@ build CMakeFiles/3DASCII.dir/src/core/managers/SystemManager.cpp.obj: CXX_COMPIL
 #############################################
 # Link the executable bin\3DASCII.exe
 
-build bin/3DASCII.exe: CXX_EXECUTABLE_LINKER__3DASCII_Debug CMakeFiles/3DASCII.dir/src/core/main.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/Coordinator.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/EventBus.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/EntityManager.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/ComponentManager.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/SystemManager.cpp.obj | libglad.a lib/glm/glm/libglm.a lib/glfw/src/libglfw3.a libimgui.a || lib/glfw/src/libglfw3.a lib/glm/glm/libglm.a libglad.a libimgui.a
+build bin/3DASCII.exe: CXX_EXECUTABLE_LINKER__3DASCII_Debug CMakeFiles/3DASCII.dir/src/core/main.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/Coordinator.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/EventBus.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/EntityManager.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/ComponentManager.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/SystemManager.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/ShaderManager.cpp.obj | libglad.a lib/glm/glm/libglm.a lib/glfw/src/libglfw3.a libimgui.a || lib/glfw/src/libglfw3.a lib/glm/glm/libglm.a libglad.a libimgui.a
   CONFIG = Debug
   FLAGS = -g
   LINK_LIBRARIES = libglad.a  lib/glm/glm/libglm.a  lib/glfw/src/libglfw3.a  libimgui.a  -lopengl32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

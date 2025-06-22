@@ -37,6 +37,12 @@
 },
 {
   "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -g -std=gnu++17 -o CMakeFiles\\3DASCII.dir\\src\\core\\managers\\ShaderManager.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\core\\managers\\ShaderManager.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\core\\managers\\ShaderManager.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\core\\managers\\ShaderManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
   "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -g -o CMakeFiles\\glad.dir\\lib\\glad\\src\\gl.c.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\lib\\glad\\src\\gl.c",
   "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\lib\\glad\\src\\gl.c",
   "output": "CMakeFiles\\glad.dir\\lib\\glad\\src\\gl.c.obj"

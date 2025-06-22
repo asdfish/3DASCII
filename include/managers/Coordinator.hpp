@@ -7,7 +7,11 @@
 class Coordinator
 {
     public:
-        void Init();
+        //Meyers singleton pattern for getting the singleton
+        static Coordinator& Instance();
+        Coordinator(const Coordinator&) = delete;
+        Coordinator& operator = (const Coordinator&) = delete;
+
         Entity CreateEntity();
 
         template <typename T>
@@ -26,6 +30,13 @@ class Coordinator
         void SetSignature(Signature signature);
         
     private:
+        Coordinator() 
+        {
+            entityManager = std::make_unique<EntityManager>();
+            componentManager = std::make_unique<ComponentManager>();
+            systemManager = std::make_unique<SystemManager>();
+        }
+        ~Coordinator() {}
         std::unique_ptr<EntityManager> entityManager;
         std::unique_ptr<ComponentManager> componentManager;
         std::unique_ptr<SystemManager> systemManager;
