@@ -10,12 +10,16 @@ project(3DASCII VERSION 0.1.0 LANGUAGES C CXX)
 # === Project Source Files ===
 set(SRC_FILES
     src/core/main.cpp
-    src/core/managers/Coordinator.cpp
+
     src/core/managers/EventBus.cpp 
     src/core/managers/EntityManager.cpp 
-    src/core/managers/ComponentManager.cpp 
-    src/core/managers/SystemManager.cpp
-    src/core/managers/ShaderManager.cpp
+    src/core/managers/AssetManager.cpp
+
+    src/rendercomponents/IndexBuffer.cpp 
+    src/rendercomponents/VertexArray.cpp 
+    src/rendercomponents/VertexBuffer.cpp 
+    src/rendercomponents/Shader.cpp
+    src/rendercomponents/ShaderProgram.cpp
 )
 
 # === Executable Target ===

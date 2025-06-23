@@ -3,6 +3,7 @@
 #include "GLFW/glfw3.h"
 
 #include "managers.hpp"
+#include "rendercomponents.hpp"
 
 #include <iostream>
 
@@ -16,8 +17,6 @@ int main();
 
 int main()
 {
-    ShaderManager::Instance();
-    Coordinator::Instance();   
 
     /* Setup */
     if (!glfwInit())
@@ -32,6 +31,7 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_DEPTH_BITS, 24);
+    glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
     GLFWwindow* window = glfwCreateWindow(640, 480, "My Title", NULL, NULL);
     if (!window)
     {
@@ -39,46 +39,55 @@ int main()
         glfwTerminate();
         return 0;
     }
+    int width, height;
+    glfwGetFramebufferSize(window, &width, &height);
     glfwMakeContextCurrent(window);
     gladLoadGL(glfwGetProcAddress);
+    //glEnable(GL_DEPTH_TEST);
+    glViewport(0, 0, width, height);
+
+    AssetManager::Instance();
+    Coordinator::Instance();   
+
 
     float points[] = {
-        0.0f, 0.5f, 0.0f,
-        0.5f, -0.5f, 0.0f,
-        -0.5f, -0.5f, 0.0f
+        0.5f, 0.5f, 0.0f, 1.0f,
+        0.5f, -0.5f, 0.0f, 1.0f,
+        -0.5f, -0.5f, 0.0f, 1.0f,
+        -0.5f, 0.5f, 0.0f, 1.0f
     };
 
-    GLuint vbo = 0;
-    glGenBuffers( 1, &vbo );
-    glBindBuffer( GL_ARRAY_BUFFER, vbo );
-    glBufferData( GL_ARRAY_BUFFER, 9*sizeof(float), points, GL_STATIC_DRAW);
+    GLuint indices[] = {
+        0,2,1,
+        0,3,2
+    };
 
-    GLuint vao = 0;
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
-    glEnableVertexAttribArray(0);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glVertexAttribPointer(0,3,GL_FLOAT, GL_FALSE, 0, NULL);
+    AssetManager::Instance().CreateShaderProgram("test", {"testf.frag", "testv.vert"});
+    ShaderProgram& shader_program = AssetManager::Instance().GetShaderProgram("test");
+    shader_program.Bind();
 
-    GLuint fs = ShaderManager::Instance().SetupShader("testf.frag");
-    GLuint vs = ShaderManager::Instance().SetupShader("testv.vert");
+    VertexArray va;
+    VertexBuffer vb(points, 4*4*sizeof(float));
+
+    VertexBufferLayout layout;
+    layout.Push<float>(4);
+    va.AddBuffer(vb, layout);
+
+    IndexBuffer ib(indices, 6);
     
-
-    GLuint shader_program = glCreateProgram();
-    glAttachShader(shader_program, fs);
-    glAttachShader(shader_program, vs);
-    glLinkProgram(shader_program);
 
     while (!glfwWindowShouldClose(window))
     {
         glfwPollEvents();
 
+        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        glUseProgram( shader_program );
-        glBindVertexArray(vao);
+        shader_program.Bind();
+        va.Bind();
+        ib.Bind();
 
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
         glfwSwapBuffers(window);
     }
 

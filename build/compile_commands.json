@@ -7,12 +7,6 @@
 },
 {
   "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -g -std=gnu++17 -o CMakeFiles\\3DASCII.dir\\src\\core\\managers\\Coordinator.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\core\\managers\\Coordinator.cpp",
-  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\core\\managers\\Coordinator.cpp",
-  "output": "CMakeFiles\\3DASCII.dir\\src\\core\\managers\\Coordinator.cpp.obj"
-},
-{
-  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
   "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -g -std=gnu++17 -o CMakeFiles\\3DASCII.dir\\src\\core\\managers\\EventBus.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\core\\managers\\EventBus.cpp",
   "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\core\\managers\\EventBus.cpp",
   "output": "CMakeFiles\\3DASCII.dir\\src\\core\\managers\\EventBus.cpp.obj"
@@ -25,21 +19,39 @@
 },
 {
   "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -g -std=gnu++17 -o CMakeFiles\\3DASCII.dir\\src\\core\\managers\\ComponentManager.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\core\\managers\\ComponentManager.cpp",
-  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\core\\managers\\ComponentManager.cpp",
-  "output": "CMakeFiles\\3DASCII.dir\\src\\core\\managers\\ComponentManager.cpp.obj"
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -g -std=gnu++17 -o CMakeFiles\\3DASCII.dir\\src\\core\\managers\\AssetManager.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\core\\managers\\AssetManager.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\core\\managers\\AssetManager.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\core\\managers\\AssetManager.cpp.obj"
 },
 {
   "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -g -std=gnu++17 -o CMakeFiles\\3DASCII.dir\\src\\core\\managers\\SystemManager.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\core\\managers\\SystemManager.cpp",
-  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\core\\managers\\SystemManager.cpp",
-  "output": "CMakeFiles\\3DASCII.dir\\src\\core\\managers\\SystemManager.cpp.obj"
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -g -std=gnu++17 -o CMakeFiles\\3DASCII.dir\\src\\rendercomponents\\IndexBuffer.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\rendercomponents\\IndexBuffer.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\rendercomponents\\IndexBuffer.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\rendercomponents\\IndexBuffer.cpp.obj"
 },
 {
   "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -g -std=gnu++17 -o CMakeFiles\\3DASCII.dir\\src\\core\\managers\\ShaderManager.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\core\\managers\\ShaderManager.cpp",
-  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\core\\managers\\ShaderManager.cpp",
-  "output": "CMakeFiles\\3DASCII.dir\\src\\core\\managers\\ShaderManager.cpp.obj"
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -g -std=gnu++17 -o CMakeFiles\\3DASCII.dir\\src\\rendercomponents\\VertexArray.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\rendercomponents\\VertexArray.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\rendercomponents\\VertexArray.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\rendercomponents\\VertexArray.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -g -std=gnu++17 -o CMakeFiles\\3DASCII.dir\\src\\rendercomponents\\VertexBuffer.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\rendercomponents\\VertexBuffer.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\rendercomponents\\VertexBuffer.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\rendercomponents\\VertexBuffer.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -g -std=gnu++17 -o CMakeFiles\\3DASCII.dir\\src\\rendercomponents\\Shader.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\rendercomponents\\Shader.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\rendercomponents\\Shader.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\rendercomponents\\Shader.cpp.obj"
+},
+{
+  "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include -g -std=gnu++17 -o CMakeFiles\\3DASCII.dir\\src\\rendercomponents\\ShaderProgram.cpp.obj -c C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\rendercomponents\\ShaderProgram.cpp",
+  "file": "C:\\Users\\Joseph\\Documents\\Projects\\3DASCII\\src\\rendercomponents\\ShaderProgram.cpp",
+  "output": "CMakeFiles\\3DASCII.dir\\src\\rendercomponents\\ShaderProgram.cpp.obj"
 },
 {
   "directory": "C:/Users/Joseph/Documents/Projects/3DASCII/build",
