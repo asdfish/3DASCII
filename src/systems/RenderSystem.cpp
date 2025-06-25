@@ -1,7 +1,10 @@
+#define GLM_ENABLE_EXPERIMENTAL
+
 #include "systems/RenderSystem.hpp"
 #include "RenderContext.hpp"
 #include "managers/AssetManager.hpp"
 #include "errorHandle.hpp"
+#include "glm/gtx/string_cast.hpp"
 
 void RenderSystem::Update()
 {
@@ -13,29 +16,9 @@ void RenderSystem::Update()
 
         data.Bind();
 
-        std::cout<<"data: "<<data.vao->GetID()<<" "<<data.vbo->GetID()<<" "<<data.ibo->GetID()<<" "<<data.count<<"\n";
-
-        GLint boundVao;
-        GLCall(glGetIntegerv(GL_VERTEX_ARRAY_BINDING, &boundVao));
-        GLint boundIbo;
-        GLCall(glGetIntegerv(GL_ELEMENT_ARRAY_BUFFER_BINDING, &boundIbo));
-        GLint boundVbo;
-        GLCall(glGetIntegerv(GL_ARRAY_BUFFER_BINDING, &boundVbo));
-        std::cout<<"Bound VAO: "<<boundVao<<"\n";
-        std::cout<<"Bound IBO: "<<boundIbo<<"\n";
-        std::cout<<"Bound VBO: "<<boundVbo<<"\n";
-
-        std::cout<<"Position: "<<transform.position.x<<" "<<transform.position.y<<" "<<transform.position.z<<"\n";
-
         glm::mat4 world = transform.matrixTransform;
         glm::mat4 view = RenderContext::Instance().viewMatrix;
         glm::mat4 project = RenderContext::Instance().projMatrix;
-
-        glm::vec4 displaypos = project*view*world*glm::vec4(0.f, 0.f, 0.f, 1.f);
-        float prevW = displaypos.w;
-        displaypos /= prevW;
-
-        std::cout<<"Transformed: "<<displaypos.x<<" "<<displaypos.y<<" "<<displaypos.z<<" "<<displaypos.w<<", prevW = "<<prevW<<"\n";
 
         AssetManager::Instance().GetShaderProgram("test")->Bind();
         AssetManager::Instance().GetShaderProgram("test")->SetUniformMatrix4fv("worldMatrix", world);
@@ -45,6 +28,48 @@ void RenderSystem::Update()
         
         data.Bind();
         GLCall(glDrawElements(GL_TRIANGLES, data.count, GL_UNSIGNED_INT, nullptr));
-        
     }
 }
+
+
+/*
+
+
+
+        float points[] = {
+            1.f, 1.f, -1.f, 1.0f,
+            1.f, -1.f, -1.f, 1.0f,
+            1.f, 1.f, 1.f, 1.0f,
+            1.f, -1.f, 1.f, 1.0f,
+            -1.f, 1.f, -1.f, 1.0f,
+            -1.f, -1.f, -1.f, 1.0f,
+            -1.f, 1.f, 1.f, 1.0f,
+            -1.f, -1.f, 1.f, 1.0f,
+        };
+
+        GLuint indices[] = {
+            4, 2, 0,
+            2, 7, 3,
+            6, 5, 7,
+            1, 7, 5,
+            0, 3, 1,
+            4, 1, 5,
+            4, 6, 2,
+            2, 6, 7,
+            6, 4, 5,
+            1, 3, 7,
+            0, 2, 3,
+            4, 0, 1
+        };
+
+        std::shared_ptr<VertexArray> va = std::make_shared<VertexArray>();
+        std::shared_ptr<VertexBuffer> vb = std::make_shared<VertexBuffer>(points, 4*8*sizeof(float));
+
+        VertexBufferLayout layout;
+        layout.Push<float>(4);
+        va->AddBuffer(vb, layout);
+
+        std::shared_ptr<IndexBuffer> ib = std::make_shared<IndexBuffer>(indices, 36);
+        va->Bind();
+
+*/

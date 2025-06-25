@@ -179,7 +179,7 @@ void AssetManager::MeshLoad(std::string name)
     }
 
     MeshData dataToLoad = data->second;
-    Transform transform = {CentreMeshPoints(dataToLoad.vertices),{1,0,0,0}};
+    Transform transform = {CentreMeshPoints(dataToLoad.vertices),{0.5709415, 0.1675188, 0.5709415, 0.5656758 }};
     transform.ResetMatrixTransform();
 
     if (dataToLoad.vertices.empty() || dataToLoad.indices.empty())
@@ -191,12 +191,11 @@ void AssetManager::MeshLoad(std::string name)
     std::shared_ptr<VertexBuffer> vbo = std::make_shared<VertexBuffer>(dataToLoad.vertices.data(), dataToLoad.vertices.size()*sizeof(glm::vec4));
 
     VertexBufferLayout layout;
-    layout.Push<GLfloat>(4);
-
+    layout.Push<float>(4);
+    vao->AddBuffer(vbo, layout);
 
     std::shared_ptr<IndexBuffer> ibo = std::make_shared<IndexBuffer>(dataToLoad.indices.data(), dataToLoad.indices.size());
-
-    vao->AddBuffer(vbo, layout);
+    vao->Bind();
     ibo->Bind();
 
     MeshGPU mesh = {vao, vbo, ibo, ibo->GetCount()};
@@ -216,7 +215,7 @@ glm::vec3 AssetManager::CentreMeshPoints(std::vector<glm::vec4> &points)
     avg /= points.size();
     for (auto& point : points)
     {
-        point -= glm::vec4(avg, 1.f);
+        point -= glm::vec4(avg, 0);
     }
     return avg;
 }

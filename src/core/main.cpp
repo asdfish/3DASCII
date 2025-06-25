@@ -60,7 +60,7 @@ int main()
     RenderContext::Instance().nearPlane = 0.01f;
     RenderContext::Instance().farPlane = 10.f;
     RenderContext::Instance().aspect = 640.f/480.f;
-    RenderContext::Instance().camTransform.position = glm::vec3(0.f, 0.f, 5.f);
+    RenderContext::Instance().camTransform.position = glm::vec3(1.f, 1.f, 10.f);
     RenderContext::Instance().camTransform.rotation = glm::quat(1.f, 0.f, 0.f, 0.f);
 
     AssetManager::Instance();
@@ -83,7 +83,6 @@ int main()
 
     AssetManager::Instance().MeshImport("Cube.obj");
     AssetManager::Instance().MeshLoad("Cube");
-
 
 
     AssetManager::Instance().CreateShaderProgram("test", {"testf.frag", "testv.vert"});
