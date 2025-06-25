@@ -7,6 +7,11 @@ class IndexBuffer
         IndexBuffer(const unsigned int* data, unsigned int count);
         ~IndexBuffer();
 
+        IndexBuffer(const IndexBuffer&) = delete;
+        IndexBuffer& operator=(const IndexBuffer&) = delete;
+
+        inline unsigned int GetID() const {return m_id;}
+
         void Bind() const;
         void Unbind() const;
 

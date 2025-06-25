@@ -1,5 +1,7 @@
 #include "rendercomponents/Shader.hpp"
+#include "errorHandle.hpp"
 #include <iostream>
+#include "errhandlingapi.h"
 
 Shader::Shader(const std::string &filepath)
 : m_id(0), m_filePath(filepath)
@@ -36,13 +38,14 @@ std::string Shader::ParseShader(const std::string& filepath)
     src = buffer.str();
 
     std::cout<<m_name<<" has beeen parsed!\n";
+    std::cout<<src<<"\n";
 
     return src;
 }
 
 GLuint Shader::CompileShader(std::string src)
 {
-    GLuint s = glCreateShader(m_type);
+    GLCall(GLuint s = glCreateShader(m_type));
 
     if (s == 0) 
     {
@@ -50,21 +53,18 @@ GLuint Shader::CompileShader(std::string src)
     }
 
     const char* source = src.c_str();
-    glShaderSource(s, 1, &source, NULL);
-    glCompileShader(s);
+    GLCall(glShaderSource(s, 1, &source, NULL));
+    GLCall(glCompileShader(s));
     GLint success;
     glGetShaderiv(s, GL_COMPILE_STATUS, &success);
     if (!success) 
     {
         char infoLog[512];
         glGetShaderInfoLog(s, 512, NULL, infoLog);
-        printf("Shader '%s' compilation failed: %s\n", m_name.c_str(), infoLog);
+        throw std::runtime_error("Shader '%s' compilation failed: %s\n" + m_name + infoLog);
     }
+    std::cout<<m_name<<" has beeen compiled!\n";
     return s;
-}
-
-void Shader::SetUniform4f(const std::string &name, const glm::vec4 val)
-{
 }
 
 GLuint Shader::GetUniformLocation(const std::string &name)

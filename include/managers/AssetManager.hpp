@@ -23,9 +23,9 @@ class AssetManager
         AssetManager& operator = (const AssetManager&) = delete;
 
         //Shaders
-        Shader& GetShader(const std::string& name);
+        std::shared_ptr<Shader> GetShader(const std::string& name);
         void CreateShaderProgram(std::string name, std::vector<std::string> names);
-        ShaderProgram& GetShaderProgram(const std::string& name);
+        std::shared_ptr<ShaderProgram> GetShaderProgram(const std::string& name);
 
         //Mesh
         void MeshImport(const char* path);
@@ -35,8 +35,8 @@ class AssetManager
         AssetManager();
         ~AssetManager() {};
         glm::vec3 CentreMeshPoints(std::vector<glm::vec4> &points);
-        std::unordered_map<std::string, Shader> m_shaders;
-        std::unordered_map<std::string, ShaderProgram> m_shaderPrograms;
+        std::unordered_map<std::string, std::shared_ptr<Shader>> m_shaders;
+        std::unordered_map<std::string, std::shared_ptr<ShaderProgram>> m_shaderPrograms;
         std::map<std::string, MeshData> m_meshData;
         GLuint m_shaderProgramID = 0;
         

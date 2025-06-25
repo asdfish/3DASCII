@@ -33,7 +33,7 @@ class ComponentStore
             --m_size;
         }
 
-        void GetData(Entity entity)
+        T& GetData(Entity entity)
         {
             return m_componentArray[m_entityToIndex[entity]];
         }
@@ -79,7 +79,7 @@ class ComponentManager
         template<typename T>
         T& GetComponent(Entity entity)
         {
-            return GetComponentArray<T>->GetData(entity);
+            return GetComponentArray<T>()->GetData(entity);
         }
 
     private:

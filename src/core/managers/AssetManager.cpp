@@ -1,5 +1,6 @@
 #include "managers/AssetManager.hpp"
 #include "managers/Coordinator.hpp"
+#include "errorHandle.hpp"
 
 #include <filesystem>
 #include <iostream>
@@ -13,17 +14,20 @@ AssetManager& AssetManager::Instance()
 AssetManager::AssetManager()
 {
     const std::filesystem::path folderPath = "../assets/shaders";
+
+    if (!std::filesystem::exists(folderPath) || !std::filesystem::is_directory(folderPath))
+    throw std::runtime_error("Shader folder not found: " + folderPath.string());
+
     for (const auto& entry : std::filesystem::directory_iterator(folderPath))
     {
         if (entry.is_regular_file())
         {
-            Shader shader = Shader(entry.path().string());
-            m_shaders.insert({shader.GetName(), std::move(shader)});
+            m_shaders.insert({entry.path().filename().string(), std::make_shared<Shader>(entry.path().string())});
         }
     }
 }
 
-Shader& AssetManager::GetShader(const std::string& name)
+std::shared_ptr<Shader> AssetManager::GetShader(const std::string& name)
 {
     auto it = m_shaders.find(name);
     if (it != m_shaders.end())
@@ -38,15 +42,15 @@ Shader& AssetManager::GetShader(const std::string& name)
 
 void AssetManager::CreateShaderProgram(std::string progname, std::vector<std::string> names)
 {
-    GLuint id = glCreateProgram();
+    GLCall(GLuint id = glCreateProgram());
+    std::vector<std::shared_ptr<Shader>> attachedShaders;
     for (const auto& name:names)
     {
-        GLuint shaderid = GetShader(name).GetID();
-        glAttachShader(id, shaderid);
+        auto shader = GetShader(name);
+        attachedShaders.push_back(shader);
+        GLCall(glAttachShader(id, shader->GetID()));
     }
-    glLinkProgram(id);
-    GLint count;
-    glGetProgramiv(id, GL_ATTACHED_SHADERS, &count);
+    GLCall(glLinkProgram(id));
 
     GLint success;
     glGetProgramiv(id, GL_LINK_STATUS, &success);
@@ -56,17 +60,17 @@ void AssetManager::CreateShaderProgram(std::string progname, std::vector<std::st
         glGetProgramInfoLog(id, 512, nullptr, infoLog);
         throw std::runtime_error("Shader program linking failed:\n" + std::string(infoLog));
     }
-    ShaderProgram shaderprogram(id);
-    m_shaderPrograms.insert({progname, std::move(shaderprogram)});
+    m_shaderPrograms.insert({progname, std::make_shared<ShaderProgram>(id)});
 }
 
-ShaderProgram& AssetManager::GetShaderProgram(const std::string& name)
+std::shared_ptr<ShaderProgram> AssetManager::GetShaderProgram(const std::string& name)
 {
     auto itr = m_shaderPrograms.find(name);
     if (itr != m_shaderPrograms.end())
         return itr->second;
     throw std::runtime_error("Shader Program '" + name + "' doesn't exist.");
 }
+
 void AssetManager::MeshImport(const char* path)
 {
     std::ifstream file(path);
@@ -159,21 +163,43 @@ void AssetManager::MeshImport(const char* path)
 
 void AssetManager::MeshLoad(std::string name)
 {
-    MeshData dataToLoad = m_meshData[name];
-    Transform transform = {CentreMeshPoints(dataToLoad.vertices),{0,0,0}};
+    auto data = m_meshData.find(name);
+    if (data == m_meshData.end())
+    {
+        throw std::runtime_error("Model " + name +" does not exist!\n");
+    }
 
-    VertexArray vao;
+    for (const auto& vertex : data->second.vertices)
+    {
+        std::cout << "Vertex: " << vertex.x << ", " << vertex.y << ", " << vertex.z << ", " << vertex.w << "\n";
+    }
+    for (const auto& index : data->second.indices)
+    {
+        std::cout << "Index: " << index << "\n";
+    }
 
-    VertexBuffer vbo(dataToLoad.vertices.data(), dataToLoad.vertices.size()*sizeof(glm::vec3));
+    MeshData dataToLoad = data->second;
+    Transform transform = {CentreMeshPoints(dataToLoad.vertices),{1,0,0,0}};
+    transform.ResetMatrixTransform();
+
+    if (dataToLoad.vertices.empty() || dataToLoad.indices.empty())
+    throw std::runtime_error("Model " + name + " has no vertex or index data.");
+
+
+    std::shared_ptr<VertexArray> vao = std::make_shared<VertexArray>();
+
+    std::shared_ptr<VertexBuffer> vbo = std::make_shared<VertexBuffer>(dataToLoad.vertices.data(), dataToLoad.vertices.size()*sizeof(glm::vec4));
 
     VertexBufferLayout layout;
     layout.Push<GLfloat>(4);
 
-    IndexBuffer ibo(dataToLoad.indices.data(), dataToLoad.indices.size() * sizeof(unsigned int));
 
-    vao.AddBuffer(vbo, layout);
+    std::shared_ptr<IndexBuffer> ibo = std::make_shared<IndexBuffer>(dataToLoad.indices.data(), dataToLoad.indices.size());
 
-    MeshGPU mesh = {vao};
+    vao->AddBuffer(vbo, layout);
+    ibo->Bind();
+
+    MeshGPU mesh = {vao, vbo, ibo, ibo->GetCount()};
 
     Entity entity = Coordinator::Instance().CreateEntity();
     Coordinator::Instance().AddComponent<MeshGPU>(entity, mesh);

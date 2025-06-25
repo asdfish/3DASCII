@@ -45,6 +45,13 @@ class Coordinator
             return componentManager->GetComponent<T>(entity);
         }
 
+        template <typename T>
+        ComponentType GetComponentType()
+        {
+            return componentManager->GetComponentType<T>();
+        }
+
+
         template<typename T>
         std::shared_ptr<T> RegisterSystem()
         {

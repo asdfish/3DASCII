@@ -121,6 +121,14 @@ build CMakeFiles/3DASCII.dir/src/rendercomponents/ShaderProgram.cpp.obj: CXX_COM
   OBJECT_DIR = CMakeFiles\3DASCII.dir
   OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src\rendercomponents
 
+build CMakeFiles/3DASCII.dir/src/systems/RenderSystem.cpp.obj: CXX_COMPILER__3DASCII_unscanned_Debug C$:/Users/Joseph/Documents/Projects/3DASCII/src/systems/RenderSystem.cpp || cmake_object_order_depends_target_3DASCII
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\3DASCII.dir\src\systems\RenderSystem.cpp.obj.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -IC:/Users/Joseph/Documents/Projects/3DASCII/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glad/include -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glm -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/imgui/backends -IC:/Users/Joseph/Documents/Projects/3DASCII/lib/glfw/include
+  OBJECT_DIR = CMakeFiles\3DASCII.dir
+  OBJECT_FILE_DIR = CMakeFiles\3DASCII.dir\src\systems
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target 3DASCII
@@ -129,7 +137,7 @@ build CMakeFiles/3DASCII.dir/src/rendercomponents/ShaderProgram.cpp.obj: CXX_COM
 #############################################
 # Link the executable bin\3DASCII.exe
 
-build bin/3DASCII.exe: CXX_EXECUTABLE_LINKER__3DASCII_Debug CMakeFiles/3DASCII.dir/src/core/main.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/EventBus.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/EntityManager.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/AssetManager.cpp.obj CMakeFiles/3DASCII.dir/src/rendercomponents/IndexBuffer.cpp.obj CMakeFiles/3DASCII.dir/src/rendercomponents/VertexArray.cpp.obj CMakeFiles/3DASCII.dir/src/rendercomponents/VertexBuffer.cpp.obj CMakeFiles/3DASCII.dir/src/rendercomponents/Shader.cpp.obj CMakeFiles/3DASCII.dir/src/rendercomponents/ShaderProgram.cpp.obj | libglad.a lib/glm/glm/libglm.a lib/glfw/src/libglfw3.a libimgui.a || lib/glfw/src/libglfw3.a lib/glm/glm/libglm.a libglad.a libimgui.a
+build bin/3DASCII.exe: CXX_EXECUTABLE_LINKER__3DASCII_Debug CMakeFiles/3DASCII.dir/src/core/main.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/EventBus.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/EntityManager.cpp.obj CMakeFiles/3DASCII.dir/src/core/managers/AssetManager.cpp.obj CMakeFiles/3DASCII.dir/src/rendercomponents/IndexBuffer.cpp.obj CMakeFiles/3DASCII.dir/src/rendercomponents/VertexArray.cpp.obj CMakeFiles/3DASCII.dir/src/rendercomponents/VertexBuffer.cpp.obj CMakeFiles/3DASCII.dir/src/rendercomponents/Shader.cpp.obj CMakeFiles/3DASCII.dir/src/rendercomponents/ShaderProgram.cpp.obj CMakeFiles/3DASCII.dir/src/systems/RenderSystem.cpp.obj | libglad.a lib/glm/glm/libglm.a lib/glfw/src/libglfw3.a libimgui.a || lib/glfw/src/libglfw3.a lib/glm/glm/libglm.a libglad.a libimgui.a
   CONFIG = Debug
   FLAGS = -g
   LINK_LIBRARIES = libglad.a  lib/glm/glm/libglm.a  lib/glfw/src/libglfw3.a  libimgui.a  -lopengl32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

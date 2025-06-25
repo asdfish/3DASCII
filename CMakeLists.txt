@@ -20,6 +20,8 @@ set(SRC_FILES
     src/rendercomponents/VertexBuffer.cpp 
     src/rendercomponents/Shader.cpp
     src/rendercomponents/ShaderProgram.cpp
+
+    src/systems/RenderSystem.cpp
 )
 
 # === Executable Target ===

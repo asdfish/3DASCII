@@ -4,6 +4,12 @@
 
 #include "managers.hpp"
 #include "rendercomponents.hpp"
+#include "RenderContext.hpp"
+
+#include "components.hpp"
+#include "systems.hpp"
+
+#include "errorHandle.hpp"
 
 #include <iostream>
 
@@ -41,53 +47,56 @@ int main()
     }
     int width, height;
     glfwGetFramebufferSize(window, &width, &height);
+    std::cout<<"Window size: "<<width<<"x"<<height<<"\n";
     glfwMakeContextCurrent(window);
     gladLoadGL(glfwGetProcAddress);
-    //glEnable(GL_DEPTH_TEST);
-    glViewport(0, 0, width, height);
+    GLCall(glEnable(GL_DEPTH_TEST));
+    GLCall(glDisable(GL_CULL_FACE));
+    GLCall(glDepthFunc(GL_LESS));
+    GLCall(glViewport(0, 0, width, height)); 
+
+
+    RenderContext::Instance().FOV = 50.f;
+    RenderContext::Instance().nearPlane = 0.01f;
+    RenderContext::Instance().farPlane = 10.f;
+    RenderContext::Instance().aspect = 640.f/480.f;
+    RenderContext::Instance().camTransform.position = glm::vec3(0.f, 0.f, 5.f);
+    RenderContext::Instance().camTransform.rotation = glm::quat(1.f, 0.f, 0.f, 0.f);
 
     AssetManager::Instance();
-    Coordinator::Instance();   
+    Coordinator::Instance();  
+
+    RenderContext::Instance().ResetProjMatrix();
+    RenderContext::Instance().ResetViewMatrix();
+
+    //Coordinator Initialize: Components
+    Coordinator::Instance().RegisterComponent<MeshData>();
+    Coordinator::Instance().RegisterComponent<MeshGPU>();
+    Coordinator::Instance().RegisterComponent<Transform>();
+
+    //Coordinator Initialize: Systems
+    auto moveSys = Coordinator::Instance().RegisterSystem<RenderSystem>();
+    Signature sig;
+    sig.set(Coordinator::Instance().GetComponentType<MeshGPU>());
+    sig.set(Coordinator::Instance().GetComponentType<Transform>());
+    Coordinator::Instance().SetSignature<RenderSystem>(sig);
+
+    AssetManager::Instance().MeshImport("Cube.obj");
+    AssetManager::Instance().MeshLoad("Cube");
 
 
-    float points[] = {
-        0.5f, 0.5f, 0.0f, 1.0f,
-        0.5f, -0.5f, 0.0f, 1.0f,
-        -0.5f, -0.5f, 0.0f, 1.0f,
-        -0.5f, 0.5f, 0.0f, 1.0f
-    };
-
-    GLuint indices[] = {
-        0,2,1,
-        0,3,2
-    };
 
     AssetManager::Instance().CreateShaderProgram("test", {"testf.frag", "testv.vert"});
-    ShaderProgram& shader_program = AssetManager::Instance().GetShaderProgram("test");
-    shader_program.Bind();
-
-    VertexArray va;
-    VertexBuffer vb(points, 4*4*sizeof(float));
-
-    VertexBufferLayout layout;
-    layout.Push<float>(4);
-    va.AddBuffer(vb, layout);
-
-    IndexBuffer ib(indices, 6);
-    
 
     while (!glfwWindowShouldClose(window))
     {
         glfwPollEvents();
 
-        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        GLCall(glClearColor(0.1f, 0.1f, 0.1f, 1.0f));
+        GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
+        
+        moveSys -> Update();
 
-        shader_program.Bind();
-        va.Bind();
-        ib.Bind();
-
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
         glfwSwapBuffers(window);
     }
 
@@ -101,6 +110,30 @@ void error_callback(int error, const char* description)
 }
 
 /*
+    float points[] = {
+        0.5f, 0.5f, 0.0f, 1.0f,
+        0.5f, -0.5f, 0.0f, 1.0f,
+        -0.5f, -0.5f, 0.0f, 1.0f,
+        -0.5f, 0.5f, 0.0f, 1.0f
+    };
+
+    GLuint indices[] = {
+        0,2,1,
+        0,3,2
+    };
+
+        VertexArray va;
+    VertexBuffer vb(points, 4*4*sizeof(float));
+
+    VertexBufferLayout layout;
+    layout.Push<float>(4);
+    va.AddBuffer(vb, layout);
+
+    IndexBuffer ib(indices, 6);
+    
+
+
+
     const char* vertex_shader = 
     "#version 430 core\n"
     "in vec3 vp;"

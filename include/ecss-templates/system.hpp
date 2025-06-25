@@ -2,6 +2,7 @@
 
 #include <set>
 #include "entity.hpp"
+#include <memory>
 
 class System
 {

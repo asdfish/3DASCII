@@ -32,7 +32,7 @@ class VertexBufferLayout
         void Push(GLuint count)
         {
             static_assert(false);
-        };
+        }
 
         inline const std::vector<VertexBufferElement>& GetElements() const {return m_elements;}
         inline const GLuint GetStride() const {return m_stride;}

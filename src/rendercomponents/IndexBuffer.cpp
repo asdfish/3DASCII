@@ -1,24 +1,26 @@
 #include "rendercomponents/IndexBuffer.hpp"
+#include "errorHandle.hpp"
 
 IndexBuffer::IndexBuffer(const unsigned int* data, unsigned int count)
 : m_count(count)
 {
-    glGenBuffers(1, &m_id);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_id);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(unsigned int), data, GL_STATIC_DRAW);
+    GLCall(glGenBuffers(1, &m_id));
+    GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_id));
+    GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(unsigned int), data, GL_STATIC_DRAW));
 }
 
 IndexBuffer::~IndexBuffer()
 {
-    glDeleteBuffers(1, &m_id);
+    GLCall(glDeleteBuffers(1, &m_id));
+    m_id = 0;
 }
 
 void IndexBuffer::Bind() const
 {
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_id);
+    GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_id));
 }
 
 void IndexBuffer::Unbind() const
 {
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
 }

@@ -1,13 +1,17 @@
 #pragma once
 
+#include <unordered_map>
 #include <string>
 #include <glad/gl.h>
-#include <unordered_map>
+#include <glm/vec4.hpp>
+#include <glm/mat4x4.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 struct UniformInfo
 {
     std::string name;
     GLenum type;
+    GLint size;
     GLint location;
 };
 
@@ -17,28 +21,11 @@ public:
     ShaderProgram(GLuint id);
     ~ShaderProgram();
 
-    ShaderProgram(ShaderProgram&& other) noexcept
-        : m_id(other.m_id), m_uniforms(std::move(other.m_uniforms))
-    {
-        other.m_id = 0; // prevent deletion from moved-from object
-    }
-
-    // Move assignment
-    ShaderProgram& operator=(ShaderProgram&& other) noexcept
-    {
-        if (this != &other)
-        {
-            glDeleteProgram(m_id); // clean current
-            m_id = other.m_id;
-            m_uniforms = std::move(other.m_uniforms);
-            other.m_id = 0;
-        }
-        return *this;
-    }
-
     ShaderProgram(const ShaderProgram&) = delete;
     ShaderProgram& operator=(const ShaderProgram&) = delete;
 
+    void SetUniform4f(const std::string& name, const glm::vec4 val);
+    void SetUniformMatrix4fv(const std::string& name, const glm::mat4 val);
 
     void Bind();
     void Unbind();

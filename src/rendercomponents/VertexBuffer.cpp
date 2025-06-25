@@ -1,23 +1,25 @@
 #include "rendercomponents/VertexBuffer.hpp"
+#include "errorHandle.hpp"
 
 VertexBuffer::VertexBuffer(const void *data, unsigned int size)
 {
-    glGenBuffers(1, &m_id);
-    glBindBuffer(GL_ARRAY_BUFFER, m_id);
-    glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
+    GLCall(glGenBuffers(1, &m_id));
+    GLCall(glBindBuffer(GL_ARRAY_BUFFER, m_id));
+    GLCall(glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW));
 }
 
 VertexBuffer::~VertexBuffer()
 {
-    glDeleteBuffers(1, &m_id);
+    GLCall(glDeleteBuffers(1, &m_id));
+    m_id = 0;
 }
 
 void VertexBuffer::Bind() const
 {
-    glBindBuffer(GL_ARRAY_BUFFER, m_id);
+    GLCall(glBindBuffer(GL_ARRAY_BUFFER, m_id));
 }
 
 void VertexBuffer::Unbind() const 
 {
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
 }

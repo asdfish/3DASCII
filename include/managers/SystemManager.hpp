@@ -14,7 +14,7 @@ class SystemManager
         std::shared_ptr<T> RegisterSystem()
         {
             const char* typeName = typeid(T).name();
-            auto system = std::make_shared<T>;
+            auto system = std::make_shared<T>();
             m_systems[typeName] = system;
             return system;
         }
