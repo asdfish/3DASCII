@@ -179,7 +179,7 @@ void AssetManager::MeshLoad(std::string name)
     }
 
     MeshData dataToLoad = data->second;
-    Transform transform = {CentreMeshPoints(dataToLoad.vertices),{0.5709415, 0.1675188, 0.5709415, 0.5656758 }};
+    Transform transform = {CentreMeshPoints(dataToLoad.vertices),{1,0,0,0}};
     transform.ResetMatrixTransform();
 
     if (dataToLoad.vertices.empty() || dataToLoad.indices.empty())

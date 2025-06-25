@@ -51,23 +51,24 @@ int main()
     glfwMakeContextCurrent(window);
     gladLoadGL(glfwGetProcAddress);
     GLCall(glEnable(GL_DEPTH_TEST));
-    GLCall(glDisable(GL_CULL_FACE));
+    GLCall(glEnable(GL_CULL_FACE));
+    GLCall(glCullFace(GL_BACK));
+    GLCall(glFrontFace(GL_CCW));
     GLCall(glDepthFunc(GL_LESS));
     GLCall(glViewport(0, 0, width, height)); 
 
 
     RenderContext::Instance().FOV = 50.f;
     RenderContext::Instance().nearPlane = 0.01f;
-    RenderContext::Instance().farPlane = 10.f;
+    RenderContext::Instance().farPlane = 100.f;
     RenderContext::Instance().aspect = 640.f/480.f;
     RenderContext::Instance().camTransform.position = glm::vec3(1.f, 1.f, 10.f);
     RenderContext::Instance().camTransform.rotation = glm::quat(1.f, 0.f, 0.f, 0.f);
+    RenderContext::Instance().ResetProjMatrix();
+    RenderContext::Instance().ResetViewMatrix();
 
     AssetManager::Instance();
     Coordinator::Instance();  
-
-    RenderContext::Instance().ResetProjMatrix();
-    RenderContext::Instance().ResetViewMatrix();
 
     //Coordinator Initialize: Components
     Coordinator::Instance().RegisterComponent<MeshData>();
@@ -81,8 +82,13 @@ int main()
     sig.set(Coordinator::Instance().GetComponentType<Transform>());
     Coordinator::Instance().SetSignature<RenderSystem>(sig);
 
-    AssetManager::Instance().MeshImport("Cube.obj");
-    AssetManager::Instance().MeshLoad("Cube");
+    AssetManager::Instance().MeshImport("DirectionTest.obj");
+    AssetManager::Instance().MeshLoad("-X");
+    AssetManager::Instance().MeshLoad("+X");
+    AssetManager::Instance().MeshLoad("-Y");
+    AssetManager::Instance().MeshLoad("+Y");
+    AssetManager::Instance().MeshLoad("-Z");
+    AssetManager::Instance().MeshLoad("+Z");
 
 
     AssetManager::Instance().CreateShaderProgram("test", {"testf.frag", "testv.vert"});
