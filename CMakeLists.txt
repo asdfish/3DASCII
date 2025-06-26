@@ -22,6 +22,9 @@ set(SRC_FILES
     src/rendercomponents/ShaderProgram.cpp
 
     src/systems/RenderSystem.cpp
+    src/systems/UISystem.cpp
+
+    src/ImGuiFileDialog.cpp
 )
 
 # === Executable Target ===

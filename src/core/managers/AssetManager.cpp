@@ -180,6 +180,7 @@ void AssetManager::MeshLoad(std::string name)
 
     MeshData dataToLoad = data->second;
     Transform transform = {CentreMeshPoints(dataToLoad.vertices),{1,0,0,0}};
+    ID id = {name};
     transform.ResetMatrixTransform();
 
     if (dataToLoad.vertices.empty() || dataToLoad.indices.empty())
@@ -203,6 +204,23 @@ void AssetManager::MeshLoad(std::string name)
     Entity entity = Coordinator::Instance().CreateEntity();
     Coordinator::Instance().AddComponent<MeshGPU>(entity, mesh);
     Coordinator::Instance().AddComponent<Transform>(entity, transform);
+    Coordinator::Instance().AddComponent<ID>(entity, id);
+}
+
+std::vector<std::string> AssetManager::GetMeshNames()
+{
+    std::vector<std::string> names;
+    names.reserve(m_meshData.size());
+    for (const auto& data : m_meshData)
+    {
+        names.push_back(data.first);
+    }
+    return names;
+}
+
+void AssetManager::RemoveMesh(std::string name)
+{
+    m_meshData.erase(name);
 }
 
 glm::vec3 AssetManager::CentreMeshPoints(std::vector<glm::vec4> &points)

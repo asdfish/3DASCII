@@ -30,6 +30,21 @@ struct Transform
         glm::mat4 posMatrix = glm::translate(glm::mat4(1.f), position);
         glm::mat4 rotMatrix = glm::toMat4(rotation);
 
-        matrixTransform = (rotMatrix * posMatrix);
+        matrixTransform = (rotMatrix* posMatrix);
+    }
+
+    glm::vec3 Right() const
+    {
+        return glm::vec3(matrixTransform[0]);
+    }
+
+    glm::vec3 Up() const
+    {
+        return glm::vec3(matrixTransform[1]);
+    }
+
+    glm::vec3 Forward() const
+    {
+        return -glm::vec3(matrixTransform[2]);
     }
 };

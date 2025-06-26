@@ -14,6 +14,6 @@ class EntityManager
         Signature GetSignature(Entity entity);
 
     private:
-        Entity m_nextID = 0;
+        Entity m_nextID = 1;
         std::unordered_map<Entity, Signature> m_signatures;
 };

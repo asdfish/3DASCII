@@ -5,6 +5,7 @@
 #include "components/MeshData.hpp"
 #include "components/Transform.hpp"
 #include "components/MeshGPU.hpp"
+#include "components/ID.hpp"
 #include "ecss-templates/entity.hpp"
 #include "managers.hpp"
 
@@ -14,6 +15,7 @@
 #include <map>
 #include <memory>
 #include <glm/vec4.hpp>
+#include <vector>
 
 class AssetManager
 {
@@ -30,6 +32,8 @@ class AssetManager
         //Mesh
         void MeshImport(const char* path);
         void MeshLoad(std::string name);
+        std::vector<std::string> GetMeshNames();
+        void RemoveMesh(std::string name);
 
     private:
         AssetManager();
