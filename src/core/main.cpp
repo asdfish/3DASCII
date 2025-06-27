@@ -179,16 +179,13 @@ int main()
         RenderContext::Instance().aspect = static_cast<float>(display_w)/display_h;
 
         //Systems
+        renderSys -> Update();
         UISys -> Update();
         
-
         //Draw UI
         ImGui::ShowDemoWindow();
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-        renderSys -> Update();
-        
 
         glfwSwapBuffers(window);
     }

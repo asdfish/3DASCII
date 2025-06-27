@@ -188,8 +188,8 @@ void UISystem::HandleInputLogic()
                 RCI.ResetViewMatrix();
             }
         }
-        float& pitch = RenderContext::Instance().camPitch;
-        float& yaw  = RenderContext::Instance().camYaw;
+        float& pitch = RCI.camPitch;
+        float& yaw  = RCI.camYaw;
         if (mouseDrag[0] != 0)
         {
             //Middle mouse down
@@ -201,7 +201,7 @@ void UISystem::HandleInputLogic()
             //Right mouse down
             else if (io.MouseDown[1]) 
             {
-                yaw += mouseDrag[0]*RCI.rotVel;
+                yaw -= mouseDrag[0]*RCI.rotVel;
                 if (yaw >  glm::pi<float>())yaw=-glm::pi<float>();
                 if (yaw < -glm::pi<float>())yaw=+glm::pi<float>();
                 
@@ -218,7 +218,7 @@ void UISystem::HandleInputLogic()
             //Right mouse down
             else if (io.MouseDown[1]) 
             {
-                pitch += mouseDrag[1]*RCI.rotVel;
+                pitch -= mouseDrag[1]*RCI.rotVel;
                 pitch = glm::clamp(pitch, -glm::half_pi<float>()+0.01f, glm::half_pi<float>()-0.01f);
                 
             }

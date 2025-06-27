@@ -38,11 +38,28 @@ class AssetManager
     private:
         AssetManager();
         ~AssetManager() {};
-        glm::vec3 CentreMeshPoints(std::vector<glm::vec4> &points);
+        glm::vec3 CentreMeshPoints(std::vector<Vertex> &points);
         std::unordered_map<std::string, std::shared_ptr<Shader>> m_shaders;
         std::unordered_map<std::string, std::shared_ptr<ShaderProgram>> m_shaderPrograms;
         std::map<std::string, MeshData> m_meshData;
         GLuint m_shaderProgramID = 0;
         
         
+};
+
+struct IDX
+{
+    int v,n; //Vertex index, normal index
+
+    bool operator==(const IDX& other) const noexcept{
+        return ((v == other.v) && (n == other.n));
+    }
+};
+
+struct IDXHash
+{
+    size_t operator()(IDX const& k) const 
+    {
+        return std::hash<int>()(static_cast<uint64_t>(k.v)<<32) ^ std::hash<int>()(k.n);
+    }
 };

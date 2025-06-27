@@ -5,3 +5,4 @@
 #include "rendercomponents/VertexBufferLayout.hpp"
 #include "rendercomponents/Shader.hpp"
 #include "rendercomponents/ShaderProgram.hpp"
+#include "rendercomponents/Vertex.hpp"

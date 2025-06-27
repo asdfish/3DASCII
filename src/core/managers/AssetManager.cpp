@@ -74,10 +74,17 @@ std::shared_ptr<ShaderProgram> AssetManager::GetShaderProgram(const std::string&
 void AssetManager::MeshImport(const char* path)
 {
     std::ifstream file(path);
+    if (!file.is_open())  
+        throw std::runtime_error("Could not open OBJ at " + std::string(path));
+
     std::string line;
 
-    std::vector<glm::vec4> globalVerts;
-    std::vector<std::vector<int>> modelFaceIndices;
+    std::vector<glm::vec4> globalVertPositons;
+    std::vector<glm::vec3> globalVertNormals;
+
+    std::vector<std::vector<int>> modelVertPosIndices;
+    std::vector<std::vector<int>> modelVertNormalIndices;
+
     std::vector<std::string> names;
 
     //Step 1: Parse the file into both the vectors
@@ -92,7 +99,8 @@ void AssetManager::MeshImport(const char* path)
         //Object header (o)
         if (temp == "o")
         {
-            modelFaceIndices.push_back(std::vector<int>());
+            modelVertPosIndices.push_back(std::vector<int>());
+            modelVertNormalIndices.push_back(std::vector<int>());
             names.push_back(line.substr(2));
         }
 
@@ -100,53 +108,85 @@ void AssetManager::MeshImport(const char* path)
         //Vertex positions (v)
         else if (temp == "v")
         {
-            glm::vec4 newVert;
+            glm::vec4 newPos;
             s>>temp;
-            newVert.x = std::stof(temp);
+            newPos.x = std::stof(temp);
             s>>temp;
-            newVert.y = std::stof(temp);
+            newPos.y = std::stof(temp);
             s>>temp;
-            newVert.z = std::stof(temp);
-            newVert.w = 1.0f;
+            newPos.z = std::stof(temp);
+            newPos.w = 1.0f;
 
-            globalVerts.push_back(newVert);
+            globalVertPositons.push_back(newPos);
         }
+
+        //Vertex normals (vn)
+        else if (temp == "vn")
+        {
+            glm::vec3 newNormal;
+            s>>temp;
+            newNormal.x = std::stof(temp);
+            s>>temp;
+            newNormal.y = std::stof(temp);
+            s>>temp;
+            newNormal.z = std::stof(temp);
+
+            globalVertNormals.push_back(newNormal);
+        }
+
 
         //Faces
         //Face Indices (f)
         else if (temp == "f")
         {
-            std::vector<int> tempFaceIndices;
+            std::vector<int> tempVertPosIndices;
+            std::vector<int> tempVertNormalIndices;
             //For now, we are only looking at vertex data, not materials
             while(s>>temp) 
             {
-                tempFaceIndices.push_back(std::stoi(temp.substr(0, temp.find('/')))-1); // -1 for turning array from 1-indexed to 0-indexed
+                tempVertPosIndices.push_back(std::stoi(temp.substr(0, temp.find('/')))-1); // -1 for turning array from 1-indexed to 0-indexed
+
+                temp.erase(0, temp.find('/')+1);
+                //tempFaceTexIndices.push_back(std::stoi(temp.substr(0, temp.find('/')))-1); //NOTIMPLEMENTED
+
+                temp.erase(0, temp.find('/')+1);
+                tempVertNormalIndices.push_back(std::stoi(temp)-1); // -1 for turning array from 1-indexed to 0-indexed
             }
-            for (int i = 2; i<tempFaceIndices.size(); i++)
+            for (int i = 2; i<tempVertPosIndices.size(); i++)
             {
-                modelFaceIndices.back().push_back(tempFaceIndices[0]);
-                modelFaceIndices.back().push_back(tempFaceIndices[i-1]);
-                modelFaceIndices.back().push_back(tempFaceIndices[i]);
+                modelVertPosIndices.back().push_back(tempVertPosIndices[0]);
+                modelVertPosIndices.back().push_back(tempVertPosIndices[i-1]);
+                modelVertPosIndices.back().push_back(tempVertPosIndices[i]);
+
+                //TEXUNIMPLEMENTED
+                //TEXUNIMPLEMENTED
+                //TEXUNIMPLEMENTED
+
+                modelVertNormalIndices.back().push_back(tempVertNormalIndices[0]);
+                modelVertNormalIndices.back().push_back(tempVertNormalIndices[i-1]);
+                modelVertNormalIndices.back().push_back(tempVertNormalIndices[i]);
             }
         }
     }
-    for (auto itrm = modelFaceIndices.begin(); itrm != modelFaceIndices.end(); ++itrm)
+    for (int i = 0; i<modelVertPosIndices.size(); i++)
     {
         
-        std::vector<glm::vec4> vertices;
-        std::vector<unsigned int> faceIndices;
-        std::unordered_map<int, int> indexMap;
+        std::vector<Vertex> vertices;
+        std::vector<unsigned int> indices;
 
-        for (auto itrf = itrm->begin(); itrf != itrm->end(); ++itrf) //iterator for face (actually for indices of face)
+        std::unordered_map<IDX, unsigned int, IDXHash> indexGroupMap;
+
+        for (int j = 0; j<modelVertPosIndices[i].size(); j++) //iterator for face (actually for indices of face)
         {
-            if (indexMap.find(*itrf) == indexMap.end())
+            IDX tempIndices = {modelVertPosIndices[i][j], modelVertNormalIndices[i][j]};
+            if (indexGroupMap.find(tempIndices) == indexGroupMap.end()) // Check if the unique combo exists as a vertex already
             {
-                indexMap.insert({*itrf, indexMap.size()});
-                vertices.push_back(globalVerts[*itrf]);
+                indexGroupMap.insert({tempIndices, indexGroupMap.size()});
+                vertices.push_back({globalVertPositons[tempIndices.v], globalVertNormals[tempIndices.n] });
             }
-            faceIndices.push_back(indexMap[*itrf]);
+            indices.push_back(indexGroupMap[tempIndices]);
         }
-        std::string unmodName = names[0];
+        std::string unmodName = names[i];
         std::string name = unmodName;
         int count = 1;
 
@@ -154,10 +194,7 @@ void AssetManager::MeshImport(const char* path)
         {
             name = unmodName + " (" + std::to_string(count++) + ")";
         }
-        m_meshData[name] = {vertices, faceIndices};
-
-       
-        names.erase(names.begin());
+        m_meshData[name] = {vertices, indices};
     }
 }
 
@@ -169,14 +206,14 @@ void AssetManager::MeshLoad(std::string name)
         throw std::runtime_error("Model " + name +" does not exist!\n");
     }
 
-    for (const auto& vertex : data->second.vertices)
-    {
-        std::cout << "Vertex: " << vertex.x << ", " << vertex.y << ", " << vertex.z << ", " << vertex.w << "\n";
-    }
-    for (const auto& index : data->second.indices)
-    {
-        std::cout << "Index: " << index << "\n";
-    }
+    //for (const auto& vertex : data->second.vertices)
+    //{
+    //    std::cout << "Vertex: " << vertex.x << ", " << vertex.y << ", " << vertex.z << ", " << vertex.w << "\n";
+    //}
+    //for (const auto& index : data->second.indices)
+    //{
+    //    std::cout << "Index: " << index << "\n";
+    //}
 
     MeshData dataToLoad = data->second;
     Transform transform = {CentreMeshPoints(dataToLoad.vertices),{1,0,0,0}};
@@ -189,10 +226,11 @@ void AssetManager::MeshLoad(std::string name)
 
     std::shared_ptr<VertexArray> vao = std::make_shared<VertexArray>();
 
-    std::shared_ptr<VertexBuffer> vbo = std::make_shared<VertexBuffer>(dataToLoad.vertices.data(), dataToLoad.vertices.size()*sizeof(glm::vec4));
+    std::shared_ptr<VertexBuffer> vbo = std::make_shared<VertexBuffer>(dataToLoad.vertices.data(), dataToLoad.vertices.size()*(sizeof(Vertex)));
 
     VertexBufferLayout layout;
     layout.Push<float>(4);
+    layout.Push<float>(3);
     vao->AddBuffer(vbo, layout);
 
     std::shared_ptr<IndexBuffer> ibo = std::make_shared<IndexBuffer>(dataToLoad.indices.data(), dataToLoad.indices.size());
@@ -223,17 +261,27 @@ void AssetManager::RemoveMesh(std::string name)
     m_meshData.erase(name);
 }
 
-glm::vec3 AssetManager::CentreMeshPoints(std::vector<glm::vec4> &points)
+glm::vec3 AssetManager::CentreMeshPoints(std::vector<Vertex> &points)
 {
     glm::vec3 avg(0.f);
     for (const auto& point : points)
     {
-        avg += glm::vec3(point);
+        avg += glm::vec3(point.position);
     }
     avg /= points.size();
     for (auto& point : points)
     {
-        point -= glm::vec4(avg, 0);
+        point.position -= glm::vec4(avg, 0);
     }
     return avg;
 }
+
+
+
+/*
+
+
+
+
+
+*/
