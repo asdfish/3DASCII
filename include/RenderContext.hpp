@@ -22,6 +22,11 @@ struct RenderContext
     float FOVChangeSpeed = 6.f;
     float motionVel = 2.f;
 
+    glm::vec4 lightPos = {0,0,0,1};
+    glm::vec3 lightCol = {1, 1, 1};
+    glm::vec3 objectCol = {1, 1, 1};
+    float ambient = 0.2f;
+
     static RenderContext& Instance()
     {
         static RenderContext instance;

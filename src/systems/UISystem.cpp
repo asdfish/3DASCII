@@ -151,8 +151,9 @@ void UISystem::DrawSceneSettingsMenu()
         ImGui::DragFloat("FOV", &RenderContext::Instance().FOV);
         ImGui::DragFloat("Near Plane", &RenderContext::Instance().nearPlane);
         ImGui::DragFloat("Far Plane", &RenderContext::Instance().farPlane);
-        ImGui::DragFloat3("Cam Position", &RenderContext::Instance().camTransform.position.x);
-        ImGui::DragFloat3("Cam rot", &RenderContext::Instance().camTransform.rotation.x);
+        ImGui::DragFloat3("Light Pos", &RenderContext::Instance().lightPos.x);
+        ImGui::ColorPicker3("Light Col", &RenderContext::Instance().lightCol.x);
+        ImGui::ColorPicker3("Object Col", &RenderContext::Instance().objectCol.x);
         RenderContext::Instance().ResetProjMatrix();
         ImGui::End();
     }

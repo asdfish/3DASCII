@@ -24,8 +24,11 @@ public:
     ShaderProgram(const ShaderProgram&) = delete;
     ShaderProgram& operator=(const ShaderProgram&) = delete;
 
-    void SetUniform4f(const std::string& name, const glm::vec4 val);
-    void SetUniformMatrix4fv(const std::string& name, const glm::mat4 val);
+    void SetUniform4f(const std::string& name, const glm::vec4& val);
+    void SetUniform3f(const std::string& name, const glm::vec3& val);
+    void SetUniform2f(const std::string& name, const glm::vec2& val);
+    void SetUniform1f(const std::string& name, float val);
+    void SetUniformMatrix4fv(const std::string& name, const glm::mat4& val);
 
     void Bind();
     void Unbind();

@@ -41,13 +41,13 @@ void ShaderProgram::Unbind()
     glUseProgram(0);
 }
 
-void ShaderProgram::SetUniform4f(const std::string &name, const glm::vec4 val)
+void ShaderProgram::SetUniform4f(const std::string &name, const glm::vec4& val)
 {
     auto uniform = m_uniforms.find(name);
 
     if (uniform              != m_uniforms.end() 
     &&  uniform->second.type == GL_FLOAT_VEC4
-    &&  uniform->second.size == 4               )
+    &&  uniform->second.size == 1               )
     {
         GLCall(glUniform4f(uniform->second.location, val[0], val[1], val[2], val[3]));
     }
@@ -57,7 +57,7 @@ void ShaderProgram::SetUniform4f(const std::string &name, const glm::vec4 val)
     }
 }
 
-void ShaderProgram::SetUniformMatrix4fv(const std::string &name, const glm::mat4 val)
+void ShaderProgram::SetUniformMatrix4fv(const std::string &name, const glm::mat4& val)
 {
     auto uniform = m_uniforms.find(name);
 
@@ -71,5 +71,56 @@ void ShaderProgram::SetUniformMatrix4fv(const std::string &name, const glm::mat4
     else
     {
         throw std::runtime_error("Invalid value passed to SetUniformMatrix4fv : " + name + " does not exist or is of incompatible type!");
+    }
+}
+
+void ShaderProgram::SetUniform3f(const std::string &name, const glm::vec3& val)
+{
+    auto uniform = m_uniforms.find(name);
+
+    if (uniform              != m_uniforms.end() 
+    &&  uniform->second.type == GL_FLOAT_VEC3
+    &&  uniform->second.size == 1               )
+    {
+        //std::cout<<name<<" "<<uniform->second.name<<" "<<uniform->second.type<<" "<<uniform->second.size<<" "<<uniform->second.location<<"\n";
+        GLCall(glUniform3f(uniform->second.location, val.x, val.y, val.z));
+    }
+    else
+    {
+        throw std::runtime_error("Invalid value passed to SetUniform3f : " + name + " does not exist or is of incompatible type!");
+    }
+}
+
+void ShaderProgram::SetUniform2f(const std::string &name, const glm::vec2 &val)
+{
+    auto uniform = m_uniforms.find(name);
+
+    if (uniform              != m_uniforms.end() 
+    &&  uniform->second.type == GL_FLOAT_VEC2
+    &&  uniform->second.size == 1               )
+    {
+        //std::cout<<name<<" "<<uniform->second.name<<" "<<uniform->second.type<<" "<<uniform->second.size<<" "<<uniform->second.location<<"\n";
+        GLCall(glUniform2f(uniform->second.location, val.x, val.y));
+    }
+    else
+    {
+        throw std::runtime_error("Invalid value passed to SetUniform2f : " + name + " does not exist or is of incompatible type!");
+    }
+}
+
+void ShaderProgram::SetUniform1f(const std::string &name, float val)
+{
+    auto uniform = m_uniforms.find(name);
+
+    if (uniform              != m_uniforms.end() 
+    &&  uniform->second.type == GL_FLOAT
+    &&  uniform->second.size == 1               )
+    {
+        //std::cout<<name<<" "<<uniform->second.name<<" "<<uniform->second.type<<" "<<uniform->second.size<<" "<<uniform->second.location<<"\n";
+        GLCall(glUniform1f(uniform->second.location, val));
+    }
+    else
+    {
+        throw std::runtime_error("Invalid value passed to SetUniform1f : " + name + " does not exist or is of incompatible type!");
     }
 }

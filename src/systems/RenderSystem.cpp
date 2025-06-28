@@ -25,6 +25,16 @@ void RenderSystem::Update()
         AssetManager::Instance().GetShaderProgram("test")->SetUniformMatrix4fv("viewMatrix", view);
         AssetManager::Instance().GetShaderProgram("test")->SetUniformMatrix4fv("projMatrix", project);
 
+        glm::vec3& lightCol = RenderContext::Instance().lightCol;
+        glm::vec3& objectCol = RenderContext::Instance().objectCol;
+        glm::vec4& lightPos = RenderContext::Instance().lightPos;
+        float ambient = RenderContext::Instance().ambient;
+        AssetManager::Instance().GetShaderProgram("test")->SetUniform3f("lightPos", lightPos);
+        AssetManager::Instance().GetShaderProgram("test")->SetUniform3f("lightCol", lightCol);
+        AssetManager::Instance().GetShaderProgram("test")->SetUniform3f("objectCol", objectCol);
+        AssetManager::Instance().GetShaderProgram("test")->SetUniform1f("ambient", ambient);
+        
+
         
         data.Bind();
         GLCall(glDrawElements(GL_TRIANGLES, data.count, GL_UNSIGNED_INT, nullptr));
