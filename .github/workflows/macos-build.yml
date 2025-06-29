@@ -1,4 +1,4 @@
-name: Build on macOS 14
+name: macOS Build
 
 on:
   push:
@@ -17,9 +17,13 @@ jobs:
     - name: Install CMake
       run: brew install cmake
 
-    - name: Configure CMake
+    - name: Create clean build directory
       run: |
-        mkdir -p build
+        rm -rf build
+        mkdir build
+
+    - name: Run CMake
+      run: |
         cd build
         cmake ..
 
