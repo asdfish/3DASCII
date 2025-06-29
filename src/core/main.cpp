@@ -4,7 +4,7 @@
 
 #include "managers.hpp"
 #include "rendercomponents.hpp"
-#include "RenderContext.hpp"
+#include "contexts/RenderContext.hpp"
 
 #include "components.hpp"
 #include "systems.hpp"

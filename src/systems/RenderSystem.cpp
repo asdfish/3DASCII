@@ -1,7 +1,7 @@
 #define GLM_ENABLE_EXPERIMENTAL
 
 #include "systems/RenderSystem.hpp"
-#include "RenderContext.hpp"
+#include "contexts/RenderContext.hpp"
 #include "managers/AssetManager.hpp"
 #include "errorHandle.hpp"
 #include "glm/gtx/string_cast.hpp"

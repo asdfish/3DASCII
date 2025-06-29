@@ -1,0 +1,91 @@
+#version 430 core
+
+uniform sampler2D sceneTexture;
+uniform ivec2 
+layout(r8, binding = 0) uniform writeonly image2D brightness;
+layout(rgba8, binding = 1) uniform writeonly image2D col;
+
+vec3 RGBtoHSV(vec3 RGB);
+vec3 HSVtoRGB(vec3 HSV);
+
+void main()
+{
+    ivec2 pos = gl_LocalInvocationID.xy;
+    vec3 rgb = vec3(texelFetch(sceneTexture, pos, 0));
+    vec
+}
+
+vec3 RGBtoHSV(vec3 RGB)
+{
+    vec3 HSV = vec3(0.f,0.f,0.f);
+    RGB = RGB/255.f;
+    float Cmax = max(RGB.r, max(RGB.g, RGB.b));
+    float Cmin = min(RGB.r, min(RGB.g, RGB.b));
+    float delta = Cmax - Cmin;
+
+    //Hue
+    if (delta < 1e-6f)
+    {
+        HSV[0] = 0.f;
+    }
+    else if (Cmax == RGB.r)
+    {
+        HSV[0] = (((RGB.b - RGB.r)/delta) + 2.f);
+    }
+    else if (Cmax == RGB.g)
+    {
+        HSV[0] = (((RGB.r - RGB.g)/delta) + 4.f);
+    }
+    else if (Cmax == RGB.b)
+    {
+        HSV[0] = (((RGB.g - RGB.b)/delta) + 0.f);
+    }
+    HSV[0] = mod(HSV[0]/6.f + 1.f, 1.f)*360.f; 
+    
+    //Saturation
+    if (Cmax == 0.f)
+    {
+        HSV[1] = 0.f;
+    }
+    else
+    {
+        HSV[1] = delta/Cmax;
+    }
+
+    //Value (Brightness)
+
+    HSV[2] = Cmax;
+
+    return HSV;
+}
+
+vec3 HSVtoRGB(vec3 HSV)
+{
+    float H = mod(HSV[0]+360.f, 360.f);
+    float S = HSV[1];
+    float V = HSV[2];
+
+    float C = S * V;
+    float X = C * (1.0f- abs(mod(H/60.0f, 2.0f) - 1.0f));
+    float m = V - C;
+
+    vec3 RGB;
+
+    //The long and hard process of R', G', B'
+
+    if      (0.0f   <= H && H < 60.0f ) {RGB = vec3(C, X, 0);}
+    else if (60.0f  <= H && H < 120.0f) {RGB = vec3(X, C, 0);}
+    else if (120.0f <= H && H < 180.0f) {RGB = vec3(0, C, X);}
+    else if (180.0f <= H && H < 240.0f) {RGB = vec3(0, X, C);}
+    else if (240.0f <= H && H < 300.0f) {RGB = vec3(X, 0, C);}
+    else if (300.0f <= H && H < 360.0f) {RGB = vec3(C, 0, X);}
+    else RGB = vec3(0.1f,0.1f,0.1f);
+
+    RGB = (RGB+vec3(m,m,m))*255;
+    RGB.r = clamp(round(RGB.r), 0.0f, 255.0f);
+    RGB.g = clamp(round(RGB.g), 0.0f, 255.0f);
+    RGB.b = clamp(round(RGB.b), 0.0f, 255.0f);
+    
+
+    return RGB;
+}
