@@ -6,7 +6,7 @@
 #include "json.hpp"
 #include "modelHandling.hpp"
 #include "Scene.hpp"
-#include "Model.hpp"
+#include "model.hpp"
 #include "uuid.hpp"
 #include "SceneObject.hpp"
 #include "Transform.hpp"
