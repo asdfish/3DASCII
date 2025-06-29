@@ -1,0 +1,35 @@
+name: Build on macOS 14
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-14
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install CMake
+      run: brew install cmake
+
+    - name: Configure CMake
+      run: |
+        mkdir -p build
+        cd build
+        cmake ..
+
+    - name: Build
+      run: |
+        cd build
+        cmake --build .
+
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: macos-build-output
+        path: build/
