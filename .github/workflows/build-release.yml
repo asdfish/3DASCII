@@ -60,6 +60,8 @@ jobs:
               if [ -n "${{matrix.alt-arch}}" ]; then
                   UBUNTU_CODENAME="$(lsb_release -cs)"
                   echo "deb [arch=${{matrix.alt-arch}}] http://ports.ubuntu.com/ubuntu-ports ${UBUNTU_CODENAME} main restricted universe multiverse" | sudo tee -a /etc/apt/sources.list
+                  echo "deb [arch=${{matrix.alt-arch}}] http://ports.ubuntu.com/ubuntu-ports ${UBUNTU_CODENAME}-updates main restricted universe multiverse" | sudo tee -a /etc/apt/sources.list
+                  echo "deb [arch=${{matrix.alt-arch}}] http://ports.ubuntu.com/ubuntu-ports ${UBUNTU_CODENAME}-security main restricted universe multiverse" | sudo tee -a /etc/apt/sources.list
 
                   DEPS_ALT_ARCH=""
                   for DEP in ${DEPS}; do
