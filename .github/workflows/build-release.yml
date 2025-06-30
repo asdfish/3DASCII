@@ -50,4 +50,3 @@ jobs:
           cmake .. ${CMAKEFLAGS}
 
           make -j
-          strip bin/3DASCII
