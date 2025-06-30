@@ -31,6 +31,7 @@ jobs:
           if [ -n "${{matrix.gcc-package}}" ]; then
               sudo apt install ${{matrix.gcc-package}}
               export CC=gcc
+              export CXX=g++
           fi
 
           mkdir build
