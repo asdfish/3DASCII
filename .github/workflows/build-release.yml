@@ -14,10 +14,15 @@ jobs:
           - target: x86_64-apple-darwin
             host: macos-latest
 
-          - target: x86_64-pc-windows-gnu
+          - target: x86_64-pc-windows
             host: ubuntu-latest
             gcc-package-suffix: mingw-w64-x86-64-win32
             gcc-prefix: x86_64-w64-mingw32
+            gcc-suffix: win32
+          - target: i686-pc-windows
+            host: ubuntu-latest
+            gcc-package-suffix: mingw-w64-i686-win32
+            gcc-prefix: i686-w64-mingw32
             gcc-suffix: win32
     runs-on: ${{matrix.host}}
     steps:
