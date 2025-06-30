@@ -27,10 +27,8 @@ jobs:
         shell: bash
         run: |
           export CFLAGS='-O2 -pipe -flto'
-          export CMAKEFLAGS="${CMAKEFLAGS} -DSDL_DEPS_SHARED=off -DSDL_SHARED=off -DSDL_STATIC=on"
-
           if [ -n "${{matrix.gcc-package-suffix}}" ]; then
-              sudo apt install gcc-${{matrix.gcc-package-suffix}}
+              sudo apt install g++-${{matrix.gcc-package-suffix}}
               export CC=${{matrix.gcc-prefix}}-gcc-${{matrix.gcc-suffix}}
               export CXX=${{matrix.gcc-prefix}}-g++-${{matrix.gcc-suffix}}
               export LD=${{matrix.gcc-prefix}}-ld-${{matrix.gcc-suffix}}
