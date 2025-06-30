@@ -30,8 +30,8 @@ jobs:
 
           if [ -n "${{matrix.gcc-package}}" ]; then
               sudo apt install ${{matrix.gcc-package}}
-              export CC=${{gcc-prefix}}-gcc
-              export CXX=${{gcc-prefix}}-g++
+              export CC=${{matrix.gcc-prefix}}-gcc
+              export CXX=${{matrix.gcc-prefix}}-g++
           fi
           if [ -z "${CC}" ]; then
               if command -v clang; then
