@@ -13,6 +13,7 @@ jobs:
             host: macos-latest
           - target: x86_64-apple-darwin
             host: macos-latest
+
           - target: x86_64-pc-windows-gnu
             host: ubuntu-latest
             gcc-package: gcc-mingw-w64-x86-64-win32
@@ -22,20 +23,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build
-        env:
-          CMAKE_C_FLAGS: -O2 -pipe -flto --target=${{matrix.target}} -static
-
-          SDL_DEPS_SHARED: off
-          SDL_SHARED: off
-          SDL_STATIC: on
         shell: bash
         run: |
+          export CMAKEFLAGS="-DCMAKE_C_FLAGS='-O2 -pipe -flto --target=${{matrix.target}}' -static"
+          export CMAKEFLAGS="${CMAKEFLAGS} -DSDL_DEPS_SHARED=off -DSDL_SHARED=off -DSDL_STATIC"
+
           if [ -n "${{matrix.gcc-package}}" ]; then
               sudo apt install ${{matrix.gcc-package}}
           fi
 
           mkdir build
           cd build
-          cmake ..
+          cmake .. "${CMAKEFLAGS}"
           make -j
           strip bin/3DASCII
