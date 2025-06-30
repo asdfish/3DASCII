@@ -17,7 +17,7 @@ jobs:
           - target: x86_64-pc-windows-gnu
             host: ubuntu-latest
             gcc-package: gcc-mingw-w64-x86-64-win32
-            gcc-prefix: mingw-w64-mingw32-
+            gcc-prefix: mingw-w64-mingw32
     runs-on: ${{matrix.host}}
     steps:
       - name: Checkout
@@ -25,17 +25,23 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          export CFLAGS='-O2 -pipe -flto --target=${{matrix.target}}'
+          export CFLAGS='-O2 -pipe -flto'
           export CMAKEFLAGS="${CMAKEFLAGS} -DSDL_DEPS_SHARED=off -DSDL_SHARED=off -DSDL_STATIC=on"
 
           if [ -n "${{matrix.gcc-package}}" ]; then
               sudo apt install ${{matrix.gcc-package}}
-              export CC=gcc
-              export CXX=g++
+              export CC=${{gcc-prefix}}-gcc
+              export CXX=${{gcc-prefix}}-g++
+          fi
+          if [ -z "${CC}" ]; then
+              if command -v clang; then
+                  export CFLAGS="${CFLAGS} --target=${{matrix.target}}"
+              fi
           fi
 
           mkdir build
           cd build
-          cmake ${CMAKEFLAGS} ..
+          cmake .. \
+              -DSDL_DEPS_SHARED=off -DSDL_SHARED=off -DSDL_STATIC=on
           make -j
           strip bin/3DASCII
