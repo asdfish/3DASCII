@@ -20,12 +20,12 @@ jobs:
             host: ubuntu-latest
             gcc-package-suffix: mingw-w64-x86-64-win32
             gcc-prefix: x86_64-w64-mingw32
-            gcc-suffix: win32
+            gcc-suffix: -win32
           - target: i686-pc-windows
             host: ubuntu-latest
             gcc-package-suffix: mingw-w64-i686-win32
             gcc-prefix: i686-w64-mingw32
-            gcc-suffix: win32
+            gcc-suffix: -win32
 
           - target: x86_64-unknown-linux-gnu
             host: ubuntu-latest
@@ -50,9 +50,9 @@ jobs:
 
           if [ -n "${{matrix.gcc-package-suffix}}" ]; then
               sudo apt install g++-${{matrix.gcc-package-suffix}}
-              export CC=${{matrix.gcc-prefix}}-gcc-${{matrix.gcc-suffix}}
-              export CXX=${{matrix.gcc-prefix}}-g++-${{matrix.gcc-suffix}}
-              export LD=${{matrix.gcc-prefix}}-ld-${{matrix.gcc-suffix}}
+              export CC=${{matrix.gcc-prefix}}-gcc${{matrix.gcc-suffix}}
+              export CXX=${{matrix.gcc-prefix}}-g++${{matrix.gcc-suffix}}
+              export LD=${{matrix.gcc-prefix}}-ld${{matrix.gcc-suffix}}
           fi
 
           if [ -n "$(echo ${{matrix.target}} | grep linux)" ]; then
