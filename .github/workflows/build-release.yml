@@ -29,7 +29,12 @@ jobs:
 
           - target: x86_64-unknown-linux-gnu
             host: ubuntu-latest
-            dependencies: libx11-dev libwayland-dev libxext-dev libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev libxtst-dev libxkbcommon-dev libdrm-dev libgbm-dev libgl1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev libdbus-1-dev libibus-1.0-dev libudev-dev
+          - target: aarch64-unknown-linux-gnu
+            host: ubuntu-latest
+            alt-arch: arm64
+            gcc-package-suffix: aarch64-linux-gnu
+            gcc-prefix: aarch64-linux-gnu
+
     runs-on: ${{matrix.host}}
     steps:
       - name: Checkout
@@ -50,8 +55,20 @@ jobs:
               export LD=${{matrix.gcc-prefix}}-ld-${{matrix.gcc-suffix}}
           fi
 
-          if [ -n "${{matrix.dependencies}}" ]; then
-              sudo apt install ${{matrix.dependencies}}
+          if [ -n "$(echo ${{matrix.target}} | grep linux)" ]; then
+              DEPENDENCIES="libx11-dev libwayland-dev libxext-dev libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev libxtst-dev libxkbcommon-dev libdrm-dev libgbm-dev libgl1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev libdbus-1-dev libibus-1.0-dev libudev-dev"
+              if [ -n "${{matrix.alt-arch}}" ]; then
+                  UBUNTU_CODENAME="$(lsb_release -cs)"
+                  echo "deb [arch=${{matrix.alt-arch}}] http://ports.ubuntu.com/ubuntu-ports ${UBUNTU_CODENAME} main restricted universe multiverse" | sudo tee -a /etc/apt/sources.list
+
+                  DEPENDENCIES_ALT_ARCH=""
+                  for DEPENDENCY in DEPENDENCIES; do
+                      DEPENDENCIES_ALT_ARCH="${DEPENDENCIES_ALT_ARCH} ${DEPENDENCY}:${{matrix.alt_arch}}"
+                  done
+                  DEPENDENCIES="${DEPENDENCIES_ALT_ARCH}"
+              fi
+
+              sudo apt install ${DEPENDENCIES}
           fi
 
           CMAKEFLAGS="-DSDL_DEPS_SHARED=off -DSDL_SHARED=off -DSDL_STATIC=on"
