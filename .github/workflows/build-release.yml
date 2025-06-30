@@ -24,6 +24,10 @@ jobs:
             gcc-package-suffix: mingw-w64-i686-win32
             gcc-prefix: i686-w64-mingw32
             gcc-suffix: win32
+
+          - target: unknown-linux-gnu
+            host: ubuntu-latest
+            dependencies: libx11-dev libwayland-dev
     runs-on: ${{matrix.host}}
     steps:
       - name: Checkout
@@ -42,6 +46,10 @@ jobs:
               if command -v clang; then
                   export CFLAGS="${CFLAGS} --target=${{matrix.target}}"
               fi
+          fi
+
+          if [ -n "${{matrix.dependencies}}" ]; then
+              sudo apt install ${{matrix.dependencies}}
           fi
 
           CMAKEFLAGS="-DSDL_DEPS_SHARED=off -DSDL_SHARED=off -DSDL_STATIC=on"
