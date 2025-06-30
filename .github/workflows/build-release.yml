@@ -40,9 +40,14 @@ jobs:
               fi
           fi
 
+          CMAKEFLAGS="-DSDL_DEPS_SHARED=off -DSDL_SHARED=off -DSDL_STATIC=on"
+          if [ -n "$(echo ${{matrix.target}} | grep windows)" ]; then
+              CMAKEFLAGS="${CMAKEFLAGS} -DCMAKE_SYSTEM_NAME=Windows"
+          fi
+
           mkdir build
           cd build
-          cmake .. \
-              -DSDL_DEPS_SHARED=off -DSDL_SHARED=off -DSDL_STATIC=on
+          cmake .. ${CMAKEFLAGS}
+
           make -j
           strip bin/3DASCII
