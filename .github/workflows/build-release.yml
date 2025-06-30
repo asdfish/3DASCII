@@ -16,9 +16,9 @@ jobs:
 
           - target: x86_64-pc-windows-gnu
             host: ubuntu-latest
-            gpp-package: g++-mingw-w64-x86-64-win32
-            gcc: x86_64-w64-mingw32-gcc-win32
-            gpp: x86_64-w64-mingw32-g++-win32
+            gcc-package-suffix: mingw-w64-x86-64-win32
+            gcc-prefix: x86_64-w64-mingw32
+            gcc-suffix: win32
     runs-on: ${{matrix.host}}
     steps:
       - name: Checkout
@@ -29,10 +29,11 @@ jobs:
           export CFLAGS='-O2 -pipe -flto'
           export CMAKEFLAGS="${CMAKEFLAGS} -DSDL_DEPS_SHARED=off -DSDL_SHARED=off -DSDL_STATIC=on"
 
-          if [ -n "${{matrix.gpp-package}}" ]; then
-              sudo apt install ${{matrix.gpp-package}}
-              export CC=${{matrix.gcc}}
-              export CXX=${{matrix.gcc}}
+          if [ -n "${{matrix.gcc-package-suffix}}" ]; then
+              sudo apt install gcc-${{matrix.gcc-package.suffix}}
+              export CC=${{matrix.gcc-prefix}}-gcc-${{matrix.gcc-suffix}}
+              export CXX=${{matrix.gcc-prefix}}-g++-${{matrix.gcc-suffix}}
+              export LD=${{matrix.gcc-prefix}}-ld-${{matrix.gcc-suffix}}
           fi
           if [ -z "${CC}" ]; then
               if command -v clang; then
