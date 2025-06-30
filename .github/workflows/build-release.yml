@@ -67,8 +67,8 @@ jobs:
                   done
                   DEPENDENCIES="${DEPENDENCIES_ALT_ARCH}"
 
-                  sudo dpkg --add-architecture ${{matrix.alt-arch}}
-                  sudo apt update
+                  sudo dpkg --add-architecture ${{matrix.alt-arch}} || true
+                  sudo apt update || true
               fi
 
               sudo apt install ${DEPENDENCIES}
