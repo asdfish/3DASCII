@@ -19,6 +19,6 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake ..
-          make -j -DCMAKE_CFLAGS='-O2 -pipe -flto --target=${{matrix.target}}'
+          cmake .. -DCMAKE_CFLAGS='-O2 -pipe -flto --target=${{matrix.target}}'
+          make -j
           strip bin/3DASCII
