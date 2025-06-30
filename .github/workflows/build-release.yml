@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Build
         env:
-          CMAKE_CFLAGS: -O2 -pipe -flto --target=${{matrix.target}} -static
+          CMAKE_C_FLAGS: -O2 -pipe -flto --target=${{matrix.target}} -static
 
           SDL_DEPS_SHARED: off
           SDL_SHARED: off
