@@ -11,16 +11,31 @@ jobs:
         include:
           - target: aarch64-apple-darwin
             host: macos-latest
+          - target: x86_64-apple-darwin
+            host: macos-latest
+          - target: x86_64-pc-windows-gnu
+            host: ubuntu-latest
+            gcc-package: gcc-mingw-w64-x86-64-win32
+            gcc-prefix: mingw-w64-mingw32-
     runs-on: ${{matrix.host}}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build
+        env:
+          CMAKE_CFLAGS: -O2 -pipe -flto --target=${{matrix.target}} -static
+
+          SDL_DEPS_SHARED: off
+          SDL_SHARED: off
+          SDL_STATIC: on
+        shell: bash
         run: |
+          if [ -n "${{matrix.gcc-package}}" ]; then
+              sudo apt install ${{matrix.gcc-package}}
+          fi
+
           mkdir build
           cd build
-          cmake .. \
-              -DCMAKE_CFLAGS='-O2 -pipe -flto --target=${{matrix.target}} -static' \
-              -DSDL_DEPS_SHARED=off -DSDL_SHARED=off -DSDL_STATIC=on
+          cmake ..
           make -j
           strip bin/3DASCII
