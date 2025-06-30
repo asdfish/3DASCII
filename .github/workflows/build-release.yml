@@ -25,7 +25,7 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          export CFLAGS='-O2 -pipe -flto --target=${{matrix.target}} -static'
+          export CFLAGS='-O2 -pipe -flto --target=${{matrix.target}}'
           export CMAKEFLAGS="${CMAKEFLAGS} -DSDL_DEPS_SHARED=off -DSDL_SHARED=off -DSDL_STATIC"
 
           if [ -n "${{matrix.gcc-package}}" ]; then
