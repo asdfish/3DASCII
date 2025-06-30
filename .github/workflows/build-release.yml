@@ -34,6 +34,6 @@ jobs:
 
           mkdir build
           cd build
-          cmake .. "${CMAKEFLAGS}"
+          cmake ${CMAKEFLAGS} ..
           make -j
           strip bin/3DASCII
