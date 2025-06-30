@@ -29,11 +29,6 @@ jobs:
 
           - target: x86_64-unknown-linux-gnu
             host: ubuntu-latest
-          - target: aarch64-unknown-linux-gnu
-            host: ubuntu-latest
-            alt-arch: arm64
-            gcc-package-suffix: aarch64-linux-gnu
-            gcc-prefix: aarch64-linux-gnu
 
     runs-on: ${{matrix.host}}
     steps:
@@ -56,24 +51,7 @@ jobs:
           fi
 
           if [ -n "$(echo ${{matrix.target}} | grep linux)" ]; then
-              DEPS="libx11-dev libwayland-dev libxext-dev libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev libxtst-dev libxkbcommon-dev libdrm-dev libgbm-dev libgl1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev libdbus-1-dev libibus-1.0-dev libudev-dev"
-              if [ -n "${{matrix.alt-arch}}" ]; then
-                  UBUNTU_CODENAME="$(lsb_release -cs)"
-                  echo "deb [arch=${{matrix.alt-arch}}] http://ports.ubuntu.com/ubuntu-ports ${UBUNTU_CODENAME} main restricted universe multiverse" | sudo tee -a /etc/apt/sources.list
-                  echo "deb [arch=${{matrix.alt-arch}}] http://ports.ubuntu.com/ubuntu-ports ${UBUNTU_CODENAME}-updates main restricted universe multiverse" | sudo tee -a /etc/apt/sources.list
-                  echo "deb [arch=${{matrix.alt-arch}}] http://ports.ubuntu.com/ubuntu-ports ${UBUNTU_CODENAME}-security main restricted universe multiverse" | sudo tee -a /etc/apt/sources.list
-
-                  DEPS_ALT_ARCH=""
-                  for DEP in ${DEPS}; do
-                      DEPS_ALT_ARCH="${DEPS_ALT_ARCH} ${DEP}:${{matrix.alt-arch}}"
-                  done
-                  DEPS="${DEPS_ALT_ARCH}"
-
-                  sudo dpkg --add-architecture ${{matrix.alt-arch}} || true
-                  sudo apt update || true
-              fi
-
-              sudo apt install ${DEPS}
+              sudo apt install libx11-dev libwayland-dev libxext-dev libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev libxtst-dev libxkbcommon-dev libdrm-dev libgbm-dev libgl1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev libdbus-1-dev libibus-1.0-dev libudev-dev
           fi
 
           CMAKEFLAGS="-DSDL_DEPS_SHARED=off -DSDL_SHARED=off -DSDL_STATIC=on"
