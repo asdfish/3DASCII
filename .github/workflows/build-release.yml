@@ -16,7 +16,7 @@ jobs:
 
           - target: x86_64-pc-windows-gnu
             host: ubuntu-latest
-            gpp-package: gcc-mingw-w64-x86-64-win32
+            gpp-package: g++-mingw-w64-x86-64-win32
             gcc: x86_64-w64-mingw32-gcc-win32
             gpp: x86_64-w64-mingw32-g++-win32
     runs-on: ${{matrix.host}}
