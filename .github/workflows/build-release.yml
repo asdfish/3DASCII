@@ -62,7 +62,7 @@ jobs:
                   echo "deb [arch=${{matrix.alt-arch}}] http://ports.ubuntu.com/ubuntu-ports ${UBUNTU_CODENAME} main restricted universe multiverse" | sudo tee -a /etc/apt/sources.list
 
                   DEPS_ALT_ARCH=""
-                  for DEP in DEPS; do
+                  for DEP in ${DEPS}; do
                       DEPS_ALT_ARCH="${DEPS_ALT_ARCH} ${DEP}:${{matrix.alt_arch}}"
                   done
                   DEPS="${DEPS_ALT_ARCH}"
