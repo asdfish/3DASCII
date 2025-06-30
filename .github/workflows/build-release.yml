@@ -56,22 +56,22 @@ jobs:
           fi
 
           if [ -n "$(echo ${{matrix.target}} | grep linux)" ]; then
-              DEPENDENCIES="libx11-dev libwayland-dev libxext-dev libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev libxtst-dev libxkbcommon-dev libdrm-dev libgbm-dev libgl1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev libdbus-1-dev libibus-1.0-dev libudev-dev"
+              DEPS="libx11-dev libwayland-dev libxext-dev libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev libxtst-dev libxkbcommon-dev libdrm-dev libgbm-dev libgl1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev libdbus-1-dev libibus-1.0-dev libudev-dev"
               if [ -n "${{matrix.alt-arch}}" ]; then
                   UBUNTU_CODENAME="$(lsb_release -cs)"
                   echo "deb [arch=${{matrix.alt-arch}}] http://ports.ubuntu.com/ubuntu-ports ${UBUNTU_CODENAME} main restricted universe multiverse" | sudo tee -a /etc/apt/sources.list
 
-                  DEPENDENCIES_ALT_ARCH=""
-                  for DEPENDENCY in DEPENDENCIES; do
-                      DEPENDENCIES_ALT_ARCH="${DEPENDENCIES_ALT_ARCH} ${DEPENDENCY}:${{matrix.alt_arch}}"
+                  DEPS_ALT_ARCH=""
+                  for DEP in DEPS; do
+                      DEPS_ALT_ARCH="${DEPS_ALT_ARCH} ${DEP}:${{matrix.alt_arch}}"
                   done
-                  DEPENDENCIES="${DEPENDENCIES_ALT_ARCH}"
+                  DEPS="${DEPS_ALT_ARCH}"
 
                   sudo dpkg --add-architecture ${{matrix.alt-arch}} || true
                   sudo apt update || true
               fi
 
-              sudo apt install ${DEPENDENCIES}
+              sudo apt install ${DEPS}
           fi
 
           CMAKEFLAGS="-DSDL_DEPS_SHARED=off -DSDL_SHARED=off -DSDL_STATIC=on"
