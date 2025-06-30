@@ -30,15 +30,8 @@ jobs:
 
           if [ -n "${{matrix.gcc-package}}" ]; then
               sudo apt install ${{matrix.gcc-package}}
+              export CC=gcc
           fi
-
-          set_compiler() {
-             if command -v $1; then
-                 export CC=$1
-             fi
-          }
-          set_compiler clang
-          set_compiler gcc
 
           mkdir build
           cd build
