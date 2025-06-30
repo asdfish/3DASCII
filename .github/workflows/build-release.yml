@@ -63,7 +63,6 @@ jobs:
 
                   DEPS_ALT_ARCH=""
                   for DEP in ${DEPS}; do
-                      echo "${DEPS_ALT_ARCH}"
                       DEPS_ALT_ARCH="${DEPS_ALT_ARCH} ${DEP}:${{matrix.alt-arch}}"
                   done
                   DEPS="${DEPS_ALT_ARCH}"
