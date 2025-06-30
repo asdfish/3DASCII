@@ -17,7 +17,8 @@ jobs:
           - target: x86_64-pc-windows-gnu
             host: ubuntu-latest
             gcc-package: gcc-mingw-w64-x86-64-win32
-            gcc-prefix: mingw-w64-mingw32
+            gcc: mingw-w64-mingw32-gcc-win32
+            g++: mingw-w64-mingw32-g++-win32
     runs-on: ${{matrix.host}}
     steps:
       - name: Checkout
@@ -30,8 +31,8 @@ jobs:
 
           if [ -n "${{matrix.gcc-package}}" ]; then
               sudo apt install ${{matrix.gcc-package}}
-              export CC=${{matrix.gcc-prefix}}-gcc
-              export CXX=${{matrix.gcc-prefix}}-g++
+              export CC=${{matrix.gcc}}
+              export CXX=${{matrix.gcc}}
           fi
           if [ -z "${CC}" ]; then
               if command -v clang; then
