@@ -40,6 +40,10 @@ jobs:
         shell: bash
         run: |
           export CFLAGS='-O2 -pipe -flto'
+          if [ -n "$(grep ${{matrix.target}} | grep darwin)" ]; then
+              export CFLAGS="${CFLAGS} --target=${{matrix.target}}"
+          fi
+          export CXXFLAGS="${CFLAGS}"
 
           if [ -n "${{matrix.gcc-package-suffix}}" ]; then
               sudo apt install g++-${{matrix.gcc-package-suffix}}
@@ -55,10 +59,6 @@ jobs:
           CMAKEFLAGS="-DSDL_DEPS_SHARED=off -DSDL_SHARED=off -DSDL_STATIC=on"
           if [ -n "$(echo ${{matrix.target}} | grep windows)" ]; then
               CMAKEFLAGS="${CMAKEFLAGS} -DCMAKE_SYSTEM_NAME=Windows"
-          fi
-
-          if [ "(\w+)-.*" =~ ${{matrix.target}} ]; then
-              CMAKEFLAGS="${CMAKEFLAGS} -DCMAKE_SYSTEM_PROCESSOR=${BASH_REMATCH[1]}"
           fi
 
           mkdir build
