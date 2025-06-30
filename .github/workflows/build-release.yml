@@ -11,10 +11,6 @@ jobs:
         include:
           - target: aarch64-apple-darwin
             host: macos-latest
-            clang: yes
-          - target: x86_64-apple-darwin
-            host: macos-latest
-            clang: yes
 
           - target: x86_64-pc-windows
             host: ubuntu-latest
@@ -40,9 +36,6 @@ jobs:
         shell: bash
         run: |
           export CFLAGS='-O2 -pipe -flto'
-          if [ -n "$(grep ${{matrix.target}} | grep darwin)" ]; then
-              export CFLAGS="${CFLAGS} --target=${{matrix.target}}"
-          fi
           export CXXFLAGS="${CFLAGS}"
 
           if [ -n "${{matrix.gcc-package-suffix}}" ]; then
